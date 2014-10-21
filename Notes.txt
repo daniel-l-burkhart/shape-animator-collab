@@ -1,0 +1,10 @@
+The method for keeping the shapes in the bounds of the canvas is somewhat smelly.
+It's self-documenting, but the method is a little confusing.
+Couldn't determine a more elegant way of keeping shapes within the bounds.
+
+Also, couldn't determine a way to keep it in the shape class and also get the width/height of the canvas, so constants were made.
+
+I feel as though the bounds checking method fits better in the ShapeManager class,
+but doing so would require that I made methods in the Shape class static.
+
+
