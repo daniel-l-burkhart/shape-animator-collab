@@ -60,9 +60,9 @@ namespace ShapeAnimator.View.Forms
             this.numberOfShapesLabel.AutoSize = true;
             this.numberOfShapesLabel.Location = new System.Drawing.Point(11, 19);
             this.numberOfShapesLabel.Name = "numberOfShapesLabel";
-            this.numberOfShapesLabel.Size = new System.Drawing.Size(29, 13);
+            this.numberOfShapesLabel.Size = new System.Drawing.Size(95, 13);
             this.numberOfShapesLabel.TabIndex = 1;
-            this.numberOfShapesLabel.Text = "Start";
+            this.numberOfShapesLabel.Text = "Number of Shapes";
             // 
             // numberShapesTextBox
             // 
@@ -77,7 +77,7 @@ namespace ShapeAnimator.View.Forms
             this.animateButton.Name = "animateButton";
             this.animateButton.Size = new System.Drawing.Size(75, 23);
             this.animateButton.TabIndex = 3;
-            this.animateButton.Text = "Animate";
+            this.animateButton.Text = "Start";
             this.animateButton.UseVisualStyleBackColor = true;
             this.animateButton.Click += new System.EventHandler(this.animateButton_Click);
             // 
