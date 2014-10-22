@@ -87,8 +87,5 @@ namespace ShapeAnimator.View.Forms
 
         #endregion
 
-        private void ShapeAnimatorForm_Load(object sender, EventArgs e)
-        {
-        }
     }
 }
