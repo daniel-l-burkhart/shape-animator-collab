@@ -60,9 +60,9 @@ namespace ShapeAnimator.View.Forms
             this.numberOfShapesLabel.AutoSize = true;
             this.numberOfShapesLabel.Location = new System.Drawing.Point(11, 19);
             this.numberOfShapesLabel.Name = "numberOfShapesLabel";
-            this.numberOfShapesLabel.Size = new System.Drawing.Size(96, 13);
+            this.numberOfShapesLabel.Size = new System.Drawing.Size(29, 13);
             this.numberOfShapesLabel.TabIndex = 1;
-            this.numberOfShapesLabel.Text = "Number of shapes:";
+            this.numberOfShapesLabel.Text = "Start";
             // 
             // numberShapesTextBox
             // 
