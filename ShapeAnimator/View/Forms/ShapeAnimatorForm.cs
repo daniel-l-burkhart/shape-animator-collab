@@ -85,7 +85,34 @@ namespace ShapeAnimator.View.Forms
             }
         }
 
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void resumeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+
+
         #endregion
+
+        private void ShapeAnimatorForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }
