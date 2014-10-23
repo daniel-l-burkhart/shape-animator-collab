@@ -79,9 +79,9 @@ namespace ShapeAnimator.View.Forms
             this.animateButton.Location = new System.Drawing.Point(334, 27);
             this.animateButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.animateButton.Name = "animateButton";
-            this.animateButton.Size = new System.Drawing.Size(150, 44);
+            this.animateButton.Size = new System.Drawing.Size(186, 44);
             this.animateButton.TabIndex = 3;
-            this.animateButton.Text = "Start";
+            this.animateButton.Text = "Start Animation";
             this.animateButton.UseVisualStyleBackColor = true;
             this.animateButton.Click += new System.EventHandler(this.animateButton_Click);
             // 
