@@ -43,9 +43,10 @@ namespace ShapeAnimator.View.Forms
             // canvasPictureBox
             // 
             this.canvasPictureBox.BackColor = System.Drawing.Color.Black;
-            this.canvasPictureBox.Location = new System.Drawing.Point(12, 58);
+            this.canvasPictureBox.Location = new System.Drawing.Point(24, 112);
+            this.canvasPictureBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.canvasPictureBox.Name = "canvasPictureBox";
-            this.canvasPictureBox.Size = new System.Drawing.Size(720, 480);
+            this.canvasPictureBox.Size = new System.Drawing.Size(1440, 923);
             this.canvasPictureBox.TabIndex = 0;
             this.canvasPictureBox.TabStop = false;
             this.canvasPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.shapeCanvasPictureBox_Paint);
@@ -58,24 +59,27 @@ namespace ShapeAnimator.View.Forms
             // numberOfShapesLabel
             // 
             this.numberOfShapesLabel.AutoSize = true;
-            this.numberOfShapesLabel.Location = new System.Drawing.Point(11, 19);
+            this.numberOfShapesLabel.Location = new System.Drawing.Point(22, 37);
+            this.numberOfShapesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.numberOfShapesLabel.Name = "numberOfShapesLabel";
-            this.numberOfShapesLabel.Size = new System.Drawing.Size(95, 13);
+            this.numberOfShapesLabel.Size = new System.Drawing.Size(190, 25);
             this.numberOfShapesLabel.TabIndex = 1;
             this.numberOfShapesLabel.Text = "Number of Shapes";
             // 
             // numberShapesTextBox
             // 
-            this.numberShapesTextBox.Location = new System.Drawing.Point(113, 16);
+            this.numberShapesTextBox.Location = new System.Drawing.Point(226, 31);
+            this.numberShapesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.numberShapesTextBox.Name = "numberShapesTextBox";
-            this.numberShapesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.numberShapesTextBox.Size = new System.Drawing.Size(90, 31);
             this.numberShapesTextBox.TabIndex = 2;
             // 
             // animateButton
             // 
-            this.animateButton.Location = new System.Drawing.Point(167, 14);
+            this.animateButton.Location = new System.Drawing.Point(334, 27);
+            this.animateButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.animateButton.Name = "animateButton";
-            this.animateButton.Size = new System.Drawing.Size(75, 23);
+            this.animateButton.Size = new System.Drawing.Size(150, 44);
             this.animateButton.TabIndex = 3;
             this.animateButton.Text = "Start";
             this.animateButton.UseVisualStyleBackColor = true;
@@ -83,16 +87,17 @@ namespace ShapeAnimator.View.Forms
             // 
             // ShapeAnimatorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 549);
+            this.ClientSize = new System.Drawing.Size(1488, 1056);
             this.Controls.Add(this.animateButton);
             this.Controls.Add(this.numberShapesTextBox);
             this.Controls.Add(this.numberOfShapesLabel);
             this.Controls.Add(this.canvasPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShapeAnimatorForm";
-            this.Text = "Shape Animator A4 by Odom and Burkhart";
+            this.Text = "Shape Animator A4 by Michael Odom and Daniel Burkhart";
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
