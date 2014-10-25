@@ -52,19 +52,57 @@ namespace ShapeAnimator.Model.Manager
         ///     Places the shape on the canvas.
         ///     Precondition: None
         /// </summary>
-        public void PlaceShapesOnCanvas(int numberOfShapes)
+        public void PlaceShapesOnCanvas(int numberOfRandomShapes, int numberOfCircles, int numberOfRectangles,
+            int numberOfSpottedRectangles)
         {
             this.shapes.Clear();
+            this.placeRandomShapesOnCanvas(numberOfRandomShapes);
+            this.placeCirclesOnCanvas(numberOfCircles);
+            this.placeRectanglesOnCanvas(numberOfRectangles);
+            this.placeSpottedRectanglesOnCanvas(numberOfSpottedRectangles);
+        }
 
-            for (int i = 0; i < numberOfShapes; i++)
+        private void placeRandomShapesOnCanvas(int numberOfRandomShapes)
+        {
+            for (int i = 0; i < numberOfRandomShapes; i++)
             {
-                Shape aShape = ShapeFactory.CreateAShape();
+                Shape aShape = ShapeFactory.CreateARandomShape();
                 this.placeShapesInCanvasBoundary(aShape);
                 this.shapes.Add(aShape);
             }
         }
 
-        private void placeShapesInCanvasBoundary(Shape aShape)
+        private void placeCirclesOnCanvas(int numberOfCircles)
+        {
+            for (int i = 0; i < numberOfCircles; i++)
+            {
+                Shape aShape = ShapeFactory.CreateACircle();
+                this.placeShapesInCanvasBoundary(aShape);
+                this.shapes.Add(aShape);
+            }
+        }
+
+        private void placeRectanglesOnCanvas(int numberOfRectangles)
+        {
+            for (int i = 0; i < numberOfRectangles; i++)
+            {
+                Shape aShape = ShapeFactory.CreateARectangle();
+                this.placeShapesInCanvasBoundary(aShape);
+                this.shapes.Add(aShape);
+            }
+        }
+
+        private void placeSpottedRectanglesOnCanvas(int numberOfSpottedRectangles)
+        {
+            for (int i = 0; i < numberOfSpottedRectangles; i++)
+            {
+                Shape aShape = ShapeFactory.CreateASpottedRectangle();
+                this.placeShapesInCanvasBoundary(aShape);
+                this.shapes.Add(aShape);
+            }
+        }
+
+    private void placeShapesInCanvasBoundary(Shape aShape)
         {
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);

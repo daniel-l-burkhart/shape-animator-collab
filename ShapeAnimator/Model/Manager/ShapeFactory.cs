@@ -48,7 +48,7 @@ namespace ShapeAnimator.Model.Manager
         ///     Creates a shape.
         /// </summary>
         /// <returns></returns>
-        public static Shape CreateAShape()
+        public static Shape CreateARandomShape()
         {
             Shapes shape = getRandomShape();
 
@@ -68,6 +68,33 @@ namespace ShapeAnimator.Model.Manager
             }
 
             return theShape;
+        }
+
+        /// <summary>
+        /// Creates a circle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateACircle()
+        {
+            return new Circle();
+        }
+
+        /// <summary>
+        /// Creates a rectangle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateARectangle()
+        {
+            return new Rectangle();
+        }
+
+        /// <summary>
+        /// Creates a spotted rectangle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateASpottedRectangle()
+        {
+            return new SpottedRectangle();
         }
 
         private static Shapes getRandomShape()

@@ -22,20 +22,112 @@ namespace ShapeAnimator.View.Forms
         ///     Converts the text in the numberShapesTextBox to an integer. If the text
         ///     is not convertable to an integer value it returns 0.
         /// </summary>
-        public int NumberShapes
+        public int NumberRandomShapes
         {
             get
             {
+                int number = 0;
                 try
                 {
-                    return Convert.ToInt32(this.numberShapesTextBox.Text);
+                    number = Convert.ToInt32(this.numberShapesTextBox.Text);
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Number cannot be negative");
+                    }
                 }
                 catch (Exception)
                 {
-                    return 0;
+                    MessageBox.Show("Must be an integer");
                 }
+                return number;
+
             }
         }
+
+        /// <summary>
+        /// Gets the number circles.
+        /// </summary>
+        /// <value>
+        /// The number circles.
+        /// </value>
+        public int NumberCircles
+        {
+            get
+            {
+                int number = 0;
+                try
+                {
+                    number = Convert.ToInt32(this.circlesTextBox.Text);
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Number cannot be negative");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Must be an integer");
+                }
+                return number;
+
+            }
+        }
+
+        /// <summary>
+        /// Gets the number rectangles.
+        /// </summary>
+        /// <value>
+        /// The number rectangles.
+        /// </value>
+        public int NumberRectangles
+        {
+            get
+            {
+                int number = 0;
+                try
+                {
+                    number = Convert.ToInt32(this.rectanglesTextBox.Text);
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Number cannot be negative");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Must be an integer");
+                }
+                return number;
+
+            }
+        }
+
+        /// <summary>
+        /// Gets the number spotted rectangles.
+        /// </summary>
+        /// <value>
+        /// The number spotted rectangles.
+        /// </value>
+        public int NumberSpottedRectangles
+        {
+            get
+            {
+                int number = 0;
+                try
+                {
+                    number = Convert.ToInt32(this.spottedRectanglesTextBox.Text);
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Number cannot be negative");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Must be an integer");
+                }
+                return number;
+
+            }
+        }
+
 
         #endregion
 
@@ -69,20 +161,11 @@ namespace ShapeAnimator.View.Forms
 
         private void animateButton_Click(object sender, EventArgs e)
         {
-            int n;
-            bool isNumeric = int.TryParse(this.numberShapesTextBox.Text, out n);
-            if (isNumeric)
-            {
                 this.animationTimer.Stop();
-
-                this.canvasManager.PlaceShapesOnCanvas(n);
+                
+                this.canvasManager.PlaceShapesOnCanvas(this.NumberRandomShapes, this.NumberCircles, this.NumberRectangles, this.NumberSpottedRectangles);
 
                 this.animationTimer.Start();
-            }
-            else
-            {
-                MessageBox.Show(@"Must be of type int");
-            }
         }
 
         private void pauseButton_Click(object sender, EventArgs e)

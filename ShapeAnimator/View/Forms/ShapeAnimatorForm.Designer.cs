@@ -80,6 +80,7 @@ namespace ShapeAnimator.View.Forms
             this.numberShapesTextBox.Name = "numberShapesTextBox";
             this.numberShapesTextBox.Size = new System.Drawing.Size(47, 20);
             this.numberShapesTextBox.TabIndex = 2;
+            this.numberShapesTextBox.Text = "0";
             // 
             // animateButton
             // 
@@ -124,6 +125,7 @@ namespace ShapeAnimator.View.Forms
             this.rectanglesTextBox.Name = "rectanglesTextBox";
             this.rectanglesTextBox.Size = new System.Drawing.Size(47, 20);
             this.rectanglesTextBox.TabIndex = 7;
+            this.rectanglesTextBox.Text = "0";
             // 
             // circlesTextBox
             // 
@@ -131,6 +133,7 @@ namespace ShapeAnimator.View.Forms
             this.circlesTextBox.Name = "circlesTextBox";
             this.circlesTextBox.Size = new System.Drawing.Size(47, 20);
             this.circlesTextBox.TabIndex = 8;
+            this.circlesTextBox.Text = "0";
             // 
             // spottedRectanglesTextBox
             // 
@@ -138,6 +141,7 @@ namespace ShapeAnimator.View.Forms
             this.spottedRectanglesTextBox.Name = "spottedRectanglesTextBox";
             this.spottedRectanglesTextBox.Size = new System.Drawing.Size(47, 20);
             this.spottedRectanglesTextBox.TabIndex = 9;
+            this.spottedRectanglesTextBox.Text = "0";
             // 
             // label1
             // 
