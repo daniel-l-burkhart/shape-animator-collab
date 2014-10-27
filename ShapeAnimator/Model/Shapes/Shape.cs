@@ -208,6 +208,22 @@ namespace ShapeAnimator.Model.Shapes
             this.sprite.Paint(g);
         }
 
+        /// <summary>
+        /// calculates the area based off  the specified width and height.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns></returns>
+        public abstract double Area(double width, double height);
+
+        /// <summary>
+        /// Perimeters the specified width.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns></returns>
+        public abstract double Perimeter(double width, double height);
+
         #endregion
     }
 }

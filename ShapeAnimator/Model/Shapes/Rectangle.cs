@@ -40,5 +40,27 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         #endregion
+
+        /// <summary>
+        /// calculates the area based off  the specified width and height.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns></returns>
+        public override double Area(double width, double height)
+        {
+            return (width*height);
+        }
+
+        /// <summary>
+        /// Perimeters the specified width.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns></returns>
+        public override double Perimeter(double width, double height)
+        {
+            return (2.0*width + 2.0*height);
+        }
     }
 }
