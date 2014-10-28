@@ -21,52 +21,28 @@ namespace ShapeAnimator.Model.Shapes
         #region Properties
 
         /// <summary>
-        ///     The direction
-        /// </summary>
-        public int Direction { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the speed x.
+        /// Gets or sets the speed x.
         /// </summary>
         /// <value>
-        ///     The speed x.
+        /// The speed x.
         /// </value>
         public int SpeedX
         {
+            set { this.speedX = value; }
             get { return this.speedX; }
         }
 
         /// <summary>
-        ///     Gets or sets the speed y.
+        /// Gets or sets the speed y.
         /// </summary>
         /// <value>
-        ///     The speed y.
+        /// The speed y.
         /// </value>
         public int SpeedY
         {
+            set { this.speedY = value; }
             get { return this.speedY; }
         }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this instance is rectangle.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is rectangle; otherwise, <c>false</c>.
-        /// </value>
-        protected bool IsRectangle { get; set; }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this instance is circle.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is circle; otherwise, <c>false</c>.
-        /// </value>
-        protected bool IsCircle { get; set; }
-
-        /// <summary>
-        ///     The sprite's speed
-        /// </summary>
-        protected int SpriteSpeed { get; set; }
 
         /// <summary>
         ///     Gets or sets the x.
@@ -170,27 +146,8 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public void Move()
         {
-            this.speed();
             this.location.X += this.speedX;
             this.location.Y += this.speedY;
-        }
-
-        /// <summary>
-        ///     Speeds this instance.
-        /// </summary>
-        private void speed()
-        {
-            if (this.IsCircle)
-            {
-                this.speedX = this.SpriteSpeed*this.Direction;
-                this.speedY = 0;
-            }
-
-            else if (this.IsRectangle)
-            {
-                this.speedY = this.SpriteSpeed*this.Direction;
-                this.speedX = 0;
-            }
         }
 
         /// <summary>

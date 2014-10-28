@@ -142,6 +142,8 @@ namespace ShapeAnimator.View.Forms
             this.InitializeComponent();
 
             this.canvasManager = new ShapeManager(this.canvasPictureBox);
+            this.PauseButton.Enabled = false;
+            this.ResumeButton.Enabled = false;
         }
 
         #endregion
@@ -166,21 +168,28 @@ namespace ShapeAnimator.View.Forms
                 this.canvasManager.PlaceShapesOnCanvas(this.NumberRandomShapes, this.NumberCircles, this.NumberRectangles, this.NumberSpottedRectangles);
 
                 this.animationTimer.Start();
+
+                this.PauseButton.Enabled = true;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-            
+            this.canvasManager.PauseCanvasAnimation();
+            this.PauseButton.Enabled = false;
+            this.ResumeButton.Enabled = true;
         }
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
-
+            this.canvasManager.ResumeCanvasAnimation();
+            this.ResumeButton.Enabled = false;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-         
+            this.canvasManager.ClearCanvas();
+            this.PauseButton.Enabled = false;
+            this.ResumeButton.Enabled = false;
         }
 
 

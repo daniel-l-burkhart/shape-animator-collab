@@ -102,7 +102,7 @@ namespace ShapeAnimator.Model.Manager
             }
         }
 
-    private void placeShapesInCanvasBoundary(Shape aShape)
+        private void placeShapesInCanvasBoundary(Shape aShape)
         {
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
@@ -115,25 +115,31 @@ namespace ShapeAnimator.Model.Manager
         {
             foreach (Shape shape in this.shapes)
             {
-                if (this.checkHorizontalRightBounds(shape) || this.checkVerticalBottomBounds(shape))
+                if (this.checkHorizontalRightBounds(shape))
                 {
-                    shape.Direction = (int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.LeftOrUp;
                 }
-                else if (this.checkHorizontalLeftBounds(shape) || this.checkVerticalTopBounds(shape))
+
+                else if (this.checkVerticalBottomBounds(shape))
                 {
-                    shape.Direction = (int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.LeftOrUp;
+                }
+
+                else if (this.checkHorizontalLeftBounds(shape))
+                {
+                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.RightOrDown;
+                }
+
+                else if (this.checkVerticalTopBounds(shape))
+                {
+                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.RightOrDown;
                 }
             }
         }
 
-        private bool checkVerticalTopBounds(Shape shape)
+        private bool checkHorizontalRightBounds(Shape shape)
         {
-            return shape.Y + shape.SpeedY < 0;
-        }
-
-        private bool checkHorizontalLeftBounds(Shape shape)
-        {
-            return shape.X + shape.SpeedX < 0;
+            return shape.X + shape.Width + shape.SpeedX > this.canvas.Width && shape.SpeedX >= 1;
         }
 
         private bool checkVerticalBottomBounds(Shape shape)
@@ -141,9 +147,42 @@ namespace ShapeAnimator.Model.Manager
             return shape.Y + shape.Height + shape.SpeedY > this.canvas.Height && shape.SpeedY >= 1;
         }
 
-        private bool checkHorizontalRightBounds(Shape shape)
+        private bool checkHorizontalLeftBounds(Shape shape)
         {
-            return shape.X + shape.Width + shape.SpeedX > this.canvas.Width && shape.SpeedX >= 1;
+            return shape.X + shape.SpeedX < 0;
+        }
+
+        private bool checkVerticalTopBounds(Shape shape)
+        {
+            return shape.Y + shape.SpeedY < 0;
+        }
+
+        
+
+
+
+        /// <summary>
+        ///     Clears the canvas.
+        /// </summary>
+        public void ClearCanvas()
+        {
+            this.shapes.Clear();
+        }
+
+        /// <summary>
+        ///     Pauses the canvas.
+        /// </summary>
+        public void PauseCanvasAnimation()
+        {
+            
+        }
+
+        /// <summary>
+        ///     Resumes the canvas animation.
+        /// </summary>
+        public void ResumeCanvasAnimation()
+        {
+
         }
 
         /// <summary>

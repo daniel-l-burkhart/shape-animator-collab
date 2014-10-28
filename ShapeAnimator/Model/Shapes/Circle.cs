@@ -24,10 +24,9 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public Circle()
         {
-            this.Direction = DirectionRandomizer.GetRandomDirection();
-            this.SpriteSpeed = ShapeFactory.Randomizer.Next(1, 5);
+            this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
+            this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
             this.Sprite = new CircleSprite(this, ShapeWidth, ShapeHeight);
-            this.IsCircle = true;
         }
 
         /// <summary>

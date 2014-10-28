@@ -23,10 +23,9 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public Rectangle()
         {
-            this.Direction = DirectionRandomizer.GetRandomDirection();
-            this.SpriteSpeed = ShapeFactory.Randomizer.Next(1, 5);
+            this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
+            this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
             this.Sprite = new RectangleSprite(this, ShapeWidth, ShapeHeight);
-            this.IsRectangle = true;
         }
 
         /// <summary>
