@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
 namespace ShapeAnimator.Model.Shapes
@@ -23,7 +24,7 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public SpottedRectangle()
         {
-            this.Sprite = new SpottedRectangleSprite(this, ShapeWidth, ShapeHeight);
+            this.Sprite = new SpottedRectangleSprite(this, ShapeFactory.Randomizer.Next(20, 100), ShapeFactory.Randomizer.Next(20, 100));
         }
 
         /// <summary>

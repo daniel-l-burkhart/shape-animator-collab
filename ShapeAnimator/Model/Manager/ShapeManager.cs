@@ -157,10 +157,6 @@ namespace ShapeAnimator.Model.Manager
             return shape.Y + shape.SpeedY < 0;
         }
 
-        
-
-
-
         /// <summary>
         ///     Clears the canvas.
         /// </summary>
@@ -174,6 +170,10 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         public void PauseCanvasAnimation()
         {
+            foreach (var shape in shapes)
+            {
+
+            }
             
         }
 

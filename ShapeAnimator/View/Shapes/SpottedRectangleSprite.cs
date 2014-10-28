@@ -8,8 +8,8 @@ namespace ShapeAnimator.View.Shapes
 
         #region Constants
 
-        private const int HeightOfSpot = 25;
-        private const int WidthOfSpot = 25;
+        private const int HeightOfSpot = 15;
+        private const int WidthOfSpot = 15;
 
         #endregion
 

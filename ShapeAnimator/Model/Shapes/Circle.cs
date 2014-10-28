@@ -10,12 +10,6 @@ namespace ShapeAnimator.Model.Shapes
     /// </summary>
     public class Circle : Shape
     {
-        #region Constants
-
-        private const int ShapeHeight = 100;
-        private const int ShapeWidth = 100;
-
-        #endregion
 
         #region Constructors
 
@@ -26,7 +20,7 @@ namespace ShapeAnimator.Model.Shapes
         {
             this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
             this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
-            this.Sprite = new CircleSprite(this, ShapeWidth, ShapeHeight);
+            this.Sprite = new CircleSprite(this, ShapeFactory.Randomizer.Next(20, 100), ShapeFactory.Randomizer.Next(20, 100));
         }
 
         /// <summary>

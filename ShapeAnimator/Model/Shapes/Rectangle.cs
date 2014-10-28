@@ -9,14 +9,6 @@ namespace ShapeAnimator.Model.Shapes
     /// </summary>
     public class Rectangle : Shape
     {
-        #region Constants
-
-        private const int ShapeHeight = 100;
-        private const int ShapeWidth = 100;
-
-        #endregion
-
-        #region Constructors
 
         /// <summary>
         ///     Creates a rectangle shape
@@ -25,7 +17,7 @@ namespace ShapeAnimator.Model.Shapes
         {
             this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
             this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
-            this.Sprite = new RectangleSprite(this, ShapeWidth, ShapeHeight);
+            this.Sprite = new RectangleSprite(this, ShapeFactory.Randomizer.Next(20, 100), ShapeFactory.Randomizer.Next(20, 100));
         }
 
         /// <summary>
@@ -37,8 +29,6 @@ namespace ShapeAnimator.Model.Shapes
         public Rectangle(Point location) : base(location)
         {
         }
-
-        #endregion
 
         /// <summary>
         /// calculates the area based off  the specified width and height.
