@@ -50,8 +50,21 @@ namespace ShapeAnimator.View.Forms
             this.SpeedSlider = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.shapeDatabaseDataSet = new ShapeAnimator.ShapeDatabaseDataSet();
+            this.shapeDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.shapeDatabaseTableAdapter = new ShapeAnimator.ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shapeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perimeterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collisionCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // canvasPictureBox
@@ -207,11 +220,80 @@ namespace ShapeAnimator.View.Forms
             this.label5.TabIndex = 22;
             this.label5.Text = "0-500";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.shapeTypeDataGridViewTextBoxColumn,
+            this.colorDataGridViewTextBoxColumn,
+            this.perimeterDataGridViewTextBoxColumn,
+            this.areaDataGridViewTextBoxColumn,
+            this.collisionCountDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.shapeDatabaseBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(28, 594);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(542, 106);
+            this.dataGridView1.TabIndex = 23;
+            // 
+            // shapeDatabaseDataSet
+            // 
+            this.shapeDatabaseDataSet.DataSetName = "ShapeDatabaseDataSet";
+            this.shapeDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // shapeDatabaseBindingSource
+            // 
+            this.shapeDatabaseBindingSource.DataMember = "ShapeDatabase";
+            this.shapeDatabaseBindingSource.DataSource = this.shapeDatabaseDataSet;
+            // 
+            // shapeDatabaseTableAdapter
+            // 
+            this.shapeDatabaseTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // shapeTypeDataGridViewTextBoxColumn
+            // 
+            this.shapeTypeDataGridViewTextBoxColumn.DataPropertyName = "Shape Type";
+            this.shapeTypeDataGridViewTextBoxColumn.HeaderText = "Shape Type";
+            this.shapeTypeDataGridViewTextBoxColumn.Name = "shapeTypeDataGridViewTextBoxColumn";
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            // 
+            // perimeterDataGridViewTextBoxColumn
+            // 
+            this.perimeterDataGridViewTextBoxColumn.DataPropertyName = "Perimeter";
+            this.perimeterDataGridViewTextBoxColumn.HeaderText = "Perimeter";
+            this.perimeterDataGridViewTextBoxColumn.Name = "perimeterDataGridViewTextBoxColumn";
+            // 
+            // areaDataGridViewTextBoxColumn
+            // 
+            this.areaDataGridViewTextBoxColumn.DataPropertyName = "Area";
+            this.areaDataGridViewTextBoxColumn.HeaderText = "Area";
+            this.areaDataGridViewTextBoxColumn.Name = "areaDataGridViewTextBoxColumn";
+            // 
+            // collisionCountDataGridViewTextBoxColumn
+            // 
+            this.collisionCountDataGridViewTextBoxColumn.DataPropertyName = "Collision Count";
+            this.collisionCountDataGridViewTextBoxColumn.HeaderText = "Collision Count";
+            this.collisionCountDataGridViewTextBoxColumn.Name = "collisionCountDataGridViewTextBoxColumn";
+            // 
             // ShapeAnimatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 576);
+            this.ClientSize = new System.Drawing.Size(734, 712);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.SpeedSlider);
@@ -231,8 +313,12 @@ namespace ShapeAnimator.View.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ShapeAnimatorForm";
             this.Text = "Shape Animator A4 by Odom and Burkhart";
+            this.Load += new System.EventHandler(this.ShapeAnimatorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +344,16 @@ namespace ShapeAnimator.View.Forms
         private Label label4;
         private Label label5;
         public TrackBar SpeedSlider;
+        private DataGridView dataGridView1;
+        private ShapeDatabaseDataSet shapeDatabaseDataSet;
+        private BindingSource shapeDatabaseBindingSource;
+        private ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter shapeDatabaseTableAdapter;
+        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn shapeTypeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn perimeterDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn areaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn collisionCountDataGridViewTextBoxColumn;
     }
 }
 
