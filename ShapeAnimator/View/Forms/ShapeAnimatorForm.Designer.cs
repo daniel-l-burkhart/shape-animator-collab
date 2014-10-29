@@ -60,6 +60,8 @@ namespace ShapeAnimator.View.Forms
             this.perimeterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collisionCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -232,9 +234,9 @@ namespace ShapeAnimator.View.Forms
             this.areaDataGridViewTextBoxColumn,
             this.collisionCountDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.shapeDatabaseBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 594);
+            this.dataGridView1.Location = new System.Drawing.Point(186, 576);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(542, 106);
+            this.dataGridView1.Size = new System.Drawing.Size(542, 124);
             this.dataGridView1.TabIndex = 23;
             // 
             // shapeDatabaseDataSet
@@ -288,11 +290,35 @@ namespace ShapeAnimator.View.Forms
             this.collisionCountDataGridViewTextBoxColumn.HeaderText = "Collision Count";
             this.collisionCountDataGridViewTextBoxColumn.Name = "collisionCountDataGridViewTextBoxColumn";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Perimeter",
+            "Area",
+            "Type Then Color",
+            "Collision Count Then Shape Type"});
+            this.comboBox1.Location = new System.Drawing.Point(8, 610);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(168, 21);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 594);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Sort By:";
+            // 
             // ShapeAnimatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 712);
+            this.ClientSize = new System.Drawing.Size(744, 712);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -354,6 +380,8 @@ namespace ShapeAnimator.View.Forms
         private DataGridViewTextBoxColumn perimeterDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn areaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn collisionCountDataGridViewTextBoxColumn;
+        private ComboBox comboBox1;
+        private Label label6;
     }
 }
 
