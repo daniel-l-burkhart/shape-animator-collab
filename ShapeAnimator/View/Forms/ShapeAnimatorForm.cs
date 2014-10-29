@@ -174,14 +174,16 @@ namespace ShapeAnimator.View.Forms
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-            this.canvasManager.PauseCanvasAnimation();
+            this.animationTimer.Stop();
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = true;
         }
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
+            this.animationTimer.Start();
             this.canvasManager.ResumeCanvasAnimation();
+            this.PauseButton.Enabled = true;
             this.ResumeButton.Enabled = false;
         }
 
