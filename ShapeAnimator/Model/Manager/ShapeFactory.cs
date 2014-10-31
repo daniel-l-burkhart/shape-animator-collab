@@ -71,7 +71,7 @@ namespace ShapeAnimator.Model.Manager
         }
 
         /// <summary>
-        /// Creates a circle.
+        ///     Creates a circle.
         /// </summary>
         /// <returns></returns>
         public static Shape CreateACircle()
@@ -80,7 +80,7 @@ namespace ShapeAnimator.Model.Manager
         }
 
         /// <summary>
-        /// Creates a rectangle.
+        ///     Creates a rectangle.
         /// </summary>
         /// <returns></returns>
         public static Shape CreateARectangle()
@@ -89,7 +89,7 @@ namespace ShapeAnimator.Model.Manager
         }
 
         /// <summary>
-        /// Creates a spotted rectangle.
+        ///     Creates a spotted rectangle.
         /// </summary>
         /// <returns></returns>
         public static Shape CreateASpottedRectangle()

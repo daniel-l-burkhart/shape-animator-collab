@@ -10,6 +10,10 @@ namespace ShapeAnimator.View.Shapes
     public class CircleSprite : ShapeSprite
 
     {
+        #region Methods
+
+        private const double DiameterToRadiusFactor = 2.0;
+
         #region Constructors
 
         /// <summary>
@@ -25,8 +29,6 @@ namespace ShapeAnimator.View.Shapes
 
         #endregion
 
-        #region Methods
-
         /// <summary>
         ///     Draws a shape
         ///     Preconditon: graphics != null
@@ -41,6 +43,31 @@ namespace ShapeAnimator.View.Shapes
 
             var yellowBrush = new SolidBrush(this.RandomizedColor);
             graphics.FillEllipse(yellowBrush, this.X, this.Y, this.Width, this.Height);
+        }
+
+        /// <summary>
+        ///     Areas this instance.
+        /// </summary>
+        /// <returns></returns>
+        public override double Area()
+        {
+            return Math.PI*(this.Width/DiameterToRadiusFactor)*(this.Height/DiameterToRadiusFactor);
+        }
+
+        /// <summary>
+        ///     Perimeters this instance.
+        /// </summary>
+        /// <returns></returns>
+        public override double Perimeter()
+        {
+            return (Math.PI*this.Width);
+        }
+
+        /// <summary>
+        ///     Gathers the sorting data for the Form.
+        /// </summary>
+        public override void SortingData()
+        {
         }
     }
 

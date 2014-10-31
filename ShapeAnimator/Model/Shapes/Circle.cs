@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
@@ -10,7 +9,6 @@ namespace ShapeAnimator.Model.Shapes
     /// </summary>
     public class Circle : Shape
     {
-
         #region Constructors
 
         /// <summary>
@@ -20,7 +18,8 @@ namespace ShapeAnimator.Model.Shapes
         {
             this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
             this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
-            this.Sprite = new CircleSprite(this, ShapeFactory.Randomizer.Next(20, 100), ShapeFactory.Randomizer.Next(20, 100));
+            this.Sprite = new CircleSprite(this, ShapeFactory.Randomizer.Next(20, 100),
+                ShapeFactory.Randomizer.Next(20, 100));
         }
 
         /// <summary>
@@ -34,28 +33,5 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         #endregion
-
-        /// <summary>
-        /// calculates the area based off  the specified width and height.
-        /// </summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <returns></returns>
-        public override double Area(double width, double height)
-        {
-            double radius = (width/2.0);
-            return (Math.PI*radius*radius);
-        }
-
-        /// <summary>
-        /// Perimeters the specified width.
-        /// </summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <returns></returns>
-        public override double Perimeter(double width, double height)
-        {
-            return (Math.PI*width);
-        }
     }
 }

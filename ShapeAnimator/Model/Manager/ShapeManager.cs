@@ -117,22 +117,26 @@ namespace ShapeAnimator.Model.Manager
             {
                 if (this.checkHorizontalRightBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkVerticalBottomBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.LeftOrUp;
+                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkHorizontalLeftBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkVerticalTopBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.RightOrDown;
+                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.CollisionCount++;
                 }
             }
         }
@@ -170,11 +174,9 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         public void PauseCanvasAnimation()
         {
-            foreach (var shape in shapes)
+            foreach (Shape shape in this.shapes)
             {
-
             }
-            
         }
 
         /// <summary>
@@ -182,7 +184,6 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         public void ResumeCanvasAnimation()
         {
-
         }
 
         /// <summary>
@@ -201,6 +202,7 @@ namespace ShapeAnimator.Model.Manager
             {
                 foreach (Shape shape in this.shapes)
                 {
+                    //Todo UPDATE COLLISION COUNT
                     this.CheckForChangeInDirection();
                     shape.Move();
                     shape.Paint(g);

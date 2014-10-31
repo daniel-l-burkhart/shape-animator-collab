@@ -40,15 +40,14 @@ namespace ShapeAnimator.View.Forms
                     MessageBox.Show("Must be an integer");
                 }
                 return number;
-
             }
         }
 
         /// <summary>
-        /// Gets the number circles.
+        ///     Gets the number circles.
         /// </summary>
         /// <value>
-        /// The number circles.
+        ///     The number circles.
         /// </value>
         public int NumberCircles
         {
@@ -68,15 +67,14 @@ namespace ShapeAnimator.View.Forms
                     MessageBox.Show("Must be an integer");
                 }
                 return number;
-
             }
         }
 
         /// <summary>
-        /// Gets the number rectangles.
+        ///     Gets the number rectangles.
         /// </summary>
         /// <value>
-        /// The number rectangles.
+        ///     The number rectangles.
         /// </value>
         public int NumberRectangles
         {
@@ -96,15 +94,14 @@ namespace ShapeAnimator.View.Forms
                     MessageBox.Show("Must be an integer");
                 }
                 return number;
-
             }
         }
 
         /// <summary>
-        /// Gets the number spotted rectangles.
+        ///     Gets the number spotted rectangles.
         /// </summary>
         /// <value>
-        /// The number spotted rectangles.
+        ///     The number spotted rectangles.
         /// </value>
         public int NumberSpottedRectangles
         {
@@ -124,10 +121,8 @@ namespace ShapeAnimator.View.Forms
                     MessageBox.Show("Must be an integer");
                 }
                 return number;
-
             }
         }
-
 
         #endregion
 
@@ -163,13 +158,14 @@ namespace ShapeAnimator.View.Forms
 
         private void animateButton_Click(object sender, EventArgs e)
         {
-                this.animationTimer.Stop();
-                
-                this.canvasManager.PlaceShapesOnCanvas(this.NumberRandomShapes, this.NumberCircles, this.NumberRectangles, this.NumberSpottedRectangles);
+            this.animationTimer.Stop();
 
-                this.animationTimer.Start();
+            this.canvasManager.PlaceShapesOnCanvas(this.NumberRandomShapes, this.NumberCircles, this.NumberRectangles,
+                this.NumberSpottedRectangles);
 
-                this.PauseButton.Enabled = true;
+            this.animationTimer.Start();
+
+            this.PauseButton.Enabled = true;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -194,17 +190,12 @@ namespace ShapeAnimator.View.Forms
             this.ResumeButton.Enabled = false;
         }
 
-
-
         #endregion
 
         private void ShapeAnimatorForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'shapeDatabaseDataSet.ShapeDatabase' table. You can move, or remove it, as needed.
-            this.shapeDatabaseTableAdapter.Fill(this.shapeDatabaseDataSet.ShapeDatabase);
-
+            // this.shapeDatabaseTableAdapter.Fill(this.shapeDatabaseDataSet.ShapeDatabase);
         }
-
-
     }
 }

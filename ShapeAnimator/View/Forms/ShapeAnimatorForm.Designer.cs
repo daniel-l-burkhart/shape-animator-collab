@@ -51,30 +51,31 @@ namespace ShapeAnimator.View.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.shapeDatabaseDataSet = new ShapeAnimator.ShapeDatabaseDataSet();
-            this.shapeDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.shapeDatabaseTableAdapter = new ShapeAnimator.ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shapeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.perimeterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collisionCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shapeDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.shapeDatabaseDataSet = new ShapeAnimator.ShapeDatabaseDataSet();
+            this.shapeDatabaseTableAdapter = new ShapeAnimator.ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // canvasPictureBox
             // 
             this.canvasPictureBox.BackColor = System.Drawing.Color.Black;
-            this.canvasPictureBox.Location = new System.Drawing.Point(8, 90);
+            this.canvasPictureBox.Location = new System.Drawing.Point(16, 173);
+            this.canvasPictureBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.canvasPictureBox.Name = "canvasPictureBox";
-            this.canvasPictureBox.Size = new System.Drawing.Size(720, 480);
+            this.canvasPictureBox.Size = new System.Drawing.Size(1440, 923);
             this.canvasPictureBox.TabIndex = 0;
             this.canvasPictureBox.TabStop = false;
             this.canvasPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.shapeCanvasPictureBox_Paint);
@@ -87,25 +88,28 @@ namespace ShapeAnimator.View.Forms
             // numberOfShapesLabel
             // 
             this.numberOfShapesLabel.AutoSize = true;
-            this.numberOfShapesLabel.Location = new System.Drawing.Point(9, 9);
+            this.numberOfShapesLabel.Location = new System.Drawing.Point(18, 17);
+            this.numberOfShapesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.numberOfShapesLabel.Name = "numberOfShapesLabel";
-            this.numberOfShapesLabel.Size = new System.Drawing.Size(86, 13);
+            this.numberOfShapesLabel.Size = new System.Drawing.Size(171, 25);
             this.numberOfShapesLabel.TabIndex = 1;
             this.numberOfShapesLabel.Text = "Random Shapes";
             // 
             // numberShapesTextBox
             // 
-            this.numberShapesTextBox.Location = new System.Drawing.Point(101, 6);
+            this.numberShapesTextBox.Location = new System.Drawing.Point(202, 12);
+            this.numberShapesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.numberShapesTextBox.Name = "numberShapesTextBox";
-            this.numberShapesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.numberShapesTextBox.Size = new System.Drawing.Size(90, 31);
             this.numberShapesTextBox.TabIndex = 2;
             this.numberShapesTextBox.Text = "0";
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(12, 32);
+            this.startButton.Location = new System.Drawing.Point(24, 62);
+            this.startButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.Size = new System.Drawing.Size(150, 44);
             this.startButton.TabIndex = 3;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -113,9 +117,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(93, 32);
+            this.PauseButton.Location = new System.Drawing.Point(186, 62);
+            this.PauseButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(75, 23);
+            this.PauseButton.Size = new System.Drawing.Size(150, 44);
             this.PauseButton.TabIndex = 4;
             this.PauseButton.Text = "Pause";
             this.PauseButton.UseVisualStyleBackColor = true;
@@ -123,9 +128,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // ResumeButton
             // 
-            this.ResumeButton.Location = new System.Drawing.Point(176, 32);
+            this.ResumeButton.Location = new System.Drawing.Point(352, 62);
+            this.ResumeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ResumeButton.Name = "ResumeButton";
-            this.ResumeButton.Size = new System.Drawing.Size(75, 23);
+            this.ResumeButton.Size = new System.Drawing.Size(150, 44);
             this.ResumeButton.TabIndex = 5;
             this.ResumeButton.Text = "Resume";
             this.ResumeButton.UseVisualStyleBackColor = true;
@@ -133,9 +139,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(256, 32);
+            this.ClearButton.Location = new System.Drawing.Point(512, 62);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.Size = new System.Drawing.Size(150, 44);
             this.ClearButton.TabIndex = 6;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -143,63 +150,69 @@ namespace ShapeAnimator.View.Forms
             // 
             // rectanglesTextBox
             // 
-            this.rectanglesTextBox.Location = new System.Drawing.Point(349, 6);
+            this.rectanglesTextBox.Location = new System.Drawing.Point(698, 12);
+            this.rectanglesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rectanglesTextBox.Name = "rectanglesTextBox";
-            this.rectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.rectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.rectanglesTextBox.TabIndex = 7;
             this.rectanglesTextBox.Text = "0";
             // 
             // circlesTextBox
             // 
-            this.circlesTextBox.Location = new System.Drawing.Point(214, 6);
+            this.circlesTextBox.Location = new System.Drawing.Point(428, 12);
+            this.circlesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.circlesTextBox.Name = "circlesTextBox";
-            this.circlesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.circlesTextBox.Size = new System.Drawing.Size(90, 31);
             this.circlesTextBox.TabIndex = 8;
             this.circlesTextBox.Text = "0";
             // 
             // spottedRectanglesTextBox
             // 
-            this.spottedRectanglesTextBox.Location = new System.Drawing.Point(523, 6);
+            this.spottedRectanglesTextBox.Location = new System.Drawing.Point(1046, 12);
+            this.spottedRectanglesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.spottedRectanglesTextBox.Name = "spottedRectanglesTextBox";
-            this.spottedRectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.spottedRectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.spottedRectanglesTextBox.TabIndex = 9;
             this.spottedRectanglesTextBox.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(416, 9);
+            this.label1.Location = new System.Drawing.Point(832, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(200, 25);
             this.label1.TabIndex = 10;
             this.label1.Text = "Spotted Rectangles";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 9);
+            this.label2.Location = new System.Drawing.Point(564, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(120, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Rectangles";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 9);
+            this.label3.Location = new System.Drawing.Point(346, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(78, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Circles";
             // 
             // SpeedSlider
             // 
             this.SpeedSlider.LargeChange = 50;
-            this.SpeedSlider.Location = new System.Drawing.Point(404, 32);
-            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(2);
+            this.SpeedSlider.Location = new System.Drawing.Point(808, 62);
+            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SpeedSlider.Maximum = 500;
             this.SpeedSlider.Name = "SpeedSlider";
-            this.SpeedSlider.Size = new System.Drawing.Size(276, 45);
+            this.SpeedSlider.Size = new System.Drawing.Size(552, 90);
             this.SpeedSlider.SmallChange = 20;
             this.SpeedSlider.TabIndex = 20;
             this.SpeedSlider.TickFrequency = 50;
@@ -207,18 +220,20 @@ namespace ShapeAnimator.View.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(357, 32);
+            this.label4.Location = new System.Drawing.Point(714, 62);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 21;
             this.label4.Text = "Speed: ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(360, 50);
+            this.label5.Location = new System.Drawing.Point(720, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.Size = new System.Drawing.Size(67, 25);
             this.label5.TabIndex = 22;
             this.label5.Text = "0-500";
             // 
@@ -234,30 +249,19 @@ namespace ShapeAnimator.View.Forms
             this.areaDataGridViewTextBoxColumn,
             this.collisionCountDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.shapeDatabaseBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(186, 576);
+            this.dataGridView1.Location = new System.Drawing.Point(372, 1108);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(542, 124);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1084, 238);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // shapeDatabaseDataSet
-            // 
-            this.shapeDatabaseDataSet.DataSetName = "ShapeDatabaseDataSet";
-            this.shapeDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // shapeDatabaseBindingSource
-            // 
-            this.shapeDatabaseBindingSource.DataMember = "ShapeDatabase";
-            this.shapeDatabaseBindingSource.DataSource = this.shapeDatabaseDataSet;
-            // 
-            // shapeDatabaseTableAdapter
-            // 
-            this.shapeDatabaseTableAdapter.ClearBeforeFill = true;
             // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
             // shapeTypeDataGridViewTextBoxColumn
@@ -265,58 +269,79 @@ namespace ShapeAnimator.View.Forms
             this.shapeTypeDataGridViewTextBoxColumn.DataPropertyName = "Shape Type";
             this.shapeTypeDataGridViewTextBoxColumn.HeaderText = "Shape Type";
             this.shapeTypeDataGridViewTextBoxColumn.Name = "shapeTypeDataGridViewTextBoxColumn";
+            this.shapeTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
             this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // perimeterDataGridViewTextBoxColumn
             // 
-            this.perimeterDataGridViewTextBoxColumn.DataPropertyName = "Perimeter";
-            this.perimeterDataGridViewTextBoxColumn.HeaderText = "Perimeter";
+            this.perimeterDataGridViewTextBoxColumn.DataPropertyName = "PerimeterProperty";
+            this.perimeterDataGridViewTextBoxColumn.HeaderText = "PerimeterProperty";
             this.perimeterDataGridViewTextBoxColumn.Name = "perimeterDataGridViewTextBoxColumn";
+            this.perimeterDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // areaDataGridViewTextBoxColumn
             // 
             this.areaDataGridViewTextBoxColumn.DataPropertyName = "Area";
             this.areaDataGridViewTextBoxColumn.HeaderText = "Area";
             this.areaDataGridViewTextBoxColumn.Name = "areaDataGridViewTextBoxColumn";
+            this.areaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // collisionCountDataGridViewTextBoxColumn
             // 
             this.collisionCountDataGridViewTextBoxColumn.DataPropertyName = "Collision Count";
             this.collisionCountDataGridViewTextBoxColumn.HeaderText = "Collision Count";
             this.collisionCountDataGridViewTextBoxColumn.Name = "collisionCountDataGridViewTextBoxColumn";
+            this.collisionCountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shapeDatabaseBindingSource
+            // 
+            this.shapeDatabaseBindingSource.DataMember = "ShapeDatabase";
+            this.shapeDatabaseBindingSource.DataSource = this.shapeDatabaseDataSet;
+            // 
+            // shapeDatabaseDataSet
+            // 
+            this.shapeDatabaseDataSet.DataSetName = "ShapeDatabaseDataSet";
+            this.shapeDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // shapeDatabaseTableAdapter
+            // 
+            this.shapeDatabaseTableAdapter.ClearBeforeFill = true;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Perimeter",
+            "PerimeterProperty",
             "Area",
             "Type Then Color",
             "Collision Count Then Shape Type"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 610);
+            this.comboBox1.Location = new System.Drawing.Point(16, 1173);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 21);
+            this.comboBox1.Size = new System.Drawing.Size(332, 33);
             this.comboBox1.TabIndex = 24;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 594);
+            this.label6.Location = new System.Drawing.Point(10, 1142);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.Size = new System.Drawing.Size(88, 25);
             this.label6.TabIndex = 25;
             this.label6.Text = "Sort By:";
             // 
             // ShapeAnimatorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 712);
+            this.ClientSize = new System.Drawing.Size(1488, 1369);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
@@ -337,14 +362,15 @@ namespace ShapeAnimator.View.Forms
             this.Controls.Add(this.numberOfShapesLabel);
             this.Controls.Add(this.canvasPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShapeAnimatorForm";
             this.Text = "Shape Animator A4 by Odom and Burkhart";
             this.Load += new System.EventHandler(this.ShapeAnimatorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
