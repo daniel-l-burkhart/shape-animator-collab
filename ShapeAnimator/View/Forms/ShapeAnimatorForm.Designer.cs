@@ -41,9 +41,9 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton = new System.Windows.Forms.Button();
             this.ResumeButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.rectanglesTextBox = new System.Windows.Forms.TextBox();
-            this.circlesTextBox = new System.Windows.Forms.TextBox();
-            this.spottedRectanglesTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesTextBox = new System.Windows.Forms.TextBox();
+            this.CirclesTextBox = new System.Windows.Forms.TextBox();
+            this.SpottedRectanglesTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,22 +51,22 @@ namespace ShapeAnimator.View.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.shapeDatabaseDataSet = new ShapeAnimator.ShapeDatabaseDataSet();
-            this.shapeDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.shapeDatabaseTableAdapter = new ShapeAnimator.ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shapeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.perimeterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collisionCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shapeDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.shapeDatabaseDataSet = new ShapeAnimator.ShapeDatabaseDataSet();
+            this.shapeDatabaseTableAdapter = new ShapeAnimator.ShapeDatabaseDataSetTableAdapters.ShapeDatabaseTableAdapter();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // canvasPictureBox
@@ -141,29 +141,29 @@ namespace ShapeAnimator.View.Forms
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // rectanglesTextBox
+            // RectanglesTextBox
             // 
-            this.rectanglesTextBox.Location = new System.Drawing.Point(349, 6);
-            this.rectanglesTextBox.Name = "rectanglesTextBox";
-            this.rectanglesTextBox.Size = new System.Drawing.Size(47, 20);
-            this.rectanglesTextBox.TabIndex = 7;
-            this.rectanglesTextBox.Text = "0";
+            this.RectanglesTextBox.Location = new System.Drawing.Point(349, 6);
+            this.RectanglesTextBox.Name = "RectanglesTextBox";
+            this.RectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.RectanglesTextBox.TabIndex = 7;
+            this.RectanglesTextBox.Text = "0";
             // 
-            // circlesTextBox
+            // CirclesTextBox
             // 
-            this.circlesTextBox.Location = new System.Drawing.Point(214, 6);
-            this.circlesTextBox.Name = "circlesTextBox";
-            this.circlesTextBox.Size = new System.Drawing.Size(47, 20);
-            this.circlesTextBox.TabIndex = 8;
-            this.circlesTextBox.Text = "0";
+            this.CirclesTextBox.Location = new System.Drawing.Point(214, 6);
+            this.CirclesTextBox.Name = "CirclesTextBox";
+            this.CirclesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.CirclesTextBox.TabIndex = 8;
+            this.CirclesTextBox.Text = "0";
             // 
-            // spottedRectanglesTextBox
+            // SpottedRectanglesTextBox
             // 
-            this.spottedRectanglesTextBox.Location = new System.Drawing.Point(523, 6);
-            this.spottedRectanglesTextBox.Name = "spottedRectanglesTextBox";
-            this.spottedRectanglesTextBox.Size = new System.Drawing.Size(47, 20);
-            this.spottedRectanglesTextBox.TabIndex = 9;
-            this.spottedRectanglesTextBox.Text = "0";
+            this.SpottedRectanglesTextBox.Location = new System.Drawing.Point(523, 6);
+            this.SpottedRectanglesTextBox.Name = "SpottedRectanglesTextBox";
+            this.SpottedRectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.SpottedRectanglesTextBox.TabIndex = 9;
+            this.SpottedRectanglesTextBox.Text = "0";
             // 
             // label1
             // 
@@ -225,6 +225,7 @@ namespace ShapeAnimator.View.Forms
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -236,22 +237,8 @@ namespace ShapeAnimator.View.Forms
             this.dataGridView1.DataSource = this.shapeDatabaseBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(186, 576);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(542, 124);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 124);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // shapeDatabaseDataSet
-            // 
-            this.shapeDatabaseDataSet.DataSetName = "ShapeDatabaseDataSet";
-            this.shapeDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // shapeDatabaseBindingSource
-            // 
-            this.shapeDatabaseBindingSource.DataMember = "ShapeDatabase";
-            this.shapeDatabaseBindingSource.DataSource = this.shapeDatabaseDataSet;
-            // 
-            // shapeDatabaseTableAdapter
-            // 
-            this.shapeDatabaseTableAdapter.ClearBeforeFill = true;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -290,6 +277,20 @@ namespace ShapeAnimator.View.Forms
             this.collisionCountDataGridViewTextBoxColumn.HeaderText = "Collision Count";
             this.collisionCountDataGridViewTextBoxColumn.Name = "collisionCountDataGridViewTextBoxColumn";
             // 
+            // shapeDatabaseBindingSource
+            // 
+            this.shapeDatabaseBindingSource.DataMember = "ShapeDatabase";
+            this.shapeDatabaseBindingSource.DataSource = this.shapeDatabaseDataSet;
+            // 
+            // shapeDatabaseDataSet
+            // 
+            this.shapeDatabaseDataSet.DataSetName = "ShapeDatabaseDataSet";
+            this.shapeDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // shapeDatabaseTableAdapter
+            // 
+            this.shapeDatabaseTableAdapter.ClearBeforeFill = true;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -326,9 +327,9 @@ namespace ShapeAnimator.View.Forms
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.spottedRectanglesTextBox);
-            this.Controls.Add(this.circlesTextBox);
-            this.Controls.Add(this.rectanglesTextBox);
+            this.Controls.Add(this.SpottedRectanglesTextBox);
+            this.Controls.Add(this.CirclesTextBox);
+            this.Controls.Add(this.RectanglesTextBox);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ResumeButton);
             this.Controls.Add(this.PauseButton);
@@ -343,8 +344,8 @@ namespace ShapeAnimator.View.Forms
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeDatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,15 +362,15 @@ namespace ShapeAnimator.View.Forms
         private Button PauseButton;
         private Button ResumeButton;
         private Button ClearButton;
-        private TextBox rectanglesTextBox;
-        private TextBox circlesTextBox;
-        private TextBox spottedRectanglesTextBox;
+        private TextBox RectanglesTextBox;
+        private TextBox CirclesTextBox;
+        private TextBox SpottedRectanglesTextBox;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        public TrackBar SpeedSlider;
+        private TrackBar SpeedSlider;
         private DataGridView dataGridView1;
         private ShapeDatabaseDataSet shapeDatabaseDataSet;
         private BindingSource shapeDatabaseBindingSource;

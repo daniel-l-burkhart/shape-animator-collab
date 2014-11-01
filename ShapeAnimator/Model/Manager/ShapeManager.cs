@@ -56,47 +56,18 @@ namespace ShapeAnimator.Model.Manager
             int numberOfSpottedRectangles)
         {
             this.shapes.Clear();
-            this.placeRandomShapesOnCanvas(numberOfRandomShapes);
-            this.placeCirclesOnCanvas(numberOfCircles);
-            this.placeRectanglesOnCanvas(numberOfRectangles);
-            this.placeSpottedRectanglesOnCanvas(numberOfSpottedRectangles);
+
+            this.placeShapesOnCanvasHelper(numberOfRandomShapes, ShapeFactory.Shapes.Random);
+            this.placeShapesOnCanvasHelper(numberOfCircles, ShapeFactory.Shapes.Circle);
+            this.placeShapesOnCanvasHelper(numberOfRectangles, ShapeFactory.Shapes.Rectangle);
+            this.placeShapesOnCanvasHelper(numberOfSpottedRectangles, ShapeFactory.Shapes.SpottedRectangle);
         }
 
-        private void placeRandomShapesOnCanvas(int numberOfRandomShapes)
+        private void placeShapesOnCanvasHelper(int numberOfShapes, ShapeFactory.Shapes shape)
         {
-            for (int i = 0; i < numberOfRandomShapes; i++)
+            for (int i = 0; i < numberOfShapes; i++)
             {
-                Shape aShape = ShapeFactory.CreateARandomShape();
-                this.placeShapesInCanvasBoundary(aShape);
-                this.shapes.Add(aShape);
-            }
-        }
-
-        private void placeCirclesOnCanvas(int numberOfCircles)
-        {
-            for (int i = 0; i < numberOfCircles; i++)
-            {
-                Shape aShape = ShapeFactory.CreateACircle();
-                this.placeShapesInCanvasBoundary(aShape);
-                this.shapes.Add(aShape);
-            }
-        }
-
-        private void placeRectanglesOnCanvas(int numberOfRectangles)
-        {
-            for (int i = 0; i < numberOfRectangles; i++)
-            {
-                Shape aShape = ShapeFactory.CreateARectangle();
-                this.placeShapesInCanvasBoundary(aShape);
-                this.shapes.Add(aShape);
-            }
-        }
-
-        private void placeSpottedRectanglesOnCanvas(int numberOfSpottedRectangles)
-        {
-            for (int i = 0; i < numberOfSpottedRectangles; i++)
-            {
-                Shape aShape = ShapeFactory.CreateASpottedRectangle();
+                Shape aShape = ShapeFactory.CreateAShape(shape);
                 this.placeShapesInCanvasBoundary(aShape);
                 this.shapes.Add(aShape);
             }
@@ -117,22 +88,22 @@ namespace ShapeAnimator.Model.Manager
             {
                 if (this.checkHorizontalRightBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.LeftOrUp;
                 }
 
                 else if (this.checkVerticalBottomBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.LeftOrUp;
+                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.LeftOrUp;
                 }
 
                 else if (this.checkHorizontalLeftBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX) * (int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.RightOrDown;
                 }
 
                 else if (this.checkVerticalTopBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY) * (int)DirectionRandomizer.Directions.RightOrDown;
+                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
                 }
             }
         }
@@ -163,26 +134,6 @@ namespace ShapeAnimator.Model.Manager
         public void ClearCanvas()
         {
             this.shapes.Clear();
-        }
-
-        /// <summary>
-        ///     Pauses the canvas.
-        /// </summary>
-        public void PauseCanvasAnimation()
-        {
-            foreach (var shape in shapes)
-            {
-
-            }
-            
-        }
-
-        /// <summary>
-        ///     Resumes the canvas animation.
-        /// </summary>
-        public void ResumeCanvasAnimation()
-        {
-
         }
 
         /// <summary>

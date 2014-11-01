@@ -16,121 +16,6 @@ namespace ShapeAnimator.View.Forms
 
         #endregion
 
-        #region Properties
-
-        /// <summary>
-        ///     Converts the text in the numberShapesTextBox to an integer. If the text
-        ///     is not convertable to an integer value it returns 0.
-        /// </summary>
-        public int NumberRandomShapes
-        {
-            get
-            {
-                int number = 0;
-                try
-                {
-                    number = Convert.ToInt32(this.numberShapesTextBox.Text);
-                    if (number < 0)
-                    {
-                        MessageBox.Show("Number cannot be negative");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Must be an integer");
-                }
-                return number;
-
-            }
-        }
-
-        /// <summary>
-        /// Gets the number circles.
-        /// </summary>
-        /// <value>
-        /// The number circles.
-        /// </value>
-        public int NumberCircles
-        {
-            get
-            {
-                int number = 0;
-                try
-                {
-                    number = Convert.ToInt32(this.circlesTextBox.Text);
-                    if (number < 0)
-                    {
-                        MessageBox.Show("Number cannot be negative");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Must be an integer");
-                }
-                return number;
-
-            }
-        }
-
-        /// <summary>
-        /// Gets the number rectangles.
-        /// </summary>
-        /// <value>
-        /// The number rectangles.
-        /// </value>
-        public int NumberRectangles
-        {
-            get
-            {
-                int number = 0;
-                try
-                {
-                    number = Convert.ToInt32(this.rectanglesTextBox.Text);
-                    if (number < 0)
-                    {
-                        MessageBox.Show("Number cannot be negative");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Must be an integer");
-                }
-                return number;
-
-            }
-        }
-
-        /// <summary>
-        /// Gets the number spotted rectangles.
-        /// </summary>
-        /// <value>
-        /// The number spotted rectangles.
-        /// </value>
-        public int NumberSpottedRectangles
-        {
-            get
-            {
-                int number = 0;
-                try
-                {
-                    number = Convert.ToInt32(this.spottedRectanglesTextBox.Text);
-                    if (number < 0)
-                    {
-                        MessageBox.Show("Number cannot be negative");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Must be an integer");
-                }
-                return number;
-
-            }
-        }
-
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -144,6 +29,7 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager = new ShapeManager(this.canvasPictureBox);
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
+            this.ClearButton.Enabled = false;
         }
 
         #endregion
@@ -153,6 +39,7 @@ namespace ShapeAnimator.View.Forms
         private void animationTimer_Tick(object sender, EventArgs e)
         {
             this.Refresh();
+            this.animationTimer.Interval = ((this.SpeedSlider.Maximum - this.SpeedSlider.Value) + 1);
         }
 
         private void shapeCanvasPictureBox_Paint(object sender, PaintEventArgs e)
@@ -163,13 +50,20 @@ namespace ShapeAnimator.View.Forms
 
         private void animateButton_Click(object sender, EventArgs e)
         {
-                this.animationTimer.Stop();
-                
-                this.canvasManager.PlaceShapesOnCanvas(this.NumberRandomShapes, this.NumberCircles, this.NumberRectangles, this.NumberSpottedRectangles);
+            this.animationTimer.Stop();
 
-                this.animationTimer.Start();
+            int randomShapes = this.GetNumberOfShapes(this.numberShapesTextBox);
+            int circles = this.GetNumberOfShapes(this.CirclesTextBox);
+            int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
+            int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
 
-                this.PauseButton.Enabled = true;
+            this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
+
+            this.animationTimer.Start();
+
+            this.PauseButton.Enabled = true;
+            this.ResumeButton.Enabled = false;
+            this.ClearButton.Enabled = true;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -182,7 +76,6 @@ namespace ShapeAnimator.View.Forms
         private void resumeButton_Click(object sender, EventArgs e)
         {
             this.animationTimer.Start();
-            this.canvasManager.ResumeCanvasAnimation();
             this.PauseButton.Enabled = true;
             this.ResumeButton.Enabled = false;
         }
@@ -194,7 +87,30 @@ namespace ShapeAnimator.View.Forms
             this.ResumeButton.Enabled = false;
         }
 
-
+        /// <summary>
+        ///     Numbers the shapes.
+        /// </summary>
+        /// <param name="textBox">The text box.</param>
+        /// <returns></returns>
+        public int GetNumberOfShapes(TextBox textBox)
+        {
+            {
+                int number = 0;
+                try
+                {
+                    number = Convert.ToInt32(textBox.Text);
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Number cannot be negative");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Must be an integer");
+                }
+                return number;
+            }
+        }
 
         #endregion
 
@@ -202,9 +118,6 @@ namespace ShapeAnimator.View.Forms
         {
             // TODO: This line of code loads data into the 'shapeDatabaseDataSet.ShapeDatabase' table. You can move, or remove it, as needed.
             this.shapeDatabaseTableAdapter.Fill(this.shapeDatabaseDataSet.ShapeDatabase);
-
         }
-
-
     }
 }
