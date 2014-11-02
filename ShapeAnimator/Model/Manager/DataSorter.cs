@@ -2,6 +2,9 @@
 
 namespace ShapeAnimator.Model.Manager
 {
+    /// <summary>
+    /// DataSorter class used to organize the data to send to the form.
+    /// </summary>
     public class DataSorter
     {
         /// <summary>

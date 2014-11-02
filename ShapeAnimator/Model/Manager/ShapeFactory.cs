@@ -28,7 +28,12 @@ namespace ShapeAnimator.Model.Manager
             /// <summary>
             ///     The rectangle
             /// </summary>
-            Rectangle
+            Rectangle,
+
+            /// <summary>
+            ///     The random
+            /// </summary>
+            Random
         }
 
         #endregion
@@ -48,12 +53,18 @@ namespace ShapeAnimator.Model.Manager
         ///     Creates a shape.
         /// </summary>
         /// <returns></returns>
-        public static Shape CreateARandomShape()
+        public static Shape CreateAShape(Shapes aShape)
         {
-            Shapes shape = getRandomShape();
+            Shapes shape = aShape;
 
+            Shape theShape = getShapes(shape);
+
+            return theShape;
+        }
+
+        private static Shape getShapes(Shapes shape)
+        {
             Shape theShape = null;
-
             switch (shape)
             {
                 case Shapes.Circle:
@@ -65,11 +76,14 @@ namespace ShapeAnimator.Model.Manager
                 case Shapes.SpottedRectangle:
                     theShape = new SpottedRectangle();
                     break;
+                case Shapes.Random:
+                    theShape = getRandomShape();
+                    break;
             }
-
             return theShape;
         }
 
+<<<<<<< HEAD
         /// <summary>
         ///     Creates a circle.
         /// </summary>
@@ -98,11 +112,14 @@ namespace ShapeAnimator.Model.Manager
         }
 
         private static Shapes getRandomShape()
+=======
+        private static Shape getRandomShape()
+>>>>>>> origin/master
         {
             Array values = Enum.GetValues(typeof (Shapes));
             var theShape = (Shapes) values.GetValue(Randomizer.Next(values.Length));
-
-            return theShape;
+            Shape newShape = getShapes(theShape);
+            return newShape;
         }
 
         #endregion

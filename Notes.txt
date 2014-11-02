@@ -1,10 +1,11 @@
-The method for keeping the shapes in the bounds of the canvas is somewhat smelly.
-It's self-documenting, but the method is a little confusing.
-Couldn't determine a more elegant way of keeping shapes within the bounds.
+implemented
 
-Also, couldn't determine a way to keep it in the shape class and also get the width/height of the canvas, so constants were made.
+textboxes and functionality of specifying the number of each shape
 
-I feel as though the bounds checking method fits better in the ShapeManager class,
-but doing so would require that I made methods in the Shape class static.
+Gui controls and their functionality
+
+Shape movement and boundary collision
+
+various sizes of the shapes
 
 
