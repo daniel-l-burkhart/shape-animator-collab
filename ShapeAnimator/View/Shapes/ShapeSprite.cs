@@ -111,6 +111,7 @@ namespace ShapeAnimator.View.Shapes
         /// </summary>
         private ShapeSprite()
         {
+            
         }
 
         /// <summary>
@@ -123,6 +124,7 @@ namespace ShapeAnimator.View.Shapes
         /// <exception cref="System.ArgumentException">Shape cannot be null</exception>
         protected ShapeSprite(Shape theShape, int width, int height) : this()
         {
+            sorter = new DataSorter();
             if (theShape == null)
             {
                 throw new ArgumentException("Shape cannot be null");

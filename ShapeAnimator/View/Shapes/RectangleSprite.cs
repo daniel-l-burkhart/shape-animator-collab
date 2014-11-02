@@ -61,14 +61,6 @@ namespace ShapeAnimator.View.Shapes
             return ((PerimeterFactor*this.Width) + (PerimeterFactor*this.Height));
         }
 
-        /// <summary>
-        ///     Gathers the sorting data for the Form.
-        /// </summary>
-        public override void SortingData()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
     }
 }

@@ -155,6 +155,7 @@ namespace ShapeAnimator.Model.Manager
                     this.CheckForChangeInDirection();
                     shape.Move();
                     shape.Paint(g);
+                    shape.SendDataToSorter();
                 }
             }
         }

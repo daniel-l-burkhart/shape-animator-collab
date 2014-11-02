@@ -196,6 +196,14 @@ namespace ShapeAnimator.Model.Shapes
             this.sprite.Paint(g);
         }
 
+        /// <summary>
+        /// Sends the data to sorter.
+        /// </summary>
+        public void SendDataToSorter()
+        {
+            this.sprite.DataGather(CollisionCount);
+        }
+
         #endregion
     }
 }

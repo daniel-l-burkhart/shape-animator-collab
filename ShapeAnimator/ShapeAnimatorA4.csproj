@@ -92,6 +92,9 @@
     <Compile Include="View\Shapes\RectangleSprite.cs" />
     <Compile Include="View\Shapes\ShapeSprite.cs" />
     <Compile Include="View\Shapes\SpottedRectangleSprite.cs" />
+    <EmbeddedResource Include="ShapeDatabaseDataSet.resx">
+      <DependentUpon>ShapeDatabaseDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ShapeAnimatorForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ShapeAnimatorForm.cs</DependentUpon>

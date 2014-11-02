@@ -62,13 +62,6 @@ namespace ShapeAnimator.View.Shapes
         {
             return (Math.PI*this.Width);
         }
-
-        /// <summary>
-        ///     Gathers the sorting data for the Form.
-        /// </summary>
-        public override void SortingData()
-        {
-        }
     }
 
     #endregion

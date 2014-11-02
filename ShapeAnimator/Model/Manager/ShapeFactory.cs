@@ -83,7 +83,6 @@ namespace ShapeAnimator.Model.Manager
             return theShape;
         }
 
-<<<<<<< HEAD
         /// <summary>
         ///     Creates a circle.
         /// </summary>
@@ -111,10 +110,7 @@ namespace ShapeAnimator.Model.Manager
             return new SpottedRectangle();
         }
 
-        private static Shapes getRandomShape()
-=======
         private static Shape getRandomShape()
->>>>>>> origin/master
         {
             Array values = Enum.GetValues(typeof (Shapes));
             var theShape = (Shapes) values.GetValue(Randomizer.Next(values.Length));

@@ -409,7 +409,7 @@ namespace ShapeAnimator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShapeDatabaseRow AddShapeDatabaseRow(string Shape_Type, string Color, int PerimeterProperty, int Area, int Collision_Count) {
+            public ShapeDatabaseRow AddShapeDatabaseRow(string Shape_Type, string Color, double PerimeterProperty, double Area, int Collision_Count) {
                 ShapeDatabaseRow rowShapeDatabaseRow = ((ShapeDatabaseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,

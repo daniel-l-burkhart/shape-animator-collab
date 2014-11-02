@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using ShapeAnimator.View.Forms;
 
 namespace ShapeAnimator.Model.Manager
 {
@@ -7,6 +9,9 @@ namespace ShapeAnimator.Model.Manager
     /// </summary>
     public class DataSorter
     {
+#region Instance Variable
+        private ShapeAnimatorForm form;
+#endregion
         /// <summary>
         ///     Sends the data to form.
         /// </summary>
@@ -18,6 +23,11 @@ namespace ShapeAnimator.Model.Manager
         public void SendDataToForm(string shapeType, Color shapeColor, double shapeArea, double shapePerimeter,
             int collisionCount)
         {
+            int redComponent = shapeColor.R;
+            int greenComponent = shapeColor.G;
+            int blueComponent = shapeColor.B;
+            string ColorValue = "(" + redComponent.ToString()+ "," + greenComponent.ToString()+ "," + blueComponent.ToString()+")";
+            form.WriteToDataGrid(shapeType, ColorValue, shapeArea, shapePerimeter, collisionCount);
         }
     }
 }
