@@ -4,7 +4,7 @@ using ShapeAnimator.Model.Manager;
 namespace ShapeAnimator.Model.Shapes
 {
     /// <summary>
-    /// Direction Randomizer that randomizes the starting direction of the shapes
+    ///     Direction Randomizer that randomizes the starting direction of the shapes
     /// </summary>
     public class DirectionRandomizer
     {

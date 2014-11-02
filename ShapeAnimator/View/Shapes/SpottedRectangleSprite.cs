@@ -5,7 +5,6 @@ namespace ShapeAnimator.View.Shapes
 {
     internal class SpottedRectangleSprite : RectangleSprite
     {
-
         #region Constants
 
         private const int HeightOfSpot = 15;
@@ -14,7 +13,6 @@ namespace ShapeAnimator.View.Shapes
         #endregion
 
         #region Constructors
-
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RectangleSprite" /> class.

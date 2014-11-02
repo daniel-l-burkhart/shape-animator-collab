@@ -83,6 +83,33 @@ namespace ShapeAnimator.Model.Manager
             return theShape;
         }
 
+        /// <summary>
+        ///     Creates a circle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateACircle()
+        {
+            return new Circle();
+        }
+
+        /// <summary>
+        ///     Creates a rectangle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateARectangle()
+        {
+            return new Rectangle();
+        }
+
+        /// <summary>
+        ///     Creates a spotted rectangle.
+        /// </summary>
+        /// <returns></returns>
+        public static Shape CreateASpottedRectangle()
+        {
+            return new SpottedRectangle();
+        }
+
         private static Shape getRandomShape()
         {
             Array values = Enum.GetValues(typeof (Shapes));

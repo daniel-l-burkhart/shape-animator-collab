@@ -69,6 +69,7 @@ namespace ShapeAnimator.Model.Manager
             {
                 Shape aShape = ShapeFactory.CreateAShape(shape);
                 this.placeShapesInCanvasBoundary(aShape);
+                aShape.SendDataToSorter();
                 this.shapes.Add(aShape);
             }
         }
@@ -89,21 +90,25 @@ namespace ShapeAnimator.Model.Manager
                 if (this.checkHorizontalRightBounds(shape))
                 {
                     shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkVerticalBottomBounds(shape))
                 {
                     shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.LeftOrUp;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkHorizontalLeftBounds(shape))
                 {
                     shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.CollisionCount++;
                 }
 
                 else if (this.checkVerticalTopBounds(shape))
                 {
                     shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
+                    shape.CollisionCount++;
                 }
             }
         }
@@ -155,6 +160,7 @@ namespace ShapeAnimator.Model.Manager
                     this.CheckForChangeInDirection();
                     shape.Move();
                     shape.Paint(g);
+                    shape.UpdateCollisionCount(shape.CollisionCount);
                 }
             }
         }

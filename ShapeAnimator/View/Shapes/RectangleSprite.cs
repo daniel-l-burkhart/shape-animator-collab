@@ -9,6 +9,8 @@ namespace ShapeAnimator.View.Shapes
     /// </summary>
     internal class RectangleSprite : ShapeSprite
     {
+        private const double PerimeterFactor = 2.0;
+
         #region Constructors
 
         /// <summary>
@@ -39,6 +41,24 @@ namespace ShapeAnimator.View.Shapes
             }
             var yellowBrush = new SolidBrush(this.RandomizedColor);
             graphics.FillRectangle(yellowBrush, this.X, this.Y, this.Width, this.Height);
+        }
+
+        /// <summary>
+        ///     Areas this instance.
+        /// </summary>
+        /// <returns></returns>
+        public override double Area()
+        {
+            return (this.Width*this.Height);
+        }
+
+        /// <summary>
+        ///     Perimeters this instance.
+        /// </summary>
+        /// <returns></returns>
+        public override double Perimeter()
+        {
+            return ((PerimeterFactor*this.Width) + (PerimeterFactor*this.Height));
         }
 
         #endregion

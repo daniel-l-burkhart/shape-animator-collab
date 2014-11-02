@@ -21,10 +21,10 @@ namespace ShapeAnimator.Model.Shapes
         #region Properties
 
         /// <summary>
-        /// Gets or sets the speed x.
+        ///     Gets or sets the speed x.
         /// </summary>
         /// <value>
-        /// The speed x.
+        ///     The speed x.
         /// </value>
         public int SpeedX
         {
@@ -33,10 +33,10 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         /// <summary>
-        /// Gets or sets the speed y.
+        ///     Gets or sets the speed y.
         /// </summary>
         /// <value>
-        /// The speed y.
+        ///     The speed y.
         /// </value>
         public int SpeedY
         {
@@ -98,6 +98,36 @@ namespace ShapeAnimator.Model.Shapes
             get { return this.sprite.Width; }
         }
 
+        /// <summary>
+        ///     Gets or sets the collision count.
+        /// </summary>
+        /// <value>
+        ///     The collision count.
+        /// </value>
+        public int CollisionCount { get; set; }
+
+        /// <summary>
+        /// Gets the area.
+        /// </summary>
+        /// <value>
+        /// The area.
+        /// </value>
+        public double Area
+        {
+            get { return this.sprite.Area(); }
+        }
+
+        /// <summary>
+        /// Gets the perimeter.
+        /// </summary>
+        /// <value>
+        /// The perimeter.
+        /// </value>
+        public double Perimeter
+        {
+            get { return this.sprite.Perimeter(); }
+        }
+
         #endregion
 
         #region Constructors
@@ -107,6 +137,7 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         protected Shape()
         {
+            this.CollisionCount = 0;
         }
 
         /// <summary>
@@ -166,21 +197,22 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         /// <summary>
-        /// calculates the area based off  the specified width and height.
+        /// Sends the data to sorter.
         /// </summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <returns></returns>
-        public abstract double Area(double width, double height);
-
-        /// <summary>
-        /// Perimeters the specified width.
-        /// </summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <returns></returns>
-        public abstract double Perimeter(double width, double height);
+        public void SendDataToSorter()
+        {
+            this.sprite.DataGather(this.CollisionCount);
+        }
 
         #endregion
+
+        /// <summary>
+        /// Updates the collision count.
+        /// </summary>
+        /// <param name="collisionCount">The collision count.</param>
+        public void UpdateCollisionCount(int collisionCount)
+        {
+            this.sprite.DataGather(collisionCount);
+        }
     }
 }

@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Manager\DataSorter.cs" />
     <Compile Include="Model\Shapes\Circle.cs" />
     <Compile Include="Model\Shapes\DirectionRandomizer.cs" />
     <Compile Include="Model\Shapes\Rectangle.cs" />
@@ -70,6 +71,10 @@
     <Compile Include="Model\Manager\ShapeManager.cs" />
     <Compile Include="Model\Shapes\Shape.cs" />
     <Compile Include="Model\Shapes\SpottedRectangle.cs" />
+    <Compile Include="ShapeDatabaseDataSet.cs">
+      <DependentUpon>ShapeDatabaseDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ShapeDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +92,9 @@
     <Compile Include="View\Shapes\RectangleSprite.cs" />
     <Compile Include="View\Shapes\ShapeSprite.cs" />
     <Compile Include="View\Shapes\SpottedRectangleSprite.cs" />
+    <EmbeddedResource Include="ShapeDatabaseDataSet.resx">
+      <DependentUpon>ShapeDatabaseDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ShapeAnimatorForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ShapeAnimatorForm.cs</DependentUpon>

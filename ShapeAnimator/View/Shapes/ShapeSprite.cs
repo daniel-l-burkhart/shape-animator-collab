@@ -13,9 +13,17 @@ namespace ShapeAnimator.View.Shapes
         #region InstanceVariables
 
         private readonly int height;
+
         private readonly Color randomizedColor;
+
         private readonly Shape theShape;
+
         private readonly int width;
+        private DataSorter sorter;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         ///     Gets the x.
@@ -38,35 +46,6 @@ namespace ShapeAnimator.View.Shapes
         {
             get { return this.theShape.Y; }
         }
-
-        #endregion
-
-        #region Constructors
-
-        private ShapeSprite()
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
-        ///     precondition: shape != null
-        /// </summary>
-        protected ShapeSprite(Shape theShape, int width, int height) : this()
-        {
-            if (theShape == null)
-            {
-                throw new ArgumentException("Shape cannot be null");
-            }
-
-            this.theShape = theShape;
-            this.width = width;
-            this.height = height;
-            this.randomizedColor = this.randomColor();
-        }
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         ///     Gets the color of the randomized.
@@ -102,6 +81,66 @@ namespace ShapeAnimator.View.Shapes
         }
 
         /// <summary>
+        ///     Gets the area property.
+        /// </summary>
+        /// <value>
+        ///     The area property.
+        /// </value>
+        public double AreaProperty
+        {
+            get { return this.Area(); }
+        }
+
+        /// <summary>
+        ///     Gets the perimeter property.
+        /// </summary>
+        /// <value>
+        ///     The perimeter property.
+        /// </value>
+        public double PerimeterProperty
+        {
+            get { return this.Perimeter(); }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        ///     Prevents a default instance of the <see cref="ShapeSprite" /> class from being created.
+        /// </summary>
+        private ShapeSprite()
+        {
+            
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
+        ///     precondition: shape != null
+        /// </summary>
+        /// <param name="theShape">The shape.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <exception cref="System.ArgumentException">Shape cannot be null</exception>
+        protected ShapeSprite(Shape theShape, int width, int height) : this()
+        {
+            sorter = new DataSorter();
+            if (theShape == null)
+            {
+                throw new ArgumentException("Shape cannot be null");
+            }
+
+            this.theShape = theShape;
+            this.width = width;
+            this.height = height;
+            this.randomizedColor = this.randomColor();
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
         ///     Randomizes the color.
         /// </summary>
         /// <returns></returns>
@@ -118,6 +157,28 @@ namespace ShapeAnimator.View.Shapes
         /// </summary>
         /// <param name="graphics">The graphics.</param>
         public abstract void Paint(Graphics graphics);
+
+        /// <summary>
+        ///     Areas this instance.
+        /// </summary>
+        /// <returns></returns>
+        public abstract double Area();
+
+        /// <summary>
+        ///     Perimeters this instance.
+        /// </summary>
+        /// <returns></returns>
+        public abstract double Perimeter();
+
+        /// <summary>
+        ///     Datas the gather.
+        /// </summary>
+        /// <param name="collisionCount">The collision count.</param>
+        public void DataGather(int collisionCount)
+        {
+            this.sorter.SendDataToForm(this.GetType().ToString(), this.randomColor(), this.Area(), this.Perimeter(),
+                collisionCount);
+        }
 
         #endregion
     }
