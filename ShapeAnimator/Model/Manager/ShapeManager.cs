@@ -69,7 +69,7 @@ namespace ShapeAnimator.Model.Manager
             {
                 Shape aShape = ShapeFactory.CreateAShape(shape);
                 this.placeShapesInCanvasBoundary(aShape);
-                aShape.SendDataToSorter();
+                aShape.SendDataToSorter(i);
                 this.shapes.Add(aShape);
             }
         }
@@ -160,7 +160,6 @@ namespace ShapeAnimator.Model.Manager
                     this.CheckForChangeInDirection();
                     shape.Move();
                     shape.Paint(g);
-                    shape.UpdateCollisionCount(shape.CollisionCount);
                 }
             }
         }

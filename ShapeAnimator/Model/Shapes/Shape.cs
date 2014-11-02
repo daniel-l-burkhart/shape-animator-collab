@@ -107,25 +107,25 @@ namespace ShapeAnimator.Model.Shapes
         public int CollisionCount { get; set; }
 
         /// <summary>
-        /// Gets the area.
+        ///     Gets the area.
         /// </summary>
         /// <value>
-        /// The area.
+        ///     The area.
         /// </value>
         public double Area
         {
-            get { return this.sprite.Area(); }
+            get { return this.CalculateArea(); }
         }
 
         /// <summary>
-        /// Gets the perimeter.
+        ///     Gets the perimeter.
         /// </summary>
         /// <value>
-        /// The perimeter.
+        ///     The perimeter.
         /// </value>
         public double Perimeter
         {
-            get { return this.sprite.Perimeter(); }
+            get { return this.CalculatePerimeter(); }
         }
 
         #endregion
@@ -197,11 +197,23 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         /// <summary>
-        /// Sends the data to sorter.
+        ///     Calculates the area.
         /// </summary>
-        public void SendDataToSorter()
+        /// <returns></returns>
+        public abstract double CalculateArea();
+
+        /// <summary>
+        ///     Calculates the perimeter.
+        /// </summary>
+        /// <returns></returns>
+        public abstract double CalculatePerimeter();
+
+        /// <summary>
+        ///     Sends the data to sorter.
+        /// </summary>
+        public void SendDataToSorter(int row)
         {
-            this.sprite.DataGather(this.CollisionCount);
+            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter, row);
         }
 
         #endregion
@@ -209,10 +221,10 @@ namespace ShapeAnimator.Model.Shapes
         /// <summary>
         /// Updates the collision count.
         /// </summary>
-        /// <param name="collisionCount">The collision count.</param>
-        public void UpdateCollisionCount(int collisionCount)
+        /// <param name="row">The row.</param>
+        public void UpdateCollisionCount(int row)
         {
-            this.sprite.DataGather(collisionCount);
+            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter, row);
         }
     }
 }
