@@ -57,7 +57,7 @@ namespace ShapeAnimator.View.Forms
         private void animateButton_Click(object sender, EventArgs e)
         {
             this.animationTimer.Stop();
-
+            shapeDatabaseDataSet.ShapeDatabase.Clear();
             int randomShapes = this.GetNumberOfShapes(this.numberShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);

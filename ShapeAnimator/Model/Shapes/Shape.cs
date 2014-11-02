@@ -137,7 +137,7 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         protected Shape()
         {
-            CollisionCount = 0;
+            this.CollisionCount = 0;
         }
 
         /// <summary>
@@ -201,9 +201,18 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public void SendDataToSorter()
         {
-            this.sprite.DataGather(CollisionCount);
+            this.sprite.DataGather(this.CollisionCount);
         }
 
         #endregion
+
+        /// <summary>
+        /// Updates the collision count.
+        /// </summary>
+        /// <param name="collisionCount">The collision count.</param>
+        public void UpdateCollisionCount(int collisionCount)
+        {
+            this.sprite.DataGather(collisionCount);
+        }
     }
 }
