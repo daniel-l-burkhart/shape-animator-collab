@@ -1,7 +1,10 @@
 using System;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ShapeAnimator.Model.Manager;
+using ShapeAnimator.Model.Shapes;
 using ShapeAnimator.Properties;
 using ShapeAnimator.ShapeDatabaseDataSetTableAdapters;
 
@@ -136,5 +139,31 @@ namespace ShapeAnimator.View.Forms
             shapeDatabaseDataSet.ShapeDatabase.AddShapeDatabaseRow(shapeType, colorValue, shapeArea, shapePerimeter,
                 collisionCount);
         }
+
+        private void area_Click(object sender, EventArgs e)
+        {
+            var areaQuery = from area in shapeDatabaseDataSet.ShapeDatabase orderby area.Area select area;
+        }
+
+        private void perimeter_Click(object sender, EventArgs e)
+        {
+            var perimeterQuery = from perimeter in shapeDatabaseDataSet.ShapeDatabase orderby perimeter.PerimeterProperty select perimeter;
+        }
+
+        private void collisionThenShape_Click(object sender, EventArgs e)
+        {
+            var collisionsAndShapeQuery = from collisionsAndShape in shapeDatabaseDataSet.ShapeDatabase
+                orderby collisionsAndShape.Collision_Count, collisionsAndShape.Shape_Type
+                select collisionsAndShape;
+        }
+
+        private void shapeThenColor_Click(object sender, EventArgs e)
+        {
+            var shapeThenColorQuery = from shapeThenColor in shapeDatabaseDataSet.ShapeDatabase
+                orderby shapeThenColor.Shape_Type, shapeThenColor.Color
+                select shapeThenColor;
+        }
+
+
     }
 }
