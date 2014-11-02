@@ -9,7 +9,6 @@ namespace ShapeAnimator.View.Shapes
     /// </summary>
     internal class RectangleSprite : ShapeSprite
     {
-
         #region Constructors
 
         /// <summary>

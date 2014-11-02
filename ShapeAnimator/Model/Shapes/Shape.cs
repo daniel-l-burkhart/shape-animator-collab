@@ -128,6 +128,17 @@ namespace ShapeAnimator.Model.Shapes
             get { return this.CalculatePerimeter(); }
         }
 
+        /// <summary>
+        ///     Gets the color of the shape.
+        /// </summary>
+        /// <value>
+        ///     The color of the shape.
+        /// </value>
+        public Color ShapeColor
+        {
+            get { return this.sprite.Color; }
+        }
+
         #endregion
 
         #region Constructors
@@ -211,20 +222,19 @@ namespace ShapeAnimator.Model.Shapes
         /// <summary>
         ///     Sends the data to sorter.
         /// </summary>
-        public void SendDataToSorter(int row)
+        public void SendDataToSorter()
         {
-            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter, row);
+            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter);
         }
 
         #endregion
 
         /// <summary>
-        /// Updates the collision count.
+        ///     Updates the collision count.
         /// </summary>
-        /// <param name="row">The row.</param>
-        public void UpdateCollisionCount(int row)
+        public void UpdateCollisionCount()
         {
-            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter, row);
+            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter);
         }
     }
 }

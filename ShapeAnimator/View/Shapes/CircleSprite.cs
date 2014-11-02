@@ -10,8 +10,6 @@ namespace ShapeAnimator.View.Shapes
     public class CircleSprite : ShapeSprite
 
     {
-
-
         #region Constructors
 
         /// <summary>
@@ -43,5 +41,4 @@ namespace ShapeAnimator.View.Shapes
             graphics.FillEllipse(yellowBrush, this.X, this.Y, this.Width, this.Height);
         }
     }
-
 }

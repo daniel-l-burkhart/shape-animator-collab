@@ -80,6 +80,17 @@ namespace ShapeAnimator.View.Shapes
             get { return this.width; }
         }
 
+        /// <summary>
+        ///     Gets the color.
+        /// </summary>
+        /// <value>
+        ///     The color.
+        /// </value>
+        public Color Color
+        {
+            get { return this.randomColor(); }
+        }
+
         #endregion
 
         #region Constructors
@@ -136,17 +147,16 @@ namespace ShapeAnimator.View.Shapes
         public abstract void Paint(Graphics graphics);
 
         /// <summary>
-        /// Datas the gather.
+        ///     Datas the gather.
         /// </summary>
         /// <param name="shapeType">Type of the shape.</param>
         /// <param name="collisionCount">The collision count.</param>
         /// <param name="area">The area.</param>
         /// <param name="perimeter">The perimeter.</param>
-        /// <param name="row">The row.</param>
-        public void DataGather(string shapeType, int collisionCount, double area, double perimeter, int row)
+        public void DataGather(string shapeType, int collisionCount, double area, double perimeter)
         {
             this.sorter.SendDataToForm(shapeType, this.randomColor(), area, perimeter,
-                collisionCount, row);
+                collisionCount);
         }
 
         #endregion

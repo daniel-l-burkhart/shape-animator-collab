@@ -413,7 +413,7 @@ namespace ShapeAnimator.View.Forms
         private DataGridViewTextBoxColumn ShapeType;
         private DataGridViewTextBoxColumn Color;
         private DataGridViewTextBoxColumn PerimeterProperty;
-        private IComparer AreaColumn;
+        private DataGridViewTextBoxColumn AreaColumn;
         private DataGridViewTextBoxColumn CollisionCount;
     }
 }
