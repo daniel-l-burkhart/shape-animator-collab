@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -17,6 +16,8 @@ namespace ShapeAnimator.View.Forms
         #region Instance variables
 
         private readonly ShapeManager canvasManager;
+        private int dataGridViewRowIndex;
+        private int shapeNumber;
 
         #endregion
 
@@ -33,7 +34,7 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = false;
-            this.dataGridView1 = new DataGridView {DataSource = this.canvasManager.ShapeListProperty};
+            //this.dataGridView1.Rows.Add();
         }
 
         #endregion
@@ -44,6 +45,7 @@ namespace ShapeAnimator.View.Forms
         {
             this.Refresh();
             this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
+            this.WriteToDataGrid();
         }
 
         private void shapeCanvasPictureBox_Paint(object sender, PaintEventArgs e)
@@ -59,6 +61,8 @@ namespace ShapeAnimator.View.Forms
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
+            this.dataGridView1.Rows.Add(this.shapeNumber - 1);
+            this.WriteToDataGrid();
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
 
@@ -67,6 +71,7 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton.Enabled = true;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = true;
+            this.WriteToDataGrid();
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -98,22 +103,21 @@ namespace ShapeAnimator.View.Forms
         /// <returns></returns>
         public int GetNumberOfShapes(TextBox textBox)
         {
+            int number = 0;
+            try
             {
-                int number = 0;
-                try
+                number = Convert.ToInt32(textBox.Text);
+                if (number < 0)
                 {
-                    number = Convert.ToInt32(textBox.Text);
-                    if (number < 0)
-                    {
-                        MessageBox.Show(Resources.Cannot_Be_Negative);
-                    }
+                    MessageBox.Show(Resources.Cannot_Be_Negative);
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show(Resources.Must_Be_Integer);
-                }
-                return number;
             }
+            catch (Exception)
+            {
+                MessageBox.Show(Resources.Must_Be_Integer);
+            }
+            this.shapeNumber += number;
+            return number;
         }
 
         #endregion
@@ -121,20 +125,46 @@ namespace ShapeAnimator.View.Forms
         /// <summary>
         ///     Writes to data grid.
         /// </summary>
-        /// <param name="shapeType">Type of the shape.</param>
-        /// <param name="colorValue">The color value.</param>
-        /// <param name="shapeArea">The shape area.</param>
-        /// <param name="shapePerimeter">The shape perimeter.</param>
-        /// <param name="collisionCount">The collision count.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void WriteToDataGrid(string shapeType, string colorValue, double shapeArea, double shapePerimeter,
-            int collisionCount)
+        public void WriteToDataGrid()
         {
-            this.addDataToColumn("ShapeType", shapeType);
-            this.addDataToColumn("Color", colorValue);
-            this.addDataToColumn("PerimeterProperty", shapePerimeter.ToString("##.000"));
-            this.addDataToColumn("AreaColumn", shapeArea.ToString("##.000"));
-            this.addDataToColumn("CollisionCount", collisionCount.ToString(CultureInfo.InvariantCulture));
+            this.DoubleBuffered = true;
+            DataGridViewRow currentRow = this.dataGridView1.CurrentRow;
+            if (currentRow != null)
+            {
+                this.dataGridViewRowIndex = currentRow.Index;
+            }
+            foreach (Shape shape in this.canvasManager.ShapeListProperty)
+            {
+                this.addDataToColumn("ShapeType", shapeType(shape));
+                this.addDataToColumn("Color", colorValue(shape.ShapeColor));
+                this.addDataToColumn("PerimeterProperty", shape.Perimeter.ToString("##.000"));
+                this.addDataToColumn("AreaColumn", shape.Area.ToString("##.000"));
+                this.addDataToColumn("CollisionCount", shape.CollisionCount.ToString(CultureInfo.InvariantCulture));
+                this.dataGridViewRowIndex++;
+            }
+        }
+
+        private static string colorValue(Color shapeColor)
+        {
+            int redComponent = shapeColor.R;
+            int greenComponent = shapeColor.G;
+            int blueComponent = shapeColor.B;
+            string colorValue = "(" + redComponent + "," + greenComponent + "," + blueComponent + ")";
+            return colorValue;
+        }
+
+        private static string shapeType(Shape shape)
+        {
+            if (shape.GetType().ToString().Contains("Circle"))
+            {
+                return "Circle";
+            }
+            if (shape.GetType().ToString().Contains("Rectangle"))
+            {
+                return "Rectangle";
+            }
+            return "Spotted Rectangle";
         }
 
         private void addDataToColumn(string columnName, string data)
@@ -144,11 +174,7 @@ namespace ShapeAnimator.View.Forms
             {
                 return;
             }
-            DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
-            if (dataGridViewRow != null)
-            {
-                this.dataGridView1[currentColumn.Index, dataGridViewRow.Index].Value = data;
-            }
+            this.dataGridView1[currentColumn.Index, this.dataGridViewRowIndex].Value = data;
         }
 
         private void area_Click(object sender, EventArgs e)
@@ -169,15 +195,6 @@ namespace ShapeAnimator.View.Forms
         private void shapeThenColor_Click(object sender, EventArgs e)
         {
             this.canvasManager.SortListByShapeThenColor();
-        }
-
-        /// <summary>
-        ///     Sends the list to form.
-        /// </summary>
-        /// <param name="shapes">The shapes.</param>
-        public void SendListToForm(List<Shape> shapes)
-        {
-            this.dataGridView1.DataSource = shapes;
         }
     }
 }

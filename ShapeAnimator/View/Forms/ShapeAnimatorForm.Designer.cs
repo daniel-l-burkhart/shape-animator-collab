@@ -53,16 +53,16 @@ namespace ShapeAnimator.View.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ShapeTypeThenColor = new System.Windows.Forms.Button();
-            this.Perimeter = new System.Windows.Forms.Button();
-            this.CollisionsAndShapeType = new System.Windows.Forms.Button();
-            this.Area = new System.Windows.Forms.Button();
             this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PerimeterProperty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CollisionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ShapeTypeThenColor = new System.Windows.Forms.Button();
+            this.Perimeter = new System.Windows.Forms.Button();
+            this.CollisionsAndShapeType = new System.Windows.Forms.Button();
+            this.Area = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,7 +73,7 @@ namespace ShapeAnimator.View.Forms
             // 
             this.canvasPictureBox.BackColor = System.Drawing.Color.Black;
             this.canvasPictureBox.Location = new System.Drawing.Point(16, 173);
-            this.canvasPictureBox.Margin = new System.Windows.Forms.Padding(6);
+            this.canvasPictureBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.canvasPictureBox.Name = "canvasPictureBox";
             this.canvasPictureBox.Size = new System.Drawing.Size(1440, 923);
             this.canvasPictureBox.TabIndex = 0;
@@ -82,7 +82,6 @@ namespace ShapeAnimator.View.Forms
             // 
             // animationTimer
             // 
-            this.animationTimer.Interval = 200;
             this.animationTimer.Tick += new System.EventHandler(this.animationTimer_Tick);
             // 
             // numberOfShapesLabel
@@ -98,7 +97,7 @@ namespace ShapeAnimator.View.Forms
             // numberShapesTextBox
             // 
             this.numberShapesTextBox.Location = new System.Drawing.Point(202, 12);
-            this.numberShapesTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.numberShapesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.numberShapesTextBox.Name = "numberShapesTextBox";
             this.numberShapesTextBox.Size = new System.Drawing.Size(90, 31);
             this.numberShapesTextBox.TabIndex = 2;
@@ -107,7 +106,7 @@ namespace ShapeAnimator.View.Forms
             // startButton
             // 
             this.startButton.Location = new System.Drawing.Point(24, 62);
-            this.startButton.Margin = new System.Windows.Forms.Padding(6);
+            this.startButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(150, 44);
             this.startButton.TabIndex = 3;
@@ -118,7 +117,7 @@ namespace ShapeAnimator.View.Forms
             // PauseButton
             // 
             this.PauseButton.Location = new System.Drawing.Point(186, 62);
-            this.PauseButton.Margin = new System.Windows.Forms.Padding(6);
+            this.PauseButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(150, 44);
             this.PauseButton.TabIndex = 4;
@@ -129,7 +128,7 @@ namespace ShapeAnimator.View.Forms
             // ResumeButton
             // 
             this.ResumeButton.Location = new System.Drawing.Point(352, 62);
-            this.ResumeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.ResumeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ResumeButton.Name = "ResumeButton";
             this.ResumeButton.Size = new System.Drawing.Size(150, 44);
             this.ResumeButton.TabIndex = 5;
@@ -140,7 +139,7 @@ namespace ShapeAnimator.View.Forms
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(512, 62);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(6);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(150, 44);
             this.ClearButton.TabIndex = 6;
@@ -151,7 +150,7 @@ namespace ShapeAnimator.View.Forms
             // RectanglesTextBox
             // 
             this.RectanglesTextBox.Location = new System.Drawing.Point(698, 12);
-            this.RectanglesTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.RectanglesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.RectanglesTextBox.Name = "RectanglesTextBox";
             this.RectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.RectanglesTextBox.TabIndex = 7;
@@ -160,7 +159,7 @@ namespace ShapeAnimator.View.Forms
             // CirclesTextBox
             // 
             this.CirclesTextBox.Location = new System.Drawing.Point(428, 12);
-            this.CirclesTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.CirclesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CirclesTextBox.Name = "CirclesTextBox";
             this.CirclesTextBox.Size = new System.Drawing.Size(90, 31);
             this.CirclesTextBox.TabIndex = 8;
@@ -169,7 +168,7 @@ namespace ShapeAnimator.View.Forms
             // SpottedRectanglesTextBox
             // 
             this.SpottedRectanglesTextBox.Location = new System.Drawing.Point(1046, 12);
-            this.SpottedRectanglesTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.SpottedRectanglesTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.SpottedRectanglesTextBox.Name = "SpottedRectanglesTextBox";
             this.SpottedRectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.SpottedRectanglesTextBox.TabIndex = 9;
@@ -209,7 +208,7 @@ namespace ShapeAnimator.View.Forms
             // 
             this.SpeedSlider.LargeChange = 50;
             this.SpeedSlider.Location = new System.Drawing.Point(808, 62);
-            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SpeedSlider.Maximum = 500;
             this.SpeedSlider.Name = "SpeedSlider";
             this.SpeedSlider.Size = new System.Drawing.Size(552, 90);
@@ -239,7 +238,7 @@ namespace ShapeAnimator.View.Forms
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -250,76 +249,17 @@ namespace ShapeAnimator.View.Forms
             this.CollisionCount});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(380, 1108);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(1092, 238);
             this.dataGridView1.TabIndex = 23;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ShapeTypeThenColor);
-            this.groupBox1.Controls.Add(this.Perimeter);
-            this.groupBox1.Controls.Add(this.CollisionsAndShapeType);
-            this.groupBox1.Controls.Add(this.Area);
-            this.groupBox1.Location = new System.Drawing.Point(16, 1108);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(354, 237);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sort By:";
-            // 
-            // ShapeTypeThenColor
-            // 
-            this.ShapeTypeThenColor.Location = new System.Drawing.Point(20, 163);
-            this.ShapeTypeThenColor.Margin = new System.Windows.Forms.Padding(4);
-            this.ShapeTypeThenColor.Name = "ShapeTypeThenColor";
-            this.ShapeTypeThenColor.Size = new System.Drawing.Size(290, 65);
-            this.ShapeTypeThenColor.TabIndex = 3;
-            this.ShapeTypeThenColor.Text = "Shape Type And Color";
-            this.ShapeTypeThenColor.UseVisualStyleBackColor = true;
-            this.ShapeTypeThenColor.Click += new System.EventHandler(this.shapeThenColor_Click);
-            // 
-            // Perimeter
-            // 
-            this.Perimeter.Location = new System.Drawing.Point(186, 48);
-            this.Perimeter.Margin = new System.Windows.Forms.Padding(4);
-            this.Perimeter.Name = "Perimeter";
-            this.Perimeter.Size = new System.Drawing.Size(124, 38);
-            this.Perimeter.TabIndex = 2;
-            this.Perimeter.Text = "Perimeter";
-            this.Perimeter.UseVisualStyleBackColor = true;
-            this.Perimeter.Click += new System.EventHandler(this.perimeter_Click);
-            // 
-            // CollisionsAndShapeType
-            // 
-            this.CollisionsAndShapeType.Location = new System.Drawing.Point(20, 106);
-            this.CollisionsAndShapeType.Margin = new System.Windows.Forms.Padding(4);
-            this.CollisionsAndShapeType.Name = "CollisionsAndShapeType";
-            this.CollisionsAndShapeType.Size = new System.Drawing.Size(290, 42);
-            this.CollisionsAndShapeType.TabIndex = 1;
-            this.CollisionsAndShapeType.Text = "Collisions And Shape Type";
-            this.CollisionsAndShapeType.UseVisualStyleBackColor = true;
-            this.CollisionsAndShapeType.Click += new System.EventHandler(this.collisionThenShape_Click);
-            // 
-            // Area
-            // 
-            this.Area.Location = new System.Drawing.Point(20, 48);
-            this.Area.Margin = new System.Windows.Forms.Padding(4);
-            this.Area.Name = "Area";
-            this.Area.Size = new System.Drawing.Size(104, 38);
-            this.Area.TabIndex = 0;
-            this.Area.Text = "Area";
-            this.Area.UseVisualStyleBackColor = true;
-            this.Area.Click += new System.EventHandler(this.area_Click);
-            // 
             // ShapeType
             // 
             this.ShapeType.HeaderText = "Shape Type";
             this.ShapeType.Name = "ShapeType";
-            this.ShapeType.Width = 153;
+            this.ShapeType.Width = 140;
             // 
             // Color
             // 
@@ -346,11 +286,70 @@ namespace ShapeAnimator.View.Forms
             this.CollisionCount.Name = "CollisionCount";
             this.CollisionCount.Width = 166;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ShapeTypeThenColor);
+            this.groupBox1.Controls.Add(this.Perimeter);
+            this.groupBox1.Controls.Add(this.CollisionsAndShapeType);
+            this.groupBox1.Controls.Add(this.Area);
+            this.groupBox1.Location = new System.Drawing.Point(16, 1108);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(354, 237);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sort By:";
+            // 
+            // ShapeTypeThenColor
+            // 
+            this.ShapeTypeThenColor.Location = new System.Drawing.Point(20, 163);
+            this.ShapeTypeThenColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShapeTypeThenColor.Name = "ShapeTypeThenColor";
+            this.ShapeTypeThenColor.Size = new System.Drawing.Size(290, 65);
+            this.ShapeTypeThenColor.TabIndex = 3;
+            this.ShapeTypeThenColor.Text = "Shape Type And Color";
+            this.ShapeTypeThenColor.UseVisualStyleBackColor = true;
+            this.ShapeTypeThenColor.Click += new System.EventHandler(this.shapeThenColor_Click);
+            // 
+            // Perimeter
+            // 
+            this.Perimeter.Location = new System.Drawing.Point(186, 48);
+            this.Perimeter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Perimeter.Name = "Perimeter";
+            this.Perimeter.Size = new System.Drawing.Size(124, 38);
+            this.Perimeter.TabIndex = 2;
+            this.Perimeter.Text = "Perimeter";
+            this.Perimeter.UseVisualStyleBackColor = true;
+            this.Perimeter.Click += new System.EventHandler(this.perimeter_Click);
+            // 
+            // CollisionsAndShapeType
+            // 
+            this.CollisionsAndShapeType.Location = new System.Drawing.Point(20, 106);
+            this.CollisionsAndShapeType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CollisionsAndShapeType.Name = "CollisionsAndShapeType";
+            this.CollisionsAndShapeType.Size = new System.Drawing.Size(290, 42);
+            this.CollisionsAndShapeType.TabIndex = 1;
+            this.CollisionsAndShapeType.Text = "Collisions And Shape Type";
+            this.CollisionsAndShapeType.UseVisualStyleBackColor = true;
+            this.CollisionsAndShapeType.Click += new System.EventHandler(this.collisionThenShape_Click);
+            // 
+            // Area
+            // 
+            this.Area.Location = new System.Drawing.Point(20, 48);
+            this.Area.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Area.Name = "Area";
+            this.Area.Size = new System.Drawing.Size(104, 38);
+            this.Area.TabIndex = 0;
+            this.Area.Text = "Area";
+            this.Area.UseVisualStyleBackColor = true;
+            this.Area.Click += new System.EventHandler(this.area_Click);
+            // 
             // ShapeAnimatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 1365);
+            this.ClientSize = new System.Drawing.Size(1472, 1367);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
@@ -370,10 +369,9 @@ namespace ShapeAnimator.View.Forms
             this.Controls.Add(this.numberOfShapesLabel);
             this.Controls.Add(this.canvasPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShapeAnimatorForm";
             this.Text = "Shape Animator A4 by Odom and Burkhart";
-
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

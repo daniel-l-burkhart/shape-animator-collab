@@ -219,22 +219,6 @@ namespace ShapeAnimator.Model.Shapes
         /// <returns></returns>
         public abstract double CalculatePerimeter();
 
-        /// <summary>
-        ///     Sends the data to sorter.
-        /// </summary>
-        public void SendDataToSorter()
-        {
-            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter);
-        }
-
         #endregion
-
-        /// <summary>
-        ///     Updates the collision count.
-        /// </summary>
-        public void UpdateCollisionCount()
-        {
-            this.sprite.DataGather(this.GetType().ToString(), this.CollisionCount, this.Area, this.Perimeter);
-        }
     }
 }

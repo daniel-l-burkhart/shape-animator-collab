@@ -15,7 +15,6 @@ namespace ShapeAnimator.View.Shapes
         private readonly int height;
 
         private readonly Color randomizedColor;
-        private readonly DataSorter sorter;
 
         private readonly Shape theShape;
 
@@ -24,6 +23,8 @@ namespace ShapeAnimator.View.Shapes
         #endregion
 
         #region Properties
+
+        private Color randomColorVariable;
 
         /// <summary>
         ///     Gets the x.
@@ -53,7 +54,7 @@ namespace ShapeAnimator.View.Shapes
         /// <value>
         ///     The color of the randomized.
         /// </value>
-        protected Color RandomizedColor
+        public Color RandomizedColor
         {
             get { return this.randomizedColor; }
         }
@@ -88,7 +89,7 @@ namespace ShapeAnimator.View.Shapes
         /// </value>
         public Color Color
         {
-            get { return this.randomColor(); }
+            get { return this.randomColorVariable; }
         }
 
         #endregion
@@ -112,7 +113,6 @@ namespace ShapeAnimator.View.Shapes
         /// <exception cref="System.ArgumentException">Shape cannot be null</exception>
         protected ShapeSprite(Shape theShape, int width, int height) : this()
         {
-            this.sorter = new DataSorter();
             if (theShape == null)
             {
                 throw new ArgumentException("Shape cannot be null");
@@ -136,7 +136,7 @@ namespace ShapeAnimator.View.Shapes
         {
             Color randomColor = Color.FromArgb(ShapeFactory.Randomizer.Next(255), ShapeFactory.Randomizer.Next(255),
                 ShapeFactory.Randomizer.Next(255));
-
+            this.randomColorVariable = randomColor;
             return randomColor;
         }
 
@@ -145,19 +145,6 @@ namespace ShapeAnimator.View.Shapes
         /// </summary>
         /// <param name="graphics">The graphics.</param>
         public abstract void Paint(Graphics graphics);
-
-        /// <summary>
-        ///     Datas the gather.
-        /// </summary>
-        /// <param name="shapeType">Type of the shape.</param>
-        /// <param name="collisionCount">The collision count.</param>
-        /// <param name="area">The area.</param>
-        /// <param name="perimeter">The perimeter.</param>
-        public void DataGather(string shapeType, int collisionCount, double area, double perimeter)
-        {
-            this.sorter.SendDataToForm(shapeType, this.randomColor(), area, perimeter,
-                collisionCount);
-        }
 
         #endregion
     }

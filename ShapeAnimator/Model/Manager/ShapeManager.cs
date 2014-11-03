@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using ShapeAnimator.Model.Manager.ComparerClasses;
 using ShapeAnimator.Model.Shapes;
 using ShapeAnimator.Properties;
-using ShapeAnimator.View.Forms;
 
 namespace ShapeAnimator.Model.Manager
 {
@@ -18,7 +17,6 @@ namespace ShapeAnimator.Model.Manager
 
         private readonly PictureBox canvas;
         private readonly List<Shape> shapes;
-        private ShapeAnimatorForm formVariable;
 
         #endregion
 
@@ -42,7 +40,6 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         private ShapeManager()
         {
-            this.formVariable = new ShapeAnimatorForm();
             this.shapes = null;
         }
 
@@ -84,7 +81,7 @@ namespace ShapeAnimator.Model.Manager
             {
                 Shape aShape = ShapeFactory.CreateAShape(shape);
                 this.placeShapesInCanvasBoundary(aShape);
-                aShape.SendDataToSorter();
+
                 this.shapes.Add(aShape);
             }
         }

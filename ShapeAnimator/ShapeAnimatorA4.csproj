@@ -67,7 +67,6 @@
     <Compile Include="Model\Manager\ComparerClasses\CollisionCountThenShapeType.cs" />
     <Compile Include="Model\Manager\ComparerClasses\PerimeterComparer.cs" />
     <Compile Include="Model\Manager\ComparerClasses\TypeThenColorComparer.cs" />
-    <Compile Include="Model\Manager\DataSorter.cs" />
     <Compile Include="Model\Shapes\Circle.cs" />
     <Compile Include="Model\Shapes\DirectionRandomizer.cs" />
     <Compile Include="Model\Shapes\Rectangle.cs" />
