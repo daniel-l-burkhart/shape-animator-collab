@@ -20,11 +20,11 @@ namespace ShapeAnimator.View.Shapes
 
         private readonly int width;
 
+        private Color randomColorVariable;
+
         #endregion
 
         #region Properties
-
-        private Color randomColorVariable;
 
         /// <summary>
         ///     Gets the x.

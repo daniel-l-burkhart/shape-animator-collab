@@ -9,6 +9,8 @@ namespace ShapeAnimator.Model.Shapes
     /// </summary>
     public class Rectangle : Shape
     {
+        #region Constructors
+
         /// <summary>
         ///     Creates a rectangle shape
         /// </summary>
@@ -30,6 +32,10 @@ namespace ShapeAnimator.Model.Shapes
         {
         }
 
+        #endregion
+
+        #region Methods
+
         /// <summary>
         ///     Areas the method.
         /// </summary>
@@ -50,5 +56,7 @@ namespace ShapeAnimator.Model.Shapes
             double perimeter = (this.Width*perimeterFactor) + (this.Height*perimeterFactor);
             return Math.Round(perimeter, 3);
         }
+
+        #endregion
     }
 }

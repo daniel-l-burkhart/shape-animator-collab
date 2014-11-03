@@ -34,7 +34,6 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = false;
-            //this.dataGridView1.Rows.Add();
         }
 
         #endregion
@@ -56,12 +55,17 @@ namespace ShapeAnimator.View.Forms
 
         private void animateButton_Click(object sender, EventArgs e)
         {
+            this.dataGridView1.Rows.Clear();
+
             this.animationTimer.Stop();
             int randomShapes = this.GetNumberOfShapes(this.numberShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
-            this.dataGridView1.Rows.Add(this.shapeNumber - 1);
+            if (this.shapeNumber > 1)
+            {
+                this.dataGridView1.Rows.Add(this.shapeNumber - 1);
+            }
             this.WriteToDataGrid();
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
@@ -71,7 +75,6 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton.Enabled = true;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = true;
-            this.WriteToDataGrid();
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -94,6 +97,7 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager.ClearCanvas();
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
+            this.dataGridView1.Rows.Clear();
         }
 
         /// <summary>
@@ -160,11 +164,11 @@ namespace ShapeAnimator.View.Forms
             {
                 return "Circle";
             }
-            if (shape.GetType().ToString().Contains("Rectangle"))
+            if (shape.GetType().ToString().Contains("SpottedRectangle"))
             {
-                return "Rectangle";
+                return "Spotted Rectangle";
             }
-            return "Spotted Rectangle";
+            return "Rectangle";
         }
 
         private void addDataToColumn(string columnName, string data)

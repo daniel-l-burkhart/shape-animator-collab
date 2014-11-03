@@ -35,6 +35,8 @@ namespace ShapeAnimator.Model.Shapes
 
         #endregion
 
+        #region Methods
+
         /// <summary>
         ///     Calculates the area.
         /// </summary>
@@ -55,5 +57,7 @@ namespace ShapeAnimator.Model.Shapes
             double perimeter = Math.PI*this.Width;
             return Math.Round(perimeter, 3);
         }
+
+        #endregion
     }
 }

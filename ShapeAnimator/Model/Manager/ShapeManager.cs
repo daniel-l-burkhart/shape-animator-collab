@@ -68,7 +68,6 @@ namespace ShapeAnimator.Model.Manager
             int numberOfSpottedRectangles)
         {
             this.shapes.Clear();
-
             this.placeShapesOnCanvasHelper(numberOfRandomShapes, ShapeFactory.Shapes.Random);
             this.placeShapesOnCanvasHelper(numberOfCircles, ShapeFactory.Shapes.Circle);
             this.placeShapesOnCanvasHelper(numberOfRectangles, ShapeFactory.Shapes.Rectangle);
@@ -81,7 +80,6 @@ namespace ShapeAnimator.Model.Manager
             {
                 Shape aShape = ShapeFactory.CreateAShape(shape);
                 this.placeShapesInCanvasBoundary(aShape);
-
                 this.shapes.Add(aShape);
             }
         }
@@ -176,6 +174,8 @@ namespace ShapeAnimator.Model.Manager
             }
         }
 
+        #region Comparer Methods
+
         /// <summary>
         ///     Sorts the list by area.
         /// </summary>
@@ -211,6 +211,8 @@ namespace ShapeAnimator.Model.Manager
             var colorShapeComparer = new TypeThenColorComparer();
             this.shapes.Sort(colorShapeComparer);
         }
+
+        #endregion
     }
 
     #endregion
