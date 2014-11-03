@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
@@ -33,5 +34,26 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         #endregion
+
+        /// <summary>
+        ///     Calculates the area.
+        /// </summary>
+        /// <returns></returns>
+        public override double CalculateArea()
+        {
+            double radius = this.Width/2.0;
+            double area = (Math.PI*radius*radius);
+            return Math.Round(area, 3);
+        }
+
+        /// <summary>
+        ///     Calculates the perimeter.
+        /// </summary>
+        /// <returns></returns>
+        public override double CalculatePerimeter()
+        {
+            double perimeter = Math.PI*this.Width;
+            return Math.Round(perimeter, 3);
+        }
     }
 }

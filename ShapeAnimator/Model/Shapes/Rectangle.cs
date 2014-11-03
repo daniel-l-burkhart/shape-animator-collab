@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
@@ -27,6 +28,27 @@ namespace ShapeAnimator.Model.Shapes
         /// <param name="location">Location to create shape</param>
         public Rectangle(Point location) : base(location)
         {
+        }
+
+        /// <summary>
+        ///     Areas the method.
+        /// </summary>
+        /// <returns></returns>
+        public override double CalculateArea()
+        {
+            double area = this.Width*this.Height;
+            return Math.Round(area, 3);
+        }
+
+        /// <summary>
+        ///     Perimeters the method.
+        /// </summary>
+        /// <returns></returns>
+        public override double CalculatePerimeter()
+        {
+            const double perimeterFactor = 2.0;
+            double perimeter = (this.Width*perimeterFactor) + (this.Height*perimeterFactor);
+            return Math.Round(perimeter, 3);
         }
     }
 }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ShapeAnimator.Model.Manager.ComparerClasses;
 using ShapeAnimator.Model.Shapes;
 using ShapeAnimator.Properties;
+using ShapeAnimator.View.Forms;
 
 namespace ShapeAnimator.Model.Manager
 {
@@ -16,8 +18,22 @@ namespace ShapeAnimator.Model.Manager
 
         private readonly PictureBox canvas;
         private readonly List<Shape> shapes;
+        private ShapeAnimatorForm formVariable;
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        ///     Gets the shape list property.
+        /// </summary>
+        /// <value>
+        ///     The shape list property.
+        /// </value>
+        public List<Shape> ShapeListProperty
+        {
+            get { return this.shapes; }
+        }
 
         #region Constructors
 
@@ -26,6 +42,7 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         private ShapeManager()
         {
+            this.formVariable = new ShapeAnimatorForm();
             this.shapes = null;
         }
 
@@ -45,8 +62,6 @@ namespace ShapeAnimator.Model.Manager
         }
 
         #endregion
-
-        #region Methods
 
         /// <summary>
         ///     Places the shape on the canvas.
@@ -160,9 +175,44 @@ namespace ShapeAnimator.Model.Manager
                     this.CheckForChangeInDirection();
                     shape.Move();
                     shape.Paint(g);
-                    shape.UpdateCollisionCount(shape.CollisionCount);
                 }
             }
+        }
+
+        /// <summary>
+        ///     Sorts the list by area.
+        /// </summary>
+        public void SortListByArea()
+        {
+            var areaComparer = new AreaComparer();
+            this.shapes.Sort(areaComparer);
+        }
+
+        /// <summary>
+        ///     Sorts the list by perimeter.
+        /// </summary>
+        public void SortListByPerimeter()
+        {
+            var perimeter = new PerimeterComparer();
+            this.shapes.Sort(perimeter);
+        }
+
+        /// <summary>
+        ///     Sorts the list by collision then shape.
+        /// </summary>
+        public void SortListByCollisionThenShape()
+        {
+            var comparisonVar = new CollisionCountThenShapeType();
+            this.shapes.Sort(comparisonVar);
+        }
+
+        /// <summary>
+        ///     Sorts the color of the list by shape then.
+        /// </summary>
+        public void SortListByShapeThenColor()
+        {
+            var colorShapeComparer = new TypeThenColorComparer();
+            this.shapes.Sort(colorShapeComparer);
         }
     }
 

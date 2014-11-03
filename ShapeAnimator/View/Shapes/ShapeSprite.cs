@@ -15,11 +15,11 @@ namespace ShapeAnimator.View.Shapes
         private readonly int height;
 
         private readonly Color randomizedColor;
+        private readonly DataSorter sorter;
 
         private readonly Shape theShape;
 
         private readonly int width;
-        private DataSorter sorter;
 
         #endregion
 
@@ -81,25 +81,14 @@ namespace ShapeAnimator.View.Shapes
         }
 
         /// <summary>
-        ///     Gets the area property.
+        ///     Gets the color.
         /// </summary>
         /// <value>
-        ///     The area property.
+        ///     The color.
         /// </value>
-        public double AreaProperty
+        public Color Color
         {
-            get { return this.Area(); }
-        }
-
-        /// <summary>
-        ///     Gets the perimeter property.
-        /// </summary>
-        /// <value>
-        ///     The perimeter property.
-        /// </value>
-        public double PerimeterProperty
-        {
-            get { return this.Perimeter(); }
+            get { return this.randomColor(); }
         }
 
         #endregion
@@ -111,7 +100,6 @@ namespace ShapeAnimator.View.Shapes
         /// </summary>
         private ShapeSprite()
         {
-            
         }
 
         /// <summary>
@@ -124,7 +112,7 @@ namespace ShapeAnimator.View.Shapes
         /// <exception cref="System.ArgumentException">Shape cannot be null</exception>
         protected ShapeSprite(Shape theShape, int width, int height) : this()
         {
-            sorter = new DataSorter();
+            this.sorter = new DataSorter();
             if (theShape == null)
             {
                 throw new ArgumentException("Shape cannot be null");
@@ -159,24 +147,15 @@ namespace ShapeAnimator.View.Shapes
         public abstract void Paint(Graphics graphics);
 
         /// <summary>
-        ///     Areas this instance.
-        /// </summary>
-        /// <returns></returns>
-        public abstract double Area();
-
-        /// <summary>
-        ///     Perimeters this instance.
-        /// </summary>
-        /// <returns></returns>
-        public abstract double Perimeter();
-
-        /// <summary>
         ///     Datas the gather.
         /// </summary>
+        /// <param name="shapeType">Type of the shape.</param>
         /// <param name="collisionCount">The collision count.</param>
-        public void DataGather(int collisionCount)
+        /// <param name="area">The area.</param>
+        /// <param name="perimeter">The perimeter.</param>
+        public void DataGather(string shapeType, int collisionCount, double area, double perimeter)
         {
-            this.sorter.SendDataToForm(this.GetType().ToString(), this.randomColor(), this.Area(), this.Perimeter(),
+            this.sorter.SendDataToForm(shapeType, this.randomColor(), area, perimeter,
                 collisionCount);
         }
 

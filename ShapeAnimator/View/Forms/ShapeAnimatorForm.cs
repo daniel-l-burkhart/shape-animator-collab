@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
+using System.Globalization;
 using System.Windows.Forms;
 using ShapeAnimator.Model.Manager;
+using ShapeAnimator.Model.Shapes;
 using ShapeAnimator.Properties;
 
 namespace ShapeAnimator.View.Forms
@@ -27,12 +29,11 @@ namespace ShapeAnimator.View.Forms
         public ShapeAnimatorForm()
         {
             this.InitializeComponent();
-
             this.canvasManager = new ShapeManager(this.canvasPictureBox);
-
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = false;
+            this.dataGridView1 = new DataGridView {DataSource = this.canvasManager.ShapeListProperty};
         }
 
         #endregion
@@ -54,7 +55,6 @@ namespace ShapeAnimator.View.Forms
         private void animateButton_Click(object sender, EventArgs e)
         {
             this.animationTimer.Stop();
-            this.shapeDatabaseDataSet.ShapeDatabase.Clear();
             int randomShapes = this.GetNumberOfShapes(this.numberShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
@@ -118,11 +118,6 @@ namespace ShapeAnimator.View.Forms
 
         #endregion
 
-        private void ShapeAnimatorForm_Load(object sender, EventArgs e)
-        {
-            //this.shapeDatabaseTableAdapter.Fill(this.shapeDatabaseDataSet.ShapeDatabase);
-        }
-
         /// <summary>
         ///     Writes to data grid.
         /// </summary>
@@ -135,39 +130,54 @@ namespace ShapeAnimator.View.Forms
         public void WriteToDataGrid(string shapeType, string colorValue, double shapeArea, double shapePerimeter,
             int collisionCount)
         {
-            this.shapeDatabaseDataSet.ShapeDatabase.AddShapeDatabaseRow(shapeType, colorValue, (int) shapeArea,
-                (int) shapePerimeter,
-                collisionCount);
+            this.addDataToColumn("ShapeType", shapeType);
+            this.addDataToColumn("Color", colorValue);
+            this.addDataToColumn("PerimeterProperty", shapePerimeter.ToString("##.000"));
+            this.addDataToColumn("AreaColumn", shapeArea.ToString("##.000"));
+            this.addDataToColumn("CollisionCount", collisionCount.ToString(CultureInfo.InvariantCulture));
+        }
+
+        private void addDataToColumn(string columnName, string data)
+        {
+            DataGridViewColumn currentColumn = this.dataGridView1.Columns[columnName];
+            if (currentColumn == null)
+            {
+                return;
+            }
+            DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
+            if (dataGridViewRow != null)
+            {
+                this.dataGridView1[currentColumn.Index, dataGridViewRow.Index].Value = data;
+            }
         }
 
         private void area_Click(object sender, EventArgs e)
         {
-            IOrderedEnumerable<ShapeDatabaseDataSet.ShapeDatabaseRow> areaQuery =
-                from area in this.shapeDatabaseDataSet.ShapeDatabase orderby area.Area select area;
+            this.canvasManager.SortListByArea();
         }
 
         private void perimeter_Click(object sender, EventArgs e)
         {
-            IOrderedEnumerable<ShapeDatabaseDataSet.ShapeDatabaseRow> perimeterQuery =
-                from perimeter in this.shapeDatabaseDataSet.ShapeDatabase
-                orderby perimeter.PerimeterProperty
-                select perimeter;
+            this.canvasManager.SortListByPerimeter();
         }
 
         private void collisionThenShape_Click(object sender, EventArgs e)
         {
-            IOrderedEnumerable<ShapeDatabaseDataSet.ShapeDatabaseRow> collisionsAndShapeQuery =
-                from collisionsAndShape in this.shapeDatabaseDataSet.ShapeDatabase
-                orderby collisionsAndShape.Collision_Count, collisionsAndShape.Shape_Type
-                select collisionsAndShape;
+            this.canvasManager.SortListByCollisionThenShape();
         }
 
         private void shapeThenColor_Click(object sender, EventArgs e)
         {
-            IOrderedEnumerable<ShapeDatabaseDataSet.ShapeDatabaseRow> shapeThenColorQuery =
-                from shapeThenColor in this.shapeDatabaseDataSet.ShapeDatabase
-                orderby shapeThenColor.Shape_Type, shapeThenColor.Color
-                select shapeThenColor;
+            this.canvasManager.SortListByShapeThenColor();
+        }
+
+        /// <summary>
+        ///     Sends the list to form.
+        /// </summary>
+        /// <param name="shapes">The shapes.</param>
+        public void SendListToForm(List<Shape> shapes)
+        {
+            this.dataGridView1.DataSource = shapes;
         }
     }
 }

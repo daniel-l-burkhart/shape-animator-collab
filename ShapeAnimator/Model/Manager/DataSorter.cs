@@ -29,8 +29,8 @@ namespace ShapeAnimator.Model.Manager
             int redComponent = shapeColor.R;
             int greenComponent = shapeColor.G;
             int blueComponent = shapeColor.B;
-            string ColorValue = "(" + redComponent + "," + greenComponent + "," + blueComponent + ")";
-            this.form.WriteToDataGrid(shapeType, ColorValue, shapeArea, shapePerimeter, collisionCount);
+            string colorValue = "(" + redComponent + "," + greenComponent + "," + blueComponent + ")";
+            this.form.WriteToDataGrid(shapeType, colorValue, shapeArea, shapePerimeter, collisionCount);
         }
     }
 }
