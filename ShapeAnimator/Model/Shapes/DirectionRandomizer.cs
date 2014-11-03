@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using ShapeAnimator.Model.Manager;
 
 namespace ShapeAnimator.Model.Shapes

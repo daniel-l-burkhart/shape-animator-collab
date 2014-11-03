@@ -53,20 +53,21 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager.Update(g);
         }
 
-        private void animateButton_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
             this.dataGridView1.Rows.Clear();
 
             this.animationTimer.Stop();
-            int randomShapes = this.GetNumberOfShapes(this.numberShapesTextBox);
+
+            int randomShapes = this.GetNumberOfShapes(this.randomShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
+
             if (this.shapeNumber > 1)
             {
                 this.dataGridView1.Rows.Add(this.shapeNumber - 1);
             }
-            this.WriteToDataGrid();
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
 
@@ -95,13 +96,42 @@ namespace ShapeAnimator.View.Forms
         {
             this.animationTimer.Start();
             this.canvasManager.ClearCanvas();
+
+            this.CirclesTextBox.Text = "0";
+            this.RectanglesTextBox.Text = "0";
+            this.SpottedRectanglesTextBox.Text = "0";
+            this.randomShapesTextBox.Text = "0";
+
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
+
             this.dataGridView1.Rows.Clear();
         }
 
+        private void area_Click(object sender, EventArgs e)
+        {
+            this.canvasManager.SortListByArea();
+        }
+
+        private void perimeter_Click(object sender, EventArgs e)
+        {
+            this.canvasManager.SortListByPerimeter();
+        }
+
+        private void collisionThenShape_Click(object sender, EventArgs e)
+        {
+            this.canvasManager.SortListByCollisionThenShape();
+        }
+
+        private void shapeThenColor_Click(object sender, EventArgs e)
+        {
+            this.canvasManager.SortListByShapeThenColor();
+        }
+
+        #endregion
+
         /// <summary>
-        ///     Numbers the shapes.
+        ///     Numbers of shapes.
         /// </summary>
         /// <param name="textBox">The text box.</param>
         /// <returns></returns>
@@ -124,8 +154,6 @@ namespace ShapeAnimator.View.Forms
             return number;
         }
 
-        #endregion
-
         /// <summary>
         ///     Writes to data grid.
         /// </summary>
@@ -147,7 +175,6 @@ namespace ShapeAnimator.View.Forms
                 this.addDataToColumn("CollisionCount", shape.CollisionCount.ToString(CultureInfo.InvariantCulture));
                 this.dataGridViewRowIndex++;
             }
-          
         }
 
         private static string colorValue(Color shapeColor)
@@ -180,26 +207,6 @@ namespace ShapeAnimator.View.Forms
                 return;
             }
             this.dataGridView1[currentColumn.Index, this.dataGridViewRowIndex].Value = data;
-        }
-
-        private void area_Click(object sender, EventArgs e)
-        {
-            this.canvasManager.SortListByArea();
-        }
-
-        private void perimeter_Click(object sender, EventArgs e)
-        {
-            this.canvasManager.SortListByPerimeter();
-        }
-
-        private void collisionThenShape_Click(object sender, EventArgs e)
-        {
-            this.canvasManager.SortListByCollisionThenShape();
-        }
-
-        private void shapeThenColor_Click(object sender, EventArgs e)
-        {
-            this.canvasManager.SortListByShapeThenColor();
         }
     }
 }
