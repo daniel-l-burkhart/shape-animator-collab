@@ -21,11 +21,11 @@ namespace ShapeAnimator.Model.Manager.ComparerClasses
         /// <param name="y">The second object to compare.</param>
         public int Compare(Shape x, Shape y)
         {
-            if (x.GetType().ToString() == y.GetType().ToString())
+            if (y.GetType().ToString() == x.GetType().ToString())
             {
-                return x.ShapeColor.ToArgb().CompareTo(y.ShapeColor.ToArgb());
+                return y.ShapeColor.ToArgb().CompareTo(x.ShapeColor.ToArgb());
             }
-            return x.GetType().ToString().CompareTo(y.GetType().ToString());
+            return y.GetType().ToString().CompareTo(x.GetType().ToString());
         }
     }
 }

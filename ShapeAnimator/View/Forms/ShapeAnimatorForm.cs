@@ -147,6 +147,7 @@ namespace ShapeAnimator.View.Forms
                 this.addDataToColumn("CollisionCount", shape.CollisionCount.ToString(CultureInfo.InvariantCulture));
                 this.dataGridViewRowIndex++;
             }
+          
         }
 
         private static string colorValue(Color shapeColor)
