@@ -44,7 +44,15 @@ namespace ShapeAnimator.View.Forms
         {
             this.Refresh();
             this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
-            this.WriteToDataGrid();
+            if (this.radioButton3.Checked)
+            {
+                this.WriteToDataGrid();
+                this.canvasManager.SortListByCollisionThenShape();
+            }
+            else
+            {
+                this.WriteToDataGrid();
+            }
         }
 
         private void shapeCanvasPictureBox_Paint(object sender, PaintEventArgs e)
@@ -70,9 +78,12 @@ namespace ShapeAnimator.View.Forms
             }
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
-
+            this.canvasManager.SortListByArea();
             this.animationTimer.Start();
-
+            this.randomShapesTextBox.Enabled = false;
+            this.CirclesTextBox.Enabled = false;
+            this.SpottedRectanglesTextBox.Enabled = false;
+            this.RectanglesTextBox.Enabled = false;
             this.PauseButton.Enabled = true;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = true;
@@ -106,24 +117,26 @@ namespace ShapeAnimator.View.Forms
             this.ResumeButton.Enabled = false;
 
             this.dataGridView1.Rows.Clear();
+            
         }
 
-        private void area_Click(object sender, EventArgs e)
+
+        private void areaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.canvasManager.SortListByArea();
         }
 
-        private void perimeter_Click(object sender, EventArgs e)
+        private void perimeterRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.canvasManager.SortListByPerimeter();
         }
 
-        private void collisionThenShape_Click(object sender, EventArgs e)
+        private void collisionThenShapeRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.canvasManager.SortListByCollisionThenShape();
         }
 
-        private void shapeThenColor_Click(object sender, EventArgs e)
+        private void shapeThenColorRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.canvasManager.SortListByShapeThenColor();
         }
@@ -208,5 +221,7 @@ namespace ShapeAnimator.View.Forms
             }
             this.dataGridView1[currentColumn.Index, this.dataGridViewRowIndex].Value = data;
         }
+
+      
     }
 }

@@ -43,7 +43,7 @@ namespace ShapeAnimator.Model.Shapes
         public override double CalculateArea()
         {
             double area = this.Width*this.Height;
-            return Math.Round(area, 3);
+            return area;
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace ShapeAnimator.Model.Shapes
         {
             const double perimeterFactor = 2.0;
             double perimeter = (this.Width*perimeterFactor) + (this.Height*perimeterFactor);
-            return Math.Round(perimeter, 3);
+            return perimeter;
         }
 
         #endregion

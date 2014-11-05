@@ -21,7 +21,7 @@ namespace ShapeAnimator.Model.Manager.ComparerClasses
         /// <param name="y">The second object to compare.</param>
         public int Compare(Shape x, Shape y)
         {
-            return y.Perimeter.CompareTo(x.Perimeter);
+            return x.Perimeter.CompareTo(y.Perimeter);
         }
     }
 }

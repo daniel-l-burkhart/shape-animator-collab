@@ -23,9 +23,9 @@ namespace ShapeAnimator.Model.Manager.ComparerClasses
         {
             if (x.GetType().ToString() == y.GetType().ToString())
             {
-                return y.ShapeColor.ToArgb().CompareTo(x.ShapeColor.ToArgb());
+                return x.ShapeColor.ToArgb().CompareTo(y.ShapeColor.ToArgb());
             }
-            return x.GetType().ToString().CompareTo(y.GetType().ToString());
+            return y.GetType().ToString().CompareTo(x.GetType().ToString());
         }
     }
 }

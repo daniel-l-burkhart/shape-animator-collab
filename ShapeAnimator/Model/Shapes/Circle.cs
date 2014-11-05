@@ -45,7 +45,7 @@ namespace ShapeAnimator.Model.Shapes
         {
             double radius = this.Width/2.0;
             double area = (Math.PI*radius*radius);
-            return Math.Round(area, 3);
+            return area;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace ShapeAnimator.Model.Shapes
         public override double CalculatePerimeter()
         {
             double perimeter = Math.PI*this.Width;
-            return Math.Round(perimeter, 3);
+            return perimeter;
         }
 
         #endregion
