@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
 namespace ShapeAnimator.Model.Shapes
@@ -148,6 +149,8 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         protected Shape()
         {
+            this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
+            this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
             this.CollisionCount = 0;
         }
 

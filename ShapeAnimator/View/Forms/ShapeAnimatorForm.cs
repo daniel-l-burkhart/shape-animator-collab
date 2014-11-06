@@ -43,7 +43,8 @@ namespace ShapeAnimator.View.Forms
         private void animationTimer_Tick(object sender, EventArgs e)
         {
             this.Refresh();
-            this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
+            this.checkTimerViaSpeedSlider();
+
             if (this.radioButton3.Checked)
             {
                 this.WriteToDataGrid();
@@ -52,6 +53,19 @@ namespace ShapeAnimator.View.Forms
             else
             {
                 this.WriteToDataGrid();
+            }
+        }
+
+        private void checkTimerViaSpeedSlider()
+        {
+            this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
+            if (this.SpeedSlider.Value == this.SpeedSlider.Minimum)
+            {
+                this.animationTimer.Stop();
+            }
+            else
+            {
+                this.animationTimer.Start();
             }
         }
 
@@ -79,7 +93,9 @@ namespace ShapeAnimator.View.Forms
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
             this.canvasManager.SortListByArea();
+            this.SpeedSlider.Value = 250;
             this.animationTimer.Start();
+
             this.randomShapesTextBox.Enabled = false;
             this.CirclesTextBox.Enabled = false;
             this.SpottedRectanglesTextBox.Enabled = false;
@@ -115,6 +131,11 @@ namespace ShapeAnimator.View.Forms
 
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
+
+            this.randomShapesTextBox.Enabled = true;
+            this.CirclesTextBox.Enabled = true;
+            this.SpottedRectanglesTextBox.Enabled = true;
+            this.RectanglesTextBox.Enabled = true;
 
             this.dataGridView1.Rows.Clear();
             
@@ -179,9 +200,9 @@ namespace ShapeAnimator.View.Forms
             {
                 this.dataGridViewRowIndex = currentRow.Index;
             }
-            foreach (Shape shape in this.canvasManager.ShapeListProperty)
+            foreach (Shape shape in this.canvasManager.Shapes)
             {
-                this.addDataToColumn("ShapeType", shapeType(shape));
+                this.addDataToColumn("ShapeType", shape.GetType().Name);
                 this.addDataToColumn("Color", colorValue(shape.ShapeColor));
                 this.addDataToColumn("PerimeterProperty", shape.Perimeter.ToString("##.000"));
                 this.addDataToColumn("AreaColumn", shape.Area.ToString("##.000"));
@@ -197,19 +218,6 @@ namespace ShapeAnimator.View.Forms
             int blueComponent = shapeColor.B;
             string colorValue = "(" + redComponent + "," + greenComponent + "," + blueComponent + ")";
             return colorValue;
-        }
-
-        private static string shapeType(Shape shape)
-        {
-            if (shape.GetType().ToString().Contains("Circle"))
-            {
-                return "Circle";
-            }
-            if (shape.GetType().ToString().Contains("SpottedRectangle"))
-            {
-                return "Spotted Rectangle";
-            }
-            return "Rectangle";
         }
 
         private void addDataToColumn(string columnName, string data)

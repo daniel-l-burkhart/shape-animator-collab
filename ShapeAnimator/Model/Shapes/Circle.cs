@@ -12,15 +12,15 @@ namespace ShapeAnimator.Model.Shapes
     {
         #region Constructors
 
+        private const int CircleMaxDiameter = 100;
+        private const int CircleMinDiameter = 20;
         /// <summary>
         ///     Initializes a new instance of the <see cref="Circle" /> class.
         /// </summary>
         public Circle()
         {
-            this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
-            this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
-            this.Sprite = new CircleSprite(this, ShapeFactory.Randomizer.Next(20, 100),
-                ShapeFactory.Randomizer.Next(20, 100));
+            int circleDiameter = ShapeFactory.Randomizer.Next(CircleMinDiameter, CircleMaxDiameter);
+            this.Sprite = new CircleSprite(this, circleDiameter, circleDiameter);
         }
 
         /// <summary>

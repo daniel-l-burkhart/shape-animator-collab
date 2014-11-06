@@ -1,11 +1,3 @@
-implemented
 
-textboxes and functionality of specifying the number of each shape
-
-Gui controls and their functionality
-
-Shape movement and boundary collision
-
-various sizes of the shapes
 
 

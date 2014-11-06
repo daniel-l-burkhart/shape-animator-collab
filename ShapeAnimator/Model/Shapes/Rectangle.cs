@@ -11,15 +11,16 @@ namespace ShapeAnimator.Model.Shapes
     {
         #region Constructors
 
+        private const int RectangleMaxWidthAndHeight = 100;
+        private const int RectanlgeMinWidthAndHeight = 20;
+
         /// <summary>
         ///     Creates a rectangle shape
         /// </summary>
         public Rectangle()
         {
-            this.SpeedX = ShapeFactory.Randomizer.Next(-5, 5);
-            this.SpeedY = ShapeFactory.Randomizer.Next(-5, 5);
-            this.Sprite = new RectangleSprite(this, ShapeFactory.Randomizer.Next(20, 100),
-                ShapeFactory.Randomizer.Next(20, 100));
+            this.Sprite = new RectangleSprite(this, ShapeFactory.Randomizer.Next(RectanlgeMinWidthAndHeight, RectangleMaxWidthAndHeight),
+                ShapeFactory.Randomizer.Next(RectanlgeMinWidthAndHeight, RectangleMaxWidthAndHeight));
         }
 
         /// <summary>

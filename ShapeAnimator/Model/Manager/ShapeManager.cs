@@ -28,7 +28,7 @@ namespace ShapeAnimator.Model.Manager
         /// <value>
         ///     The shape list property.
         /// </value>
-        public List<Shape> ShapeListProperty
+        public List<Shape> Shapes
         {
             get { return this.shapes; }
         }
@@ -99,28 +99,48 @@ namespace ShapeAnimator.Model.Manager
             {
                 if (this.checkHorizontalRightBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.LeftOrUp;
-                    shape.CollisionCount++;
+                    checkRightBoundary(shape);
                 }
 
                 else if (this.checkVerticalBottomBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.LeftOrUp;
-                    shape.CollisionCount++;
+                    checkBottomBoundary(shape);
                 }
 
                 else if (this.checkHorizontalLeftBounds(shape))
                 {
-                    shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.RightOrDown;
-                    shape.CollisionCount++;
+                    checkLeftBoundary(shape);
                 }
 
                 else if (this.checkVerticalTopBounds(shape))
                 {
-                    shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
-                    shape.CollisionCount++;
+                    checkTopBoundary(shape);
                 }
             }
+        }
+
+        private static void checkTopBoundary(Shape shape)
+        {
+            shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
+            shape.CollisionCount++;
+        }
+
+        private static void checkLeftBoundary(Shape shape)
+        {
+            shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.RightOrDown;
+            shape.CollisionCount++;
+        }
+
+        private static void checkBottomBoundary(Shape shape)
+        {
+            shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.LeftOrUp;
+            shape.CollisionCount++;
+        }
+
+        private static void checkRightBoundary(Shape shape)
+        {
+            shape.SpeedX = Math.Abs(shape.SpeedX)*(int) DirectionRandomizer.Directions.LeftOrUp;
+            shape.CollisionCount++;
         }
 
         private bool checkHorizontalRightBounds(Shape shape)
