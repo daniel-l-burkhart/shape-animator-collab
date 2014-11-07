@@ -20,8 +20,6 @@ namespace ShapeAnimator.View.Forms
         #region Instance variables
 
         private readonly ShapeManager canvasManager;
-      
-        private int shapeNumber;
 
         private enum ControlsEnum
         {
@@ -54,7 +52,6 @@ namespace ShapeAnimator.View.Forms
         private void animationTimer_Tick(object sender, EventArgs e)
         {
             this.Refresh();
-            this.checkTimerViaSpeedSlider();
 
             if (this.radioButton3.Checked)
             {
@@ -67,18 +64,7 @@ namespace ShapeAnimator.View.Forms
             }
         }
 
-        private void checkTimerViaSpeedSlider()
-        {
-            this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
-            if (this.SpeedSlider.Value == this.SpeedSlider.Minimum)
-            {
-                this.animationTimer.Stop();
-            }
-            else
-            {
-                this.animationTimer.Start();
-            }
-        }
+        
 
         private void shapeCanvasPictureBox_Paint(object sender, PaintEventArgs e)
         {
@@ -88,7 +74,7 @@ namespace ShapeAnimator.View.Forms
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.Rows.Clear();
+            //this.dataGridView1.Rows.Clear();
 
             this.animationTimer.Stop();
 
@@ -102,6 +88,20 @@ namespace ShapeAnimator.View.Forms
             this.SpeedSlider.Value = 250;
             this.animationTimer.Start();
             this.enableOrDisableControls(ControlsEnum.Start);
+        }
+
+        private void speedSliderValueChanged(object sender, EventArgs e)
+        {
+            this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
+
+            if (this.SpeedSlider.Value == this.SpeedSlider.Minimum)
+            {
+                this.animationTimer.Stop();
+            }
+            else
+            {
+                this.animationTimer.Start();
+            }
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -210,7 +210,7 @@ namespace ShapeAnimator.View.Forms
             {
                 MessageBox.Show(Resources.Must_Be_Integer);
             }
-            this.shapeNumber += number;
+
             return number;
         }
 
@@ -222,6 +222,7 @@ namespace ShapeAnimator.View.Forms
         {
             
             var thisShape = from currentShape in this.canvasManager.Shapes select currentShape;
+
             this.dataGridView1.DataSource =
                 thisShape.Select(
                     currentShape =>
@@ -233,6 +234,7 @@ namespace ShapeAnimator.View.Forms
                             Perimeter = currentShape.Perimeter.ToString("####.000"),
                             Collisions = currentShape.CollisionCount
                         }).ToList();
+
             this.dataGridView1.AutoGenerateColumns = true;
             this.DoubleBuffered = true;
             
