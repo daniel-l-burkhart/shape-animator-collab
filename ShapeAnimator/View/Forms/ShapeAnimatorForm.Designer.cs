@@ -228,7 +228,7 @@ namespace ShapeAnimator.View.Forms
             this.dataGridView1.Location = new System.Drawing.Point(734, 90);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(462, 495);
+            this.dataGridView1.Size = new System.Drawing.Size(458, 480);
             this.dataGridView1.TabIndex = 23;
             // 
             // sortByGroupBox
@@ -303,7 +303,7 @@ namespace ShapeAnimator.View.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 589);
+            this.ClientSize = new System.Drawing.Size(1196, 574);
             this.Controls.Add(this.sortByGroupBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);

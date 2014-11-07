@@ -229,15 +229,29 @@ namespace ShapeAnimator.View.Forms
                         new
                         {
                             Type = currentShape.GetType().Name,
-                            Color = colorValue(currentShape.ShapeColor),
+                            Color = colorValue(currentShape.ShapeColor),  
                             Area = currentShape.Area.ToString("####.000"),
                             Perimeter = currentShape.Perimeter.ToString("####.000"),
                             Collisions = currentShape.CollisionCount
                         }).ToList();
-
+            this.setPerimeterAndAreaToAllignAtDecimal();
             this.dataGridView1.AutoGenerateColumns = true;
             this.DoubleBuffered = true;
             
+        }
+
+        private void setPerimeterAndAreaToAllignAtDecimal()
+        {
+            var dataGridViewColumn = this.dataGridView1.Columns["Area"];
+            if (dataGridViewColumn != null)
+            {
+                dataGridViewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            var gridViewColumn = this.dataGridView1.Columns["Perimeter"];
+            if (gridViewColumn != null)
+            {
+                gridViewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
         }
 
         private static string colorValue(Color shapeColor)
