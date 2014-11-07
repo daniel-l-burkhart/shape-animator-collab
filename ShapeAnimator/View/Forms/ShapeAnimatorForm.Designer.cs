@@ -53,16 +53,16 @@ namespace ShapeAnimator.View.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Perimeter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CollisionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortByGroupBox = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PerimeterProperty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CollisionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -230,7 +230,7 @@ namespace ShapeAnimator.View.Forms
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShapeType,
             this.Color,
-            this.PerimeterProperty,
+            this.Perimeter,
             this.AreaColumn,
             this.CollisionCount});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -239,6 +239,42 @@ namespace ShapeAnimator.View.Forms
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(462, 495);
             this.dataGridView1.TabIndex = 23;
+            // 
+            // ShapeType
+            // 
+            this.ShapeType.HeaderText = "Shape Type";
+            this.ShapeType.Name = "ShapeType";
+            this.ShapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ShapeType.Width = 90;
+            // 
+            // Color
+            // 
+            this.Color.HeaderText = "Color";
+            this.Color.Name = "Color";
+            this.Color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Color.Width = 56;
+            // 
+            // Perimeter
+            // 
+            this.Perimeter.DataPropertyName = "Perimeter";
+            this.Perimeter.HeaderText = "Perimeter";
+            this.Perimeter.Name = "Perimeter";
+            this.Perimeter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Perimeter.Width = 76;
+            // 
+            // AreaColumn
+            // 
+            this.AreaColumn.HeaderText = "Area";
+            this.AreaColumn.Name = "AreaColumn";
+            this.AreaColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.AreaColumn.Width = 54;
+            // 
+            // CollisionCount
+            // 
+            this.CollisionCount.HeaderText = "Collision Count";
+            this.CollisionCount.Name = "CollisionCount";
+            this.CollisionCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.CollisionCount.Width = 101;
             // 
             // sortByGroupBox
             // 
@@ -308,42 +344,6 @@ namespace ShapeAnimator.View.Forms
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.areaRadioButton_CheckedChanged);
             // 
-            // ShapeType
-            // 
-            this.ShapeType.HeaderText = "Shape Type";
-            this.ShapeType.Name = "ShapeType";
-            this.ShapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ShapeType.Width = 90;
-            // 
-            // Color
-            // 
-            this.Color.HeaderText = "Color";
-            this.Color.Name = "Color";
-            this.Color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Color.Width = 56;
-            // 
-            // PerimeterProperty
-            // 
-            this.PerimeterProperty.DataPropertyName = "PerimeterProperty";
-            this.PerimeterProperty.HeaderText = "Perimeter";
-            this.PerimeterProperty.Name = "PerimeterProperty";
-            this.PerimeterProperty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.PerimeterProperty.Width = 76;
-            // 
-            // AreaColumn
-            // 
-            this.AreaColumn.HeaderText = "Area";
-            this.AreaColumn.Name = "AreaColumn";
-            this.AreaColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.AreaColumn.Width = 54;
-            // 
-            // CollisionCount
-            // 
-            this.CollisionCount.HeaderText = "Collision Count";
-            this.CollisionCount.Name = "CollisionCount";
-            this.CollisionCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.CollisionCount.Width = 101;
-            // 
             // ShapeAnimatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,7 +369,7 @@ namespace ShapeAnimator.View.Forms
             this.Controls.Add(this.canvasPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ShapeAnimatorForm";
-            this.Text = "Shape Animator A4 by Odom and Burkhart";
+            this.Text = "Shape Animator A5 by Odom and Burkhart";
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -408,7 +408,7 @@ namespace ShapeAnimator.View.Forms
         private GroupBox sortByGroupBox;
         private DataGridViewTextBoxColumn ShapeType;
         private DataGridViewTextBoxColumn Color;
-        private DataGridViewTextBoxColumn PerimeterProperty;
+        private DataGridViewTextBoxColumn Perimeter;
         private DataGridViewTextBoxColumn AreaColumn;
         private DataGridViewTextBoxColumn CollisionCount;
     }

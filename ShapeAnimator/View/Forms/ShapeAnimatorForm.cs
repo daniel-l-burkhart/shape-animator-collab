@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace ShapeAnimator.View.Forms
         private readonly ShapeManager canvasManager;
         private int dataGridViewRowIndex;
         private int shapeNumber;
+        private DataSet dataSet;
+        private DataTable dataTableForDataSet;
 
         #endregion
 
@@ -34,6 +37,7 @@ namespace ShapeAnimator.View.Forms
             this.PauseButton.Enabled = false;
             this.ResumeButton.Enabled = false;
             this.ClearButton.Enabled = false;
+           
         }
 
         #endregion
@@ -204,7 +208,7 @@ namespace ShapeAnimator.View.Forms
             {
                 this.addDataToColumn("ShapeType", shape.GetType().Name);
                 this.addDataToColumn("Color", colorValue(shape.ShapeColor));
-                this.addDataToColumn("PerimeterProperty", shape.Perimeter.ToString("##.000"));
+                this.addDataToColumn("Perimeter", shape.Perimeter.ToString("##.000"));
                 this.addDataToColumn("AreaColumn", shape.Area.ToString("##.000"));
                 this.addDataToColumn("CollisionCount", shape.CollisionCount.ToString(CultureInfo.InvariantCulture));
                 this.dataGridViewRowIndex++;
@@ -222,6 +226,7 @@ namespace ShapeAnimator.View.Forms
 
         private void addDataToColumn(string columnName, string data)
         {
+
             DataGridViewColumn currentColumn = this.dataGridView1.Columns[columnName];
             if (currentColumn == null)
             {

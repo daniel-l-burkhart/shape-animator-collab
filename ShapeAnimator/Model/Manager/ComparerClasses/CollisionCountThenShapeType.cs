@@ -23,7 +23,7 @@ namespace ShapeAnimator.Model.Manager.ComparerClasses
         {
             if (x.CollisionCount == y.CollisionCount)
             {
-                int compareTo = y.GetType().ToString().CompareTo(x.GetType().ToString());
+                int compareTo = System.String.Compare(y.GetType().Name, x.GetType().Name, System.StringComparison.Ordinal);
                 return compareTo;
             }
             return x.CollisionCount.CompareTo(y.CollisionCount);

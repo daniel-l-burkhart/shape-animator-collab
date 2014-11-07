@@ -53,8 +53,8 @@ namespace ShapeAnimator.Model.Shapes
         /// <returns></returns>
         public override double CalculatePerimeter()
         {
-            const double perimeterFactor = 2.0;
-            double perimeter = (this.Width*perimeterFactor) + (this.Height*perimeterFactor);
+            
+            double perimeter = (this.Width*2.0) + (this.Height*2.0);
             return perimeter;
         }
 
