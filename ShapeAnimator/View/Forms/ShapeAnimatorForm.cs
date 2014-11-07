@@ -1,5 +1,6 @@
 using System;
-using System.Data;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -18,9 +19,18 @@ namespace ShapeAnimator.View.Forms
 
         private readonly ShapeManager canvasManager;
         private int dataGridViewRowIndex;
+
+        private List<Component> listOfComponents;
         private int shapeNumber;
-        private DataSet dataSet;
-        private DataTable dataTableForDataSet;
+
+        private enum ControlsEnum
+        {
+            Initialize,
+            Start,
+            Pause,
+            Resume,
+            CLear
+        }
 
         #endregion
 
@@ -34,10 +44,7 @@ namespace ShapeAnimator.View.Forms
         {
             this.InitializeComponent();
             this.canvasManager = new ShapeManager(this.canvasPictureBox);
-            this.PauseButton.Enabled = false;
-            this.ResumeButton.Enabled = false;
-            this.ClearButton.Enabled = false;
-           
+            this.enableOrDisableControls(ControlsEnum.Initialize);
         }
 
         #endregion
@@ -99,28 +106,19 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
             this.animationTimer.Start();
-
-            this.randomShapesTextBox.Enabled = false;
-            this.CirclesTextBox.Enabled = false;
-            this.SpottedRectanglesTextBox.Enabled = false;
-            this.RectanglesTextBox.Enabled = false;
-            this.PauseButton.Enabled = true;
-            this.ResumeButton.Enabled = false;
-            this.ClearButton.Enabled = true;
+            this.enableOrDisableControls(ControlsEnum.Start);
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
             this.animationTimer.Stop();
-            this.PauseButton.Enabled = false;
-            this.ResumeButton.Enabled = true;
+            this.enableOrDisableControls(ControlsEnum.Pause);
         }
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
             this.animationTimer.Start();
-            this.PauseButton.Enabled = true;
-            this.ResumeButton.Enabled = false;
+            this.enableOrDisableControls(ControlsEnum.Resume);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -132,19 +130,10 @@ namespace ShapeAnimator.View.Forms
             this.RectanglesTextBox.Text = "0";
             this.SpottedRectanglesTextBox.Text = "0";
             this.randomShapesTextBox.Text = "0";
-
-            this.PauseButton.Enabled = false;
-            this.ResumeButton.Enabled = false;
-
-            this.randomShapesTextBox.Enabled = true;
-            this.CirclesTextBox.Enabled = true;
-            this.SpottedRectanglesTextBox.Enabled = true;
-            this.RectanglesTextBox.Enabled = true;
+            this.enableOrDisableControls(ControlsEnum.CLear);
 
             this.dataGridView1.Rows.Clear();
-            
         }
-
 
         private void areaRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -164,6 +153,44 @@ namespace ShapeAnimator.View.Forms
         private void shapeThenColorRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             this.canvasManager.SortListByShapeThenColor();
+        }
+
+        private void enableOrDisableControls(ControlsEnum currentControl)
+        {
+            switch (currentControl)
+            {
+                case ControlsEnum.Initialize:
+                    this.PauseButton.Enabled = false;
+                    this.ResumeButton.Enabled = false;
+                    this.ClearButton.Enabled = false;
+                    break;
+                case ControlsEnum.Start:
+                    this.randomShapesTextBox.Enabled = false;
+                    this.CirclesTextBox.Enabled = false;
+                    this.SpottedRectanglesTextBox.Enabled = false;
+                    this.RectanglesTextBox.Enabled = false;
+                    this.PauseButton.Enabled = true;
+                    this.ResumeButton.Enabled = false;
+                    this.ClearButton.Enabled = true;
+                    break;
+                case ControlsEnum.Pause:
+                    this.PauseButton.Enabled = false;
+                    this.ResumeButton.Enabled = true;
+                    break;
+                case ControlsEnum.Resume:
+                    this.PauseButton.Enabled = true;
+                    this.ResumeButton.Enabled = false;
+                    break;
+                case ControlsEnum.CLear:
+                    this.PauseButton.Enabled = false;
+                    this.ResumeButton.Enabled = false;
+
+                    this.randomShapesTextBox.Enabled = true;
+                    this.CirclesTextBox.Enabled = true;
+                    this.SpottedRectanglesTextBox.Enabled = true;
+                    this.RectanglesTextBox.Enabled = true;
+                    break;
+            }
         }
 
         #endregion
@@ -232,9 +259,8 @@ namespace ShapeAnimator.View.Forms
             {
                 return;
             }
+
             this.dataGridView1[currentColumn.Index, this.dataGridViewRowIndex].Value = data;
         }
-
-      
     }
 }
