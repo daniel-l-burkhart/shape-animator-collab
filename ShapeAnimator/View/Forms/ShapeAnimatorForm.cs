@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.Model.Shapes;
@@ -18,9 +20,7 @@ namespace ShapeAnimator.View.Forms
         #region Instance variables
 
         private readonly ShapeManager canvasManager;
-        private int dataGridViewRowIndex;
-
-        private List<Component> listOfComponents;
+      
         private int shapeNumber;
 
         private enum ControlsEnum
@@ -96,11 +96,6 @@ namespace ShapeAnimator.View.Forms
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
-
-            if (this.shapeNumber > 1)
-            {
-                this.dataGridView1.Rows.Add(this.shapeNumber - 1);
-            }
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
             this.canvasManager.SortListByArea();
@@ -225,21 +220,22 @@ namespace ShapeAnimator.View.Forms
         /// <exception cref="System.NotImplementedException"></exception>
         public void WriteToDataGrid()
         {
+            
+            var thisShape = from currentShape in this.canvasManager.Shapes select currentShape;
+            this.dataGridView1.DataSource =
+                thisShape.Select(
+                    currentShape =>
+                        new
+                        {
+                            Type = currentShape.GetType().Name,
+                            Color = colorValue(currentShape.ShapeColor),
+                            Area = currentShape.Area.ToString("####.000"),
+                            Perimeter = currentShape.Perimeter.ToString("####.000"),
+                            Collisions = currentShape.CollisionCount
+                        }).ToList();
+            this.dataGridView1.AutoGenerateColumns = true;
             this.DoubleBuffered = true;
-            DataGridViewRow currentRow = this.dataGridView1.CurrentRow;
-            if (currentRow != null)
-            {
-                this.dataGridViewRowIndex = currentRow.Index;
-            }
-            foreach (Shape shape in this.canvasManager.Shapes)
-            {
-                this.addDataToColumn("ShapeType", shape.GetType().Name);
-                this.addDataToColumn("Color", colorValue(shape.ShapeColor));
-                this.addDataToColumn("Perimeter", shape.Perimeter.ToString("##.000"));
-                this.addDataToColumn("AreaColumn", shape.Area.ToString("##.000"));
-                this.addDataToColumn("CollisionCount", shape.CollisionCount.ToString(CultureInfo.InvariantCulture));
-                this.dataGridViewRowIndex++;
-            }
+            
         }
 
         private static string colorValue(Color shapeColor)
@@ -251,16 +247,7 @@ namespace ShapeAnimator.View.Forms
             return colorValue;
         }
 
-        private void addDataToColumn(string columnName, string data)
-        {
 
-            DataGridViewColumn currentColumn = this.dataGridView1.Columns[columnName];
-            if (currentColumn == null)
-            {
-                return;
-            }
-
-            this.dataGridView1[currentColumn.Index, this.dataGridViewRowIndex].Value = data;
-        }
+      
     }
 }

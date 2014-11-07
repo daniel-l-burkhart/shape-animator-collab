@@ -53,11 +53,6 @@ namespace ShapeAnimator.View.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ShapeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Perimeter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CollisionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortByGroupBox = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -72,9 +67,10 @@ namespace ShapeAnimator.View.Forms
             // canvasPictureBox
             // 
             this.canvasPictureBox.BackColor = System.Drawing.Color.Black;
-            this.canvasPictureBox.Location = new System.Drawing.Point(8, 90);
+            this.canvasPictureBox.Location = new System.Drawing.Point(16, 173);
+            this.canvasPictureBox.Margin = new System.Windows.Forms.Padding(6);
             this.canvasPictureBox.Name = "canvasPictureBox";
-            this.canvasPictureBox.Size = new System.Drawing.Size(720, 480);
+            this.canvasPictureBox.Size = new System.Drawing.Size(1440, 923);
             this.canvasPictureBox.TabIndex = 0;
             this.canvasPictureBox.TabStop = false;
             this.canvasPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.shapeCanvasPictureBox_Paint);
@@ -86,25 +82,28 @@ namespace ShapeAnimator.View.Forms
             // numberOfShapesLabel
             // 
             this.numberOfShapesLabel.AutoSize = true;
-            this.numberOfShapesLabel.Location = new System.Drawing.Point(9, 9);
+            this.numberOfShapesLabel.Location = new System.Drawing.Point(18, 17);
+            this.numberOfShapesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.numberOfShapesLabel.Name = "numberOfShapesLabel";
-            this.numberOfShapesLabel.Size = new System.Drawing.Size(86, 13);
+            this.numberOfShapesLabel.Size = new System.Drawing.Size(171, 25);
             this.numberOfShapesLabel.TabIndex = 1;
             this.numberOfShapesLabel.Text = "Random Shapes";
             // 
             // randomShapesTextBox
             // 
-            this.randomShapesTextBox.Location = new System.Drawing.Point(101, 6);
+            this.randomShapesTextBox.Location = new System.Drawing.Point(202, 12);
+            this.randomShapesTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.randomShapesTextBox.Name = "randomShapesTextBox";
-            this.randomShapesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.randomShapesTextBox.Size = new System.Drawing.Size(90, 31);
             this.randomShapesTextBox.TabIndex = 2;
             this.randomShapesTextBox.Text = "0";
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(12, 32);
+            this.startButton.Location = new System.Drawing.Point(24, 62);
+            this.startButton.Margin = new System.Windows.Forms.Padding(6);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.Size = new System.Drawing.Size(150, 44);
             this.startButton.TabIndex = 3;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -112,9 +111,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(93, 32);
+            this.PauseButton.Location = new System.Drawing.Point(186, 62);
+            this.PauseButton.Margin = new System.Windows.Forms.Padding(6);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(75, 23);
+            this.PauseButton.Size = new System.Drawing.Size(150, 44);
             this.PauseButton.TabIndex = 4;
             this.PauseButton.Text = "Pause";
             this.PauseButton.UseVisualStyleBackColor = true;
@@ -122,9 +122,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // ResumeButton
             // 
-            this.ResumeButton.Location = new System.Drawing.Point(176, 32);
+            this.ResumeButton.Location = new System.Drawing.Point(352, 62);
+            this.ResumeButton.Margin = new System.Windows.Forms.Padding(6);
             this.ResumeButton.Name = "ResumeButton";
-            this.ResumeButton.Size = new System.Drawing.Size(75, 23);
+            this.ResumeButton.Size = new System.Drawing.Size(150, 44);
             this.ResumeButton.TabIndex = 5;
             this.ResumeButton.Text = "Resume";
             this.ResumeButton.UseVisualStyleBackColor = true;
@@ -132,9 +133,10 @@ namespace ShapeAnimator.View.Forms
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(256, 32);
+            this.ClearButton.Location = new System.Drawing.Point(512, 62);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(6);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.Size = new System.Drawing.Size(150, 44);
             this.ClearButton.TabIndex = 6;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -142,63 +144,69 @@ namespace ShapeAnimator.View.Forms
             // 
             // RectanglesTextBox
             // 
-            this.RectanglesTextBox.Location = new System.Drawing.Point(349, 6);
+            this.RectanglesTextBox.Location = new System.Drawing.Point(698, 12);
+            this.RectanglesTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.RectanglesTextBox.Name = "RectanglesTextBox";
-            this.RectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.RectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.RectanglesTextBox.TabIndex = 7;
             this.RectanglesTextBox.Text = "0";
             // 
             // CirclesTextBox
             // 
-            this.CirclesTextBox.Location = new System.Drawing.Point(214, 6);
+            this.CirclesTextBox.Location = new System.Drawing.Point(428, 12);
+            this.CirclesTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.CirclesTextBox.Name = "CirclesTextBox";
-            this.CirclesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.CirclesTextBox.Size = new System.Drawing.Size(90, 31);
             this.CirclesTextBox.TabIndex = 8;
             this.CirclesTextBox.Text = "0";
             // 
             // SpottedRectanglesTextBox
             // 
-            this.SpottedRectanglesTextBox.Location = new System.Drawing.Point(523, 6);
+            this.SpottedRectanglesTextBox.Location = new System.Drawing.Point(1046, 12);
+            this.SpottedRectanglesTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.SpottedRectanglesTextBox.Name = "SpottedRectanglesTextBox";
-            this.SpottedRectanglesTextBox.Size = new System.Drawing.Size(47, 20);
+            this.SpottedRectanglesTextBox.Size = new System.Drawing.Size(90, 31);
             this.SpottedRectanglesTextBox.TabIndex = 9;
             this.SpottedRectanglesTextBox.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(416, 9);
+            this.label1.Location = new System.Drawing.Point(832, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(200, 25);
             this.label1.TabIndex = 10;
             this.label1.Text = "Spotted Rectangles";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 9);
+            this.label2.Location = new System.Drawing.Point(564, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(120, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Rectangles";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 9);
+            this.label3.Location = new System.Drawing.Point(346, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(78, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Circles";
             // 
             // SpeedSlider
             // 
             this.SpeedSlider.LargeChange = 50;
-            this.SpeedSlider.Location = new System.Drawing.Point(404, 32);
-            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(2);
+            this.SpeedSlider.Location = new System.Drawing.Point(808, 62);
+            this.SpeedSlider.Margin = new System.Windows.Forms.Padding(4);
             this.SpeedSlider.Maximum = 500;
             this.SpeedSlider.Name = "SpeedSlider";
-            this.SpeedSlider.Size = new System.Drawing.Size(276, 45);
+            this.SpeedSlider.Size = new System.Drawing.Size(552, 90);
             this.SpeedSlider.SmallChange = 20;
             this.SpeedSlider.TabIndex = 20;
             this.SpeedSlider.TickFrequency = 50;
@@ -207,18 +215,20 @@ namespace ShapeAnimator.View.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(357, 32);
+            this.label4.Location = new System.Drawing.Point(714, 62);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 21;
             this.label4.Text = "Speed: ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(360, 50);
+            this.label5.Location = new System.Drawing.Point(720, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.Size = new System.Drawing.Size(67, 25);
             this.label5.TabIndex = 22;
             this.label5.Text = "0-500";
             // 
@@ -227,54 +237,13 @@ namespace ShapeAnimator.View.Forms
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ShapeType,
-            this.Color,
-            this.Perimeter,
-            this.AreaColumn,
-            this.CollisionCount});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(734, 90);
+            this.dataGridView1.Location = new System.Drawing.Point(1468, 173);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(462, 495);
+            this.dataGridView1.Size = new System.Drawing.Size(924, 952);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // ShapeType
-            // 
-            this.ShapeType.HeaderText = "Shape Type";
-            this.ShapeType.Name = "ShapeType";
-            this.ShapeType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ShapeType.Width = 90;
-            // 
-            // Color
-            // 
-            this.Color.HeaderText = "Color";
-            this.Color.Name = "Color";
-            this.Color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Color.Width = 56;
-            // 
-            // Perimeter
-            // 
-            this.Perimeter.DataPropertyName = "Perimeter";
-            this.Perimeter.HeaderText = "Perimeter";
-            this.Perimeter.Name = "Perimeter";
-            this.Perimeter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Perimeter.Width = 76;
-            // 
-            // AreaColumn
-            // 
-            this.AreaColumn.HeaderText = "Area";
-            this.AreaColumn.Name = "AreaColumn";
-            this.AreaColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.AreaColumn.Width = 54;
-            // 
-            // CollisionCount
-            // 
-            this.CollisionCount.HeaderText = "Collision Count";
-            this.CollisionCount.Name = "CollisionCount";
-            this.CollisionCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.CollisionCount.Width = 101;
             // 
             // sortByGroupBox
             // 
@@ -282,11 +251,11 @@ namespace ShapeAnimator.View.Forms
             this.sortByGroupBox.Controls.Add(this.radioButton3);
             this.sortByGroupBox.Controls.Add(this.radioButton2);
             this.sortByGroupBox.Controls.Add(this.radioButton1);
-            this.sortByGroupBox.Location = new System.Drawing.Point(704, 11);
-            this.sortByGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.sortByGroupBox.Location = new System.Drawing.Point(1408, 21);
+            this.sortByGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.sortByGroupBox.Name = "sortByGroupBox";
-            this.sortByGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.sortByGroupBox.Size = new System.Drawing.Size(449, 66);
+            this.sortByGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.sortByGroupBox.Size = new System.Drawing.Size(898, 127);
             this.sortByGroupBox.TabIndex = 26;
             this.sortByGroupBox.TabStop = false;
             this.sortByGroupBox.Text = "Sort By:";
@@ -294,10 +263,10 @@ namespace ShapeAnimator.View.Forms
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(280, 21);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton4.Location = new System.Drawing.Point(560, 40);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(132, 17);
+            this.radioButton4.Size = new System.Drawing.Size(260, 29);
             this.radioButton4.TabIndex = 7;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Shape Type And Color";
@@ -307,10 +276,10 @@ namespace ShapeAnimator.View.Forms
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(121, 21);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton3.Location = new System.Drawing.Point(242, 40);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(151, 17);
+            this.radioButton3.Size = new System.Drawing.Size(302, 29);
             this.radioButton3.TabIndex = 6;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Collisions And Shape Type";
@@ -320,10 +289,10 @@ namespace ShapeAnimator.View.Forms
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(50, 21);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Location = new System.Drawing.Point(100, 40);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(69, 17);
+            this.radioButton2.Size = new System.Drawing.Size(135, 29);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Perimeter";
@@ -334,10 +303,10 @@ namespace ShapeAnimator.View.Forms
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(4, 20);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Location = new System.Drawing.Point(8, 38);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 17);
+            this.radioButton1.Size = new System.Drawing.Size(88, 29);
             this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Area";
@@ -346,9 +315,9 @@ namespace ShapeAnimator.View.Forms
             // 
             // ShapeAnimatorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 591);
+            this.ClientSize = new System.Drawing.Size(2408, 1137);
             this.Controls.Add(this.sortByGroupBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
@@ -368,6 +337,7 @@ namespace ShapeAnimator.View.Forms
             this.Controls.Add(this.numberOfShapesLabel);
             this.Controls.Add(this.canvasPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "ShapeAnimatorForm";
             this.Text = "Shape Animator A5 by Odom and Burkhart";
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
@@ -406,11 +376,6 @@ namespace ShapeAnimator.View.Forms
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private GroupBox sortByGroupBox;
-        private DataGridViewTextBoxColumn ShapeType;
-        private DataGridViewTextBoxColumn Color;
-        private DataGridViewTextBoxColumn Perimeter;
-        private DataGridViewTextBoxColumn AreaColumn;
-        private DataGridViewTextBoxColumn CollisionCount;
     }
 }
 
