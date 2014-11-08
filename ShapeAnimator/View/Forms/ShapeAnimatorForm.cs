@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ShapeAnimator.Model.Manager;
@@ -74,7 +75,6 @@ namespace ShapeAnimator.View.Forms
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            //this.dataGridView1.Rows.Clear();
 
             this.animationTimer.Stop();
 
@@ -83,11 +83,26 @@ namespace ShapeAnimator.View.Forms
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
 
+            int totalNumberOfShapes = circles + rectangles + spottedRectangles + randomShapes;
+
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
-            this.animationTimer.Start();
-            this.enableOrDisableControls(ControlsEnum.Start);
+
+            this.checkTotalNumberOfShapes(totalNumberOfShapes);
+        }
+
+        private void checkTotalNumberOfShapes(int totalNumberOfShapes)
+        {
+            if (totalNumberOfShapes > 10)
+            {
+                MessageBox.Show("Cannot have more than 10 shapes!");
+            }
+            else
+            {
+                this.animationTimer.Start();
+                this.enableOrDisableControls(ControlsEnum.Start);
+            }
         }
 
         private void speedSliderValueChanged(object sender, EventArgs e)
@@ -101,6 +116,24 @@ namespace ShapeAnimator.View.Forms
             else
             {
                 this.animationTimer.Start();
+            }
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            this.pauseButton_Click(sender, e);
+            var mouseEvent = (MouseEventArgs)e;
+            Point cursorPosition = mouseEvent.Location;
+            foreach (var shape in this.canvasManager.Shapes)
+            {
+                if (shape.IsHit(cursorPosition.X , cursorPosition.Y))
+                {
+                    DialogResult result = colorDialog1.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        shape.Sprite.SpriteColor = colorDialog1.Color;
+                    }
+                }
             }
         }
 
@@ -126,8 +159,6 @@ namespace ShapeAnimator.View.Forms
             this.SpottedRectanglesTextBox.Text = "0";
             this.randomShapesTextBox.Text = "0";
             this.enableOrDisableControls(ControlsEnum.CLear);
-
-            this.dataGridView1.Rows.Clear();
         }
 
         private void areaRadioButton_CheckedChanged(object sender, EventArgs e)

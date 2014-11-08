@@ -37,7 +37,7 @@ namespace ShapeAnimator.View.Shapes
             {
                 throw new ArgumentNullException("graphics");
             }
-            var yellowBrush = new SolidBrush(this.RandomizedColor);
+            var yellowBrush = new SolidBrush(this.SpriteColor);
             graphics.FillRectangle(yellowBrush, this.X, this.Y, this.Width, this.Height);
         }
 

@@ -4,7 +4,7 @@ using ShapeAnimator.Model.Shapes;
 namespace ShapeAnimator.Model.Manager.ComparerClasses
 {
     /// <summary>
-    ///     Compares by type then Color
+    ///     Compares by type then spriteColor
     /// </summary>
     public class TypeThenColorComparer : IComparer<Shape>
     {

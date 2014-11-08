@@ -59,6 +59,7 @@ namespace ShapeAnimator.View.Forms
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,6 +75,7 @@ namespace ShapeAnimator.View.Forms
             this.canvasPictureBox.TabIndex = 0;
             this.canvasPictureBox.TabStop = false;
             this.canvasPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.shapeCanvasPictureBox_Paint);
+            this.canvasPictureBox.Click += new EventHandler(this.pictureBox_Click);
             // 
             // animationTimer
             // 
@@ -237,11 +239,11 @@ namespace ShapeAnimator.View.Forms
             this.sortByGroupBox.Controls.Add(this.radioButton3);
             this.sortByGroupBox.Controls.Add(this.radioButton2);
             this.sortByGroupBox.Controls.Add(this.radioButton1);
-            this.sortByGroupBox.Location = new System.Drawing.Point(753, 25);
+            this.sortByGroupBox.Location = new System.Drawing.Point(734, 25);
             this.sortByGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.sortByGroupBox.Name = "sortByGroupBox";
             this.sortByGroupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.sortByGroupBox.Size = new System.Drawing.Size(421, 52);
+            this.sortByGroupBox.Size = new System.Drawing.Size(440, 52);
             this.sortByGroupBox.TabIndex = 26;
             this.sortByGroupBox.TabStop = false;
             this.sortByGroupBox.Text = "Sort By:";
@@ -249,13 +251,13 @@ namespace ShapeAnimator.View.Forms
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(280, 21);
+            this.radioButton4.Location = new System.Drawing.Point(276, 20);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(132, 17);
+            this.radioButton4.Size = new System.Drawing.Size(157, 17);
             this.radioButton4.TabIndex = 7;
             this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Shape Type And Color";
+            this.radioButton4.Text = "Shape Type And spriteColor";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.shapeThenColorRadioButton_CheckedChanged);
             // 
@@ -361,6 +363,7 @@ namespace ShapeAnimator.View.Forms
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private GroupBox sortByGroupBox;
+        private ColorDialog colorDialog1;
     }
 }
 

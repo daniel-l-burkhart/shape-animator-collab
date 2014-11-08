@@ -35,7 +35,7 @@ namespace ShapeAnimator.View.Shapes
         public override void Paint(Graphics graphics)
         {
             base.Paint(graphics);
-            var redBrush = new SolidBrush(Color.Red);
+            var redBrush = new SolidBrush(System.Drawing.Color.Red);
             graphics.FillEllipse(redBrush, this.X, this.Y, WidthOfSpot, HeightOfSpot);
         }
 

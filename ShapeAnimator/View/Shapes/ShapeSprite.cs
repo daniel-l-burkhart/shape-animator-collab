@@ -14,7 +14,7 @@ namespace ShapeAnimator.View.Shapes
 
         private readonly int height;
 
-        private readonly Color randomizedColor;
+        private Color spriteColor;
 
         private readonly Shape theShape;
 
@@ -49,14 +49,15 @@ namespace ShapeAnimator.View.Shapes
         }
 
         /// <summary>
-        ///     Gets the color of the randomized.
+        ///     Gets the spriteColor of the randomized.
         /// </summary>
         /// <value>
-        ///     The color of the randomized.
+        ///     The spriteColor of the randomized.
         /// </value>
-        public Color RandomizedColor
+        public Color SpriteColor
         {
-            get { return this.randomizedColor; }
+            get { return this.spriteColor; }
+            set { this.spriteColor = value; }
         }
 
         /// <summary>
@@ -79,17 +80,6 @@ namespace ShapeAnimator.View.Shapes
         public int Width
         {
             get { return this.width; }
-        }
-
-        /// <summary>
-        ///     Gets the color.
-        /// </summary>
-        /// <value>
-        ///     The color.
-        /// </value>
-        public Color Color
-        {
-            get { return this.randomColorVariable; }
         }
 
         #endregion
@@ -121,7 +111,7 @@ namespace ShapeAnimator.View.Shapes
             this.theShape = theShape;
             this.width = width;
             this.height = height;
-            this.randomizedColor = this.randomColor();
+            this.spriteColor = this.randomColor();
         }
 
         #endregion
@@ -129,7 +119,7 @@ namespace ShapeAnimator.View.Shapes
         #region Methods
 
         /// <summary>
-        ///     Randomizes the color.
+        ///     Randomizes the spriteColor.
         /// </summary>
         /// <returns></returns>
         private Color randomColor()

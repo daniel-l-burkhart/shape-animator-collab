@@ -72,9 +72,10 @@ namespace ShapeAnimator.Model.Shapes
         /// <summary>
         ///     The sprite
         /// </summary>
-        protected ShapeSprite Sprite
+        public ShapeSprite Sprite
         {
             set { this.sprite = value; }
+            get { return this.sprite; }
         }
 
         /// <summary>
@@ -137,7 +138,7 @@ namespace ShapeAnimator.Model.Shapes
         /// </value>
         public Color ShapeColor
         {
-            get { return this.sprite.Color; }
+            get { return this.sprite.SpriteColor; }
         }
 
         #endregion
@@ -208,6 +209,22 @@ namespace ShapeAnimator.Model.Shapes
             }
 
             this.sprite.Paint(g);
+        }
+
+        /// <summary>
+        /// Determines whether the specified point is hit.
+        /// </summary>
+        /// <param name="X">The x.</param>
+        /// <param name="Y">The y.</param>
+        /// <returns></returns>
+        public bool IsHit(int X, int Y)
+        {
+            var cursorPoint = new Point(X, Y);
+            if (cursorPoint.X >= this.X && cursorPoint.X <= this.X + Width && cursorPoint.Y >= this.Y && cursorPoint.Y <= this.Y + Height)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
