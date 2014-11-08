@@ -44,6 +44,7 @@ namespace ShapeAnimator.View.Forms
             this.InitializeComponent();
             this.canvasManager = new ShapeManager(this.canvasPictureBox);
             this.enableOrDisableControls(ControlsEnum.Initialize);
+            this.canvasPictureBox.Enabled = false;
         }
 
         #endregion
@@ -121,7 +122,6 @@ namespace ShapeAnimator.View.Forms
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-            this.pauseButton_Click(sender, e);
             var mouseEvent = (MouseEventArgs)e;
             Point cursorPosition = mouseEvent.Location;
             foreach (var shape in this.canvasManager.Shapes)
@@ -139,12 +139,14 @@ namespace ShapeAnimator.View.Forms
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
+            this.canvasPictureBox.Enabled = true;
             this.animationTimer.Stop();
             this.enableOrDisableControls(ControlsEnum.Pause);
         }
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
+            this.canvasPictureBox.Enabled = false;
             this.animationTimer.Start();
             this.enableOrDisableControls(ControlsEnum.Resume);
         }
