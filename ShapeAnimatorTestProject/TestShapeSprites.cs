@@ -14,15 +14,24 @@ namespace ShapeAnimatorTestProject
     [TestClass]
     public class TestShapeSprites
     {
-        private Circle cirlce;
-        private ShapeSprite circleSprite;
-       
+   
+        /// <summary>
+        /// The circle sprite
+        /// </summary>
+        private readonly ShapeSprite circleSprite;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestShapeSprites"/> class.
+        /// </summary>
         public TestShapeSprites()
         {
-            this.cirlce = new Circle();
-            this.circleSprite = new CircleSprite(this.cirlce, 100, 100);   
+            Circle cirlce = new Circle();
+            this.circleSprite = new CircleSprite(cirlce, 100, 100);
         }
 
+        /// <summary>
+        /// Tests the color of shape sprites.
+        /// </summary>
         [TestMethod]
         public void TestColorOfShapeSprites()
         {
