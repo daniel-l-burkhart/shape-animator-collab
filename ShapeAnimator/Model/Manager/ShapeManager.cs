@@ -104,7 +104,7 @@ namespace ShapeAnimator.Model.Manager
            
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
-<<<<<<< HEAD
+
             Rectangle aRectangle = new Rectangle(aShape.X, aShape.Y, aShape.Width, aShape.Height);
             foreach (Shape theShape in shapes)
             {
@@ -115,7 +115,6 @@ namespace ShapeAnimator.Model.Manager
                 }
             }
             
-=======
             foreach (var shape in shapes)
             {
                 if (aShape.X >= shape.X && aShape.X <= shape.X + shape.Width || aShape.Y >= shape.Y && aShape.Y <= shape.Y + shape.Height)
@@ -123,7 +122,7 @@ namespace ShapeAnimator.Model.Manager
                    this.placeShapesInCanvasBoundary(aShape);
                 }
             }
->>>>>>> fb8a6581b1ac483c5fde1a30402ea26fd00894c5
+
         }
 
         /// <summary>
@@ -158,7 +157,6 @@ namespace ShapeAnimator.Model.Manager
         /// <summary>
         ///     Shapeses the bounce off each other.
         /// </summary>
-<<<<<<< HEAD
         public void ShapesBounceOffEachOther(Shape firstShape)
         { 
            var firstRectangle = new Rectangle(firstShape.X, firstShape.Y, firstShape.Width, firstShape.Height);
@@ -176,39 +174,8 @@ namespace ShapeAnimator.Model.Manager
                    this.changeDirections(secondShape);
                }
            }
-=======
-        public void BounceShapesOffEachOther()
-        {
-            foreach (Shape firstShape in this.shapes)
-            {
-                this.compareShapeWithAllOtherShapes(firstShape);
-            }
-        }
 
-        private void compareShapeWithAllOtherShapes(Shape firstShape)
-        {
-                foreach (Shape secondShape in this.shapes)
-                {
-                if (this.checkTopOfFirstShape(firstShape, secondShape))
-                 {
-                     checkTopBoundary(firstShape);
-                     
-                 }
-                if (this.checkBottomOfFirstShape(firstShape, secondShape))
-                {
-                    checkBottomBoundary(firstShape);
-                    
-                }
-                if (this.checkLeftOfFirstShape(firstShape, secondShape))
-                {
-                    checkLeftBoundary(firstShape);
-                }
-                if (this.checkRightOfFirstShape(firstShape, secondShape))
-                {
-                    checkRightBoundary(firstShape);
-                }
-            }
->>>>>>> fb8a6581b1ac483c5fde1a30402ea26fd00894c5
+  
         }
 
         private void changeDirections(Shape currentShape)
@@ -290,17 +257,12 @@ namespace ShapeAnimator.Model.Manager
                 {
                     this.ShapesBounceOffEachOther(shape);
                     this.CheckForChangeInDirection();
-<<<<<<< HEAD
-                    if (this.isPaused == false)
-                    {  
-                        shape.Move();   
-=======
-                    this.BounceShapesOffEachOther();
+
                     if (isPaused == false)
                     {
-                    this.ShapesBounceOffEachOther();
+                   
                     shape.Move();
->>>>>>> fb8a6581b1ac483c5fde1a30402ea26fd00894c5
+
                     }
                     shape.Paint(g);
                 }
