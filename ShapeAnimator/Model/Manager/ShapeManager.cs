@@ -104,6 +104,13 @@ namespace ShapeAnimator.Model.Manager
         {
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
+            foreach (var shape in shapes)
+            {
+                if (aShape.X >= shape.X && aShape.X <= shape.X + shape.Width || aShape.Y >= shape.Y && aShape.Y <= shape.Y + shape.Height)
+                {
+                   this.placeShapesInCanvasBoundary(aShape);
+                }
+            }
         }
 
         /// <summary>
@@ -138,7 +145,7 @@ namespace ShapeAnimator.Model.Manager
         /// <summary>
         /// Shapeses the bounce off each other.
         /// </summary>
-        public void ShapesBounceOffEachOther()
+        public void BounceShapesOffEachOther()
         {
             foreach (Shape firstShape in this.shapes)
             {
@@ -259,7 +266,7 @@ namespace ShapeAnimator.Model.Manager
                 foreach (Shape shape in this.shapes)
                 {
                     this.CheckForChangeInDirection();
-                  //this.ShapesBounceOffEachOther();
+                    this.BounceShapesOffEachOther();
                     if (isPaused == false)
                     {
                         shape.Move();
