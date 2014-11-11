@@ -1,11 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.Model.Shapes;
@@ -53,8 +48,6 @@ namespace ShapeAnimator.View.Forms
 
         private void animationTimer_Tick(object sender, EventArgs e)
         {
-            this.Refresh();
-
             if (this.radioButton3.Checked)
             {
                 this.WriteToDataGrid();
@@ -64,9 +57,8 @@ namespace ShapeAnimator.View.Forms
             {
                 this.WriteToDataGrid();
             }
+            this.Refresh();
         }
-
-        
 
         private void shapeCanvasPictureBox_Paint(object sender, PaintEventArgs e)
         {
@@ -78,7 +70,7 @@ namespace ShapeAnimator.View.Forms
         {
 
             this.animationTimer.Stop();
-
+           
             int randomShapes = this.GetNumberOfShapes(this.randomShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
@@ -89,7 +81,7 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
-
+            this.canvasManager.IsPaused = false;
             this.checkTotalNumberOfShapes(totalNumberOfShapes);
         }
 
@@ -126,13 +118,22 @@ namespace ShapeAnimator.View.Forms
             Point cursorPosition = mouseEvent.Location;
             foreach (var shape in this.canvasManager.Shapes)
             {
-                if (shape.IsHit(cursorPosition.X , cursorPosition.Y))
+                this.pictureBoxClickHelper(shape, cursorPosition);
+            }
+        }
+
+        private void pictureBoxClickHelper(Shape shape, Point cursorPosition)
+        {
+            if (shape.IsHit(cursorPosition.X, cursorPosition.Y))
+            {
+                this.colorDialog1.Dispose();
+                this.colorDialog1.Color = shape.Color;
+                DialogResult result = this.colorDialog1.ShowDialog();
+                this.colorDialog1.AllowFullOpen = true;
+                if (result == DialogResult.OK)
                 {
-                    DialogResult result = colorDialog1.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        shape.Sprite.SpriteColor = colorDialog1.Color;
-                    }
+                    shape.Color = this.colorDialog1.Color;
+                    this.canvasPictureBox.Refresh();
                 }
             }
         }
@@ -141,6 +142,7 @@ namespace ShapeAnimator.View.Forms
         {
             this.canvasPictureBox.Enabled = true;
             this.animationTimer.Stop();
+            this.canvasManager.IsPaused = true;
             this.enableOrDisableControls(ControlsEnum.Pause);
         }
 
@@ -148,6 +150,7 @@ namespace ShapeAnimator.View.Forms
         {
             this.canvasPictureBox.Enabled = false;
             this.animationTimer.Start();
+            this.canvasManager.IsPaused = false;
             this.enableOrDisableControls(ControlsEnum.Resume);
         }
 
@@ -155,6 +158,7 @@ namespace ShapeAnimator.View.Forms
         {
             this.animationTimer.Start();
             this.canvasManager.ClearCanvas();
+            this.canvasManager.IsPaused = false;
 
             this.CirclesTextBox.Text = "0";
             this.RectanglesTextBox.Text = "0";
@@ -262,7 +266,7 @@ namespace ShapeAnimator.View.Forms
                         new
                         {
                             Type = currentShape.GetType().Name,
-                            Color = colorValue(currentShape.ShapeColor),  
+                            Color = colorValue(currentShape.Color),  
                             Area = currentShape.Area.ToString("####.000"),
                             Perimeter = currentShape.Perimeter.ToString("####.000"),
                             Collisions = currentShape.CollisionCount

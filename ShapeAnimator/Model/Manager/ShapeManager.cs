@@ -17,11 +17,23 @@ namespace ShapeAnimator.Model.Manager
 
         private readonly PictureBox canvas;
         private readonly List<Shape> shapes;
+        private bool isPaused;
 
         #endregion
 
-        #region Methods
+        #region Properties
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is paused.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is paused; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsPaused
+        {
+            get { return this.isPaused; }
+            set { this.isPaused = value; }
+        }
         /// <summary>
         ///     Gets the shape list property.
         /// </summary>
@@ -32,6 +44,10 @@ namespace ShapeAnimator.Model.Manager
         {
             get { return this.shapes; }
         }
+        
+
+        #endregion
+        #region Methods
 
         #region Constructors
 
@@ -56,6 +72,7 @@ namespace ShapeAnimator.Model.Manager
             }
             this.shapes = new List<Shape>();
             this.canvas = pictureBox;
+            this.isPaused = false;
         }
 
         #endregion
@@ -95,8 +112,19 @@ namespace ShapeAnimator.Model.Manager
         /// </summary>
         public void CheckForChangeInDirection()
         {
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                for (int j = 1; j < shapes.Count; j++)
+                {
+                    
+                }
+            }
             foreach (Shape shape in this.shapes)
             {
+
+                //TODO Part 2, setting up the shapes to bounce off of each other
+                
+
                 if (this.checkHorizontalRightBounds(shape))
                 {
                     checkRightBoundary(shape);
@@ -117,6 +145,11 @@ namespace ShapeAnimator.Model.Manager
                     checkTopBoundary(shape);
                 }
             }
+        }
+
+        private void changeHelper(int index)
+        {
+            
         }
 
         private static void checkTopBoundary(Shape shape)
@@ -178,20 +211,24 @@ namespace ShapeAnimator.Model.Manager
         /// <param name="g">The graphics object to draw on</param>
         public void Update(Graphics g)
         {
-            if (g == null)
-            {
-                throw new ArgumentNullException("g");
-            }
-
-            if (this.shapes != null)
-            {
-                foreach (Shape shape in this.shapes)
+            
+                if (g == null)
                 {
-                    this.CheckForChangeInDirection();
-                    shape.Move();
-                    shape.Paint(g);
+                    throw new ArgumentNullException("g");
                 }
-            }
+
+                if (this.shapes != null)
+                {
+                    foreach (Shape shape in this.shapes)
+                    {
+                        this.CheckForChangeInDirection();
+                        if (isPaused == false)
+                        {
+                            shape.Move();
+                        }
+                        shape.Paint(g);
+                    }
+                }
         }
 
         #region Comparer Methods
