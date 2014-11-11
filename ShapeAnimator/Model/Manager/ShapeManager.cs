@@ -149,48 +149,67 @@ namespace ShapeAnimator.Model.Manager
         {
             foreach (Shape firstShape in this.shapes)
             {
+                this.compareShapeWithAllOtherShapes(firstShape);
+            }
+        }
+
+        private void compareShapeWithAllOtherShapes(Shape firstShape)
+        {
                 foreach (Shape secondShape in this.shapes)
                 {
-                    if (this.checkTopAndBottomOfShapes(firstShape, secondShape))
-                    {
-                        checkTopBoundary(firstShape);
-                        checkBottomBoundary(secondShape);
-                    }
-
-                    if (this.checkLeftAndRightOfShapes(firstShape, secondShape))
-                    {
-                        checkLeftBoundary(firstShape);
-                        checkRightBoundary(secondShape);
-                    }
+                if (this.checkTopOfFirstShape(firstShape, secondShape))
+                 {
+                     checkTopBoundary(firstShape);
+                     
+                 }
+                if (this.checkBottomOfFirstShape(firstShape, secondShape))
+                {
+                    checkBottomBoundary(firstShape);
+                    
+                }
+                if (this.checkLeftOfFirstShape(firstShape, secondShape))
+                {
+                    checkLeftBoundary(firstShape);
+                }
+                if (this.checkRightOfFirstShape(firstShape, secondShape))
+                {
+                    checkRightBoundary(firstShape);
                 }
             }
         }
 
-        private bool checkTopAndBottomOfShapes(Shape firstShape, Shape secondShape)
+        private bool checkTopOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return (firstShape.Y + firstShape.Height + firstShape.SpeedY >= secondShape.Y + secondShape.SpeedY) 
                     &&
                    (firstShape.X + firstShape.SpeedX >= secondShape.X) 
                    &&
-                   ((firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2))
-                     || 
-                     (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))) 
+                (firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2));
+        }
+
+        private bool checkBottomOfFirstShape(Shape firstShape, Shape secondShape)
+        {
+            return  
+                (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))
                      &&
                     (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
                      && 
                      (secondShape.X + secondShape.Width >= firstShape.X);
         }
 
-        private bool checkLeftAndRightOfShapes(Shape firstShape, Shape secondShape)
+        private bool checkLeftOfFirstShape(Shape firstShape, Shape secondShape)
+        {
+            return (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
+                &&
+                   (firstShape.Y + firstShape.Height >= secondShape.Y)
+                &&
+                   (firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2));
+        }
+
+        private bool checkRightOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return 
-                (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
-                &&
-                (firstShape.Y+firstShape.Height >=secondShape.Y ) 
-                &&
-                ((firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2))
-                || 
-                (secondShape.X + secondShape.Width + secondShape.SpeedX < (firstShape.X + firstShape.Width/2))) 
+                (secondShape.X + secondShape.Width + secondShape.SpeedX < (firstShape.X + firstShape.Width/2)) 
                 && 
                 (secondShape.X + secondShape.Width + secondShape.SpeedX >= firstShape.X + firstShape.SpeedX) 
                 &&
@@ -269,7 +288,8 @@ namespace ShapeAnimator.Model.Manager
                     this.BounceShapesOffEachOther();
                     if (isPaused == false)
                     {
-                        shape.Move();
+                    this.ShapesBounceOffEachOther();
+                    shape.Move();
                     }
                     shape.Paint(g);
                 }
