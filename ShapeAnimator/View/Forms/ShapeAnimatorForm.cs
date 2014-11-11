@@ -77,19 +77,21 @@ namespace ShapeAnimator.View.Forms
             int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
 
             int totalNumberOfShapes = circles + rectangles + spottedRectangles + randomShapes;
+            this.checkTotalNumberOfShapes(totalNumberOfShapes);
 
             this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
             this.canvasManager.IsPaused = false;
-            this.checkTotalNumberOfShapes(totalNumberOfShapes);
+            
         }
 
         private void checkTotalNumberOfShapes(int totalNumberOfShapes)
         {
             if (totalNumberOfShapes > 10)
             {
-                MessageBox.Show("Cannot have more than 10 shapes!");
+                MessageBox.Show(Resources.cannotHaveMoreThan10Shapes);
+                this.clearAllTextBoxes();
             }
             else
             {
@@ -98,6 +100,13 @@ namespace ShapeAnimator.View.Forms
             }
         }
 
+        private void clearAllTextBoxes()
+        {
+            CirclesTextBox.Text = Resources.zeroStringValue;
+            randomShapesTextBox.Text = Resources.zeroStringValue;
+            RectanglesTextBox.Text = Resources.zeroStringValue;
+            SpottedRectanglesTextBox.Text = Resources.zeroStringValue;
+        }
         private void speedSliderValueChanged(object sender, EventArgs e)
         {
             this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;

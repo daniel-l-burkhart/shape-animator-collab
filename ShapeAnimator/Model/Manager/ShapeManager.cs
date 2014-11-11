@@ -114,15 +114,7 @@ namespace ShapeAnimator.Model.Manager
                     this.placeShapesInCanvasBoundary(aShape);
                 }
             }
-            
-            foreach (var shape in shapes)
-            {
-                if (aShape.X >= shape.X && aShape.X <= shape.X + shape.Width || aShape.Y >= shape.Y && aShape.Y <= shape.Y + shape.Height)
-                {
-                   this.placeShapesInCanvasBoundary(aShape);
-                }
-            }
-
+           
         }
 
         /// <summary>
@@ -158,13 +150,13 @@ namespace ShapeAnimator.Model.Manager
         ///     Shapeses the bounce off each other.
         /// </summary>
         public void ShapesBounceOffEachOther(Shape firstShape)
-        { 
-           var firstRectangle = new Rectangle(firstShape.X, firstShape.Y, firstShape.Width, firstShape.Height);
-
-           foreach (var secondShape in this.shapes)
+        {
+            var firstRectangle = new Rectangle(firstShape.X, firstShape.Y, firstShape.Width + 2, firstShape.Height + 2);
+            
+            foreach (var secondShape in this.shapes)
            { 
-               var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width, secondShape.Height);
-               if (firstRectangle==secondRectangle)
+               var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width+2, secondShape.Height+2);
+               if (firstRectangle == secondRectangle)
                {
                    break;
                }
@@ -172,16 +164,15 @@ namespace ShapeAnimator.Model.Manager
                {
                    this.changeDirections(firstShape);
                    this.changeDirections(secondShape);
-               }
+               }   
            }
-
-  
         }
 
         private void changeDirections(Shape currentShape)
         {
             currentShape.SpeedX *= -1;
             currentShape.SpeedY *= -1;
+         
             currentShape.CollisionCount++;
         }
 
@@ -259,7 +250,6 @@ namespace ShapeAnimator.Model.Manager
 
                     if (isPaused == false)
                     {
-                   
                     shape.Move();
 
                     }

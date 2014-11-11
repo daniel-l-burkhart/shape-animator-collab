@@ -123,4 +123,10 @@
   <data name="Must Be Integer" xml:space="preserve">
     <value>Must be an integer</value>
   </data>
+  <data name="zeroStringValue" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cannotHaveMoreThan10Shapes" xml:space="preserve">
+    <value>Cannot have more than 10 shapes!</value>
+  </data>
 </root>
