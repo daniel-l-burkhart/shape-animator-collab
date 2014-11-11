@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
@@ -51,8 +52,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTestClass.cs" />
+    <Compile Include="TestShapes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestShapeSprites.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShapeAnimator\ShapeAnimatorA5.csproj">

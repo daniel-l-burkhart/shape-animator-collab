@@ -83,9 +83,13 @@ namespace ShapeAnimator.Model.Manager
             int numberOfSpottedRectangles)
         {
             this.shapes.Clear();
+
             this.placeShapesOnCanvasHelper(numberOfRandomShapes, ShapeFactory.Shapes.Random);
+
             this.placeShapesOnCanvasHelper(numberOfCircles, ShapeFactory.Shapes.Circle);
+
             this.placeShapesOnCanvasHelper(numberOfRectangles, ShapeFactory.Shapes.Rectangle);
+
             this.placeShapesOnCanvasHelper(numberOfSpottedRectangles, ShapeFactory.Shapes.SpottedRectangle);
         }
 
@@ -101,14 +105,15 @@ namespace ShapeAnimator.Model.Manager
 
         private void placeShapesInCanvasBoundary(Shape aShape)
         {
-           
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
 
             Rectangle aRectangle = new Rectangle(aShape.X, aShape.Y, aShape.Width, aShape.Height);
+
             foreach (Shape theShape in shapes)
             {
                 Rectangle comparatorRectangle = new Rectangle(theShape.X, theShape.Y, theShape.Width, theShape.Height);
+
                 if (aRectangle.IntersectsWith(comparatorRectangle))
                 {
                     this.placeShapesInCanvasBoundary(aShape);
