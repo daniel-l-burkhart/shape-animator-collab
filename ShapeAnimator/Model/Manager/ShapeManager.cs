@@ -164,7 +164,7 @@ namespace ShapeAnimator.Model.Manager
            foreach (var secondShape in this.shapes)
            { 
                var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width, secondShape.Height);
-               if (firstRectangle.Equals(secondRectangle))
+               if (firstRectangle==secondRectangle)
                {
                    break;
                }
@@ -183,7 +183,6 @@ namespace ShapeAnimator.Model.Manager
             currentShape.SpeedX *= -1;
             currentShape.SpeedY *= -1;
             currentShape.CollisionCount++;
-
         }
 
        
