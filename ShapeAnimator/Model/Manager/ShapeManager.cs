@@ -160,7 +160,7 @@ namespace ShapeAnimator.Model.Manager
                {
                    break;
                }
-               if (firstRectangle.IntersectsWith(secondRectangle))
+               if (firstRectangle.IntersectsWith(secondRectangle) && secondRectangle.IntersectsWith(firstRectangle))
                {
                    this.changeDirections(firstShape);
                    this.changeDirections(secondShape);
