@@ -72,10 +72,9 @@ namespace ShapeAnimator.Model.Shapes
         /// <summary>
         ///     The sprite
         /// </summary>
-        public ShapeSprite Sprite
+        protected ShapeSprite Sprite
         {
             set { this.sprite = value; }
-            get { return this.sprite; }
         }
 
         /// <summary>
@@ -136,9 +135,10 @@ namespace ShapeAnimator.Model.Shapes
         /// <value>
         ///     The color of the shape.
         /// </value>
-        public Color ShapeColor
+        public Color Color
         {
             get { return this.sprite.SpriteColor; }
+            set { this.sprite.SpriteColor = value;  }
         }
 
         #endregion
@@ -220,11 +220,21 @@ namespace ShapeAnimator.Model.Shapes
         public bool IsHit(int X, int Y)
         {
             var cursorPoint = new Point(X, Y);
-            if (cursorPoint.X >= this.X && cursorPoint.X <= this.X + Width && cursorPoint.Y >= this.Y && cursorPoint.Y <= this.Y + Height)
+            if (this.checkIfCursorIsWithinXRange(cursorPoint) && this.checkIfCursorIsWithinYRange(cursorPoint))
             {
                 return true;
             }
             return false;
+        }
+
+        private bool checkIfCursorIsWithinXRange(Point cursorPoint)
+        {
+            return cursorPoint.X >= this.X && cursorPoint.X <= this.X + this.Width;
+        }
+
+        private bool checkIfCursorIsWithinYRange(Point cursorPoint)
+        {
+            return cursorPoint.Y >= this.Y && cursorPoint.Y <= this.Y + Height;
         }
 
         /// <summary>
