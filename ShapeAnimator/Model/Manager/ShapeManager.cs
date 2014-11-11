@@ -20,6 +20,17 @@ namespace ShapeAnimator.Model.Manager
 
         #endregion
 
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is positive.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is positive; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsPaused { get; set; }
+        #endregion
+
         #region Methods
 
         /// <summary>
@@ -126,48 +137,65 @@ namespace ShapeAnimator.Model.Manager
         {
             foreach (Shape firstShape in this.shapes)
             {
-                foreach (Shape secondShape in this.shapes)
-                {
-                    if (this.checkTopAndBottomOfShapes(firstShape, secondShape))
-                    {
-                        checkTopBoundary(firstShape);
-                        checkBottomBoundary(secondShape);
-                    }
+                this.compareShapeWithAllOtherShapes(firstShape);
+            }
+        }
 
-                    if (this.checkLeftAndRightOfShapes(firstShape, secondShape))
-                    {
-                        checkLeftBoundary(firstShape);
-                        checkRightBoundary(secondShape);
-                    }
+        private void compareShapeWithAllOtherShapes(Shape firstShape)
+        {
+            foreach (Shape secondShape in this.shapes)
+            {
+                if (this.checkTopOfFirstShape(firstShape, secondShape))
+                {
+                    checkTopBoundary(firstShape);
+                }
+                else if (this.checkBottomOfFirstShape(firstShape, secondShape))
+                {
+                    checkBottomBoundary(firstShape);
+                }
+                else if (this.checkLeftOfFirstShape(firstShape, secondShape))
+                {
+                    checkLeftBoundary(firstShape);
+                }
+                else if (this.checkRightOfFirstShape(firstShape, secondShape))
+                {
+                    checkRightBoundary(firstShape);
                 }
             }
         }
 
-        private bool checkTopAndBottomOfShapes(Shape firstShape, Shape secondShape)
+        private bool checkTopOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return (firstShape.Y + firstShape.Height + firstShape.SpeedY >= secondShape.Y + secondShape.SpeedY) 
-                    &&
-                   (firstShape.X + firstShape.SpeedX >= secondShape.X) 
-                   &&
-                   ((firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2))
-                     || 
-                     (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))) 
-                     &&
-                    (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
-                     && 
-                     (secondShape.X + secondShape.Width >= firstShape.X);
+                &&
+                (firstShape.X + firstShape.SpeedX >= secondShape.X) 
+                &&
+                (firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2));
         }
 
-        private bool checkLeftAndRightOfShapes(Shape firstShape, Shape secondShape)
+        private bool checkBottomOfFirstShape(Shape firstShape, Shape secondShape)
+        {
+            return  
+                (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))
+                &&
+                (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
+                && 
+                (secondShape.X + secondShape.Width >= firstShape.X);
+        }
+
+        private bool checkLeftOfFirstShape(Shape firstShape, Shape secondShape)
+        {
+            return (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
+                   &&
+                   (firstShape.Y + firstShape.Height >= secondShape.Y)
+                   &&
+                   (firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2));
+        }
+
+        private bool checkRightOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return 
-                (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
-                &&
-                (firstShape.Y+firstShape.Height >=secondShape.Y ) 
-                &&
-                ((firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2))
-                || 
-                (secondShape.X + secondShape.Width + secondShape.SpeedX < (firstShape.X + firstShape.Width/2))) 
+                (secondShape.X + secondShape.Width + secondShape.SpeedX < (firstShape.X + firstShape.Width/2)) 
                 && 
                 (secondShape.X + secondShape.Width + secondShape.SpeedX >= firstShape.X + firstShape.SpeedX) 
                 &&
@@ -243,7 +271,7 @@ namespace ShapeAnimator.Model.Manager
                 foreach (Shape shape in this.shapes)
                 {
                     this.CheckForChangeInDirection();
-                  //this.ShapesBounceOffEachOther();
+                    this.ShapesBounceOffEachOther();
                     shape.Move();
                     shape.Paint(g);
                 }
