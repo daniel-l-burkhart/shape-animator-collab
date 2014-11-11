@@ -108,18 +108,17 @@ namespace ShapeAnimator.Model.Manager
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
 
-            Rectangle aRectangle = new Rectangle(aShape.X, aShape.Y, aShape.Width, aShape.Height);
+            var aRectangle = new Rectangle(aShape.X, aShape.Y, aShape.Width, aShape.Height);
 
-            foreach (Shape theShape in shapes)
+            foreach (Shape theShape in this.shapes)
             {
-                Rectangle comparatorRectangle = new Rectangle(theShape.X, theShape.Y, theShape.Width, theShape.Height);
+                var comparatorRectangle = new Rectangle(theShape.X, theShape.Y, theShape.Width, theShape.Height);
 
                 if (aRectangle.IntersectsWith(comparatorRectangle))
                 {
                     this.placeShapesInCanvasBoundary(aShape);
                 }
             }
-           
         }
 
         /// <summary>
@@ -157,31 +156,31 @@ namespace ShapeAnimator.Model.Manager
         public void ShapesBounceOffEachOther(Shape firstShape)
         {
             var firstRectangle = new Rectangle(firstShape.X, firstShape.Y, firstShape.Width + 2, firstShape.Height + 2);
-            
-            foreach (var secondShape in this.shapes)
-           { 
-               var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width+2, secondShape.Height+2);
-               if (firstRectangle == secondRectangle)
-               {
-                   break;
-               }
-               if (firstRectangle.IntersectsWith(secondRectangle) && secondRectangle.IntersectsWith(firstRectangle))
-               {
-                   this.changeDirections(firstShape);
-                   this.changeDirections(secondShape);
-               }   
-           }
+
+            foreach (Shape secondShape in this.shapes)
+            {
+                var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width + 2,
+                    secondShape.Height + 2);
+                if (firstRectangle == secondRectangle)
+                {
+                    break;
+                }
+                if (firstRectangle.IntersectsWith(secondRectangle) && secondRectangle.IntersectsWith(firstRectangle))
+                {
+                    this.changeDirections(firstShape);
+                    this.changeDirections(secondShape);
+                }
+            }
         }
 
         private void changeDirections(Shape currentShape)
         {
             currentShape.SpeedX *= -1;
             currentShape.SpeedY *= -1;
-         
+
             currentShape.CollisionCount++;
         }
 
-       
         private static void checkTopBoundary(Shape shape)
         {
             shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
@@ -253,10 +252,9 @@ namespace ShapeAnimator.Model.Manager
                     this.ShapesBounceOffEachOther(shape);
                     this.CheckForChangeInDirection();
 
-                    if (isPaused == false)
+                    if (this.isPaused == false)
                     {
-                    shape.Move();
-
+                        shape.Move();
                     }
                     shape.Paint(g);
                 }

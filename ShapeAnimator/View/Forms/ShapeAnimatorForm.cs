@@ -83,7 +83,6 @@ namespace ShapeAnimator.View.Forms
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
             this.canvasManager.IsPaused = false;
-            
         }
 
         private void checkTotalNumberOfShapes(int totalNumberOfShapes)
@@ -102,11 +101,12 @@ namespace ShapeAnimator.View.Forms
 
         private void clearAllTextBoxes()
         {
-            CirclesTextBox.Text = Resources.zeroStringValue;
-            randomShapesTextBox.Text = Resources.zeroStringValue;
-            RectanglesTextBox.Text = Resources.zeroStringValue;
-            SpottedRectanglesTextBox.Text = Resources.zeroStringValue;
+            this.CirclesTextBox.Text = Resources.zeroStringValue;
+            this.randomShapesTextBox.Text = Resources.zeroStringValue;
+            this.RectanglesTextBox.Text = Resources.zeroStringValue;
+            this.SpottedRectanglesTextBox.Text = Resources.zeroStringValue;
         }
+
         private void speedSliderValueChanged(object sender, EventArgs e)
         {
             this.animationTimer.Interval = this.SpeedSlider.Maximum - this.SpeedSlider.Value + 1;
