@@ -17,10 +17,22 @@ namespace ShapeAnimator.Model.Manager
 
         private readonly PictureBox canvas;
         private readonly List<Shape> shapes;
+        private bool isPaused;
 
         #endregion
 
-        #region Methods
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is paused.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is paused; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsPaused
+        {
+            get { return this.isPaused; }
+            set { this.isPaused = value; }
+        }
+
 
         /// <summary>
         ///     Gets the shape list property.
@@ -32,6 +44,9 @@ namespace ShapeAnimator.Model.Manager
         {
             get { return this.shapes; }
         }
+
+
+        #region Methods
 
         #region Constructors
 
@@ -56,6 +71,7 @@ namespace ShapeAnimator.Model.Manager
             }
             this.shapes = new List<Shape>();
             this.canvas = pictureBox;
+            this.isPaused = false;
         }
 
         #endregion
@@ -244,7 +260,10 @@ namespace ShapeAnimator.Model.Manager
                 {
                     this.CheckForChangeInDirection();
                   //this.ShapesBounceOffEachOther();
-                    shape.Move();
+                    if (isPaused == false)
+                    {
+                        shape.Move();
+                    }
                     shape.Paint(g);
                 }
             }
