@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ShapeAnimator.Model.Shapes;
 
 namespace ShapeAnimator.Model.Manager.ComparerClasses
@@ -23,7 +24,7 @@ namespace ShapeAnimator.Model.Manager.ComparerClasses
         {
             if (x.CollisionCount == y.CollisionCount)
             {
-                int compareTo = System.String.Compare(y.GetType().Name, x.GetType().Name, System.StringComparison.Ordinal);
+                int compareTo = String.Compare(y.GetType().Name, x.GetType().Name, StringComparison.Ordinal);
                 return compareTo;
             }
             return x.CollisionCount.CompareTo(y.CollisionCount);

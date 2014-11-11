@@ -14,13 +14,12 @@ namespace ShapeAnimator.View.Shapes
 
         private readonly int height;
 
-        private Color spriteColor;
-
         private readonly Shape theShape;
 
         private readonly int width;
 
         private Color randomColorVariable;
+        private Color spriteColor;
 
         #endregion
 

@@ -138,7 +138,7 @@ namespace ShapeAnimator.Model.Shapes
         public Color Color
         {
             get { return this.sprite.SpriteColor; }
-            set { this.sprite.SpriteColor = value;  }
+            set { this.sprite.SpriteColor = value; }
         }
 
         #endregion
@@ -212,7 +212,7 @@ namespace ShapeAnimator.Model.Shapes
         }
 
         /// <summary>
-        /// Determines whether the specified point is hit.
+        ///     Determines whether the specified point is hit.
         /// </summary>
         /// <param name="X">The x.</param>
         /// <param name="Y">The y.</param>
@@ -234,7 +234,7 @@ namespace ShapeAnimator.Model.Shapes
 
         private bool checkIfCursorIsWithinYRange(Point cursorPoint)
         {
-            return cursorPoint.Y >= this.Y && cursorPoint.Y <= this.Y + Height;
+            return cursorPoint.Y >= this.Y && cursorPoint.Y <= this.Y + this.Height;
         }
 
         /// <summary>

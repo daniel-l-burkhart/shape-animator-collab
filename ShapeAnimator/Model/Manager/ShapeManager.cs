@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ShapeAnimator.Model.Manager.ComparerClasses;
 using ShapeAnimator.Model.Shapes;
 using ShapeAnimator.Properties;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace ShapeAnimator.Model.Manager
 {
@@ -22,17 +23,16 @@ namespace ShapeAnimator.Model.Manager
         #endregion
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is paused.
+        ///     Gets or sets a value indicating whether this instance is paused.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if this instance is paused; otherwise, <c>false</c>.
+        ///     <c>true</c> if this instance is paused; otherwise, <c>false</c>.
         /// </value>
         public bool IsPaused
         {
             get { return this.isPaused; }
             set { this.isPaused = value; }
         }
-
 
         /// <summary>
         ///     Gets the shape list property.
@@ -44,7 +44,6 @@ namespace ShapeAnimator.Model.Manager
         {
             get { return this.shapes; }
         }
-
 
         #region Methods
 
@@ -102,8 +101,19 @@ namespace ShapeAnimator.Model.Manager
 
         private void placeShapesInCanvasBoundary(Shape aShape)
         {
+           
             aShape.X = ShapeFactory.Randomizer.Next(this.canvas.Width - aShape.Width);
             aShape.Y = ShapeFactory.Randomizer.Next(this.canvas.Height - aShape.Height);
+            Rectangle aRectangle = new Rectangle(aShape.X, aShape.Y, aShape.Width, aShape.Height);
+            foreach (Shape theShape in shapes)
+            {
+                Rectangle comparatorRectangle = new Rectangle(theShape.X, theShape.Y, theShape.Width, theShape.Height);
+                if (aRectangle.IntersectsWith(comparatorRectangle))
+                {
+                    this.placeShapesInCanvasBoundary(aShape);
+                }
+            }
+            
         }
 
         /// <summary>
@@ -136,79 +146,36 @@ namespace ShapeAnimator.Model.Manager
         }
 
         /// <summary>
-        /// Shapeses the bounce off each other.
+        ///     Shapeses the bounce off each other.
         /// </summary>
-        public void ShapesBounceOffEachOther()
-        {
-            foreach (Shape firstShape in this.shapes)
-            {
-                this.compareShapeWithAllOtherShapes(firstShape);
-            }
+        public void ShapesBounceOffEachOther(Shape firstShape)
+        { 
+           var firstRectangle = new Rectangle(firstShape.X, firstShape.Y, firstShape.Width, firstShape.Height);
+
+           foreach (var secondShape in this.shapes)
+           { 
+               var secondRectangle = new Rectangle(secondShape.X, secondShape.Y, secondShape.Width, secondShape.Height);
+               if (firstRectangle.Equals(secondRectangle))
+               {
+                   break;
+               }
+               if (firstRectangle.IntersectsWith(secondRectangle))
+               {
+                   this.changeDirections(firstShape);
+                   this.changeDirections(secondShape);
+               }
+           }
         }
 
-        private void compareShapeWithAllOtherShapes(Shape firstShape)
+        private void changeDirections(Shape currentShape)
         {
-                foreach (Shape secondShape in this.shapes)
-                {
-                if (this.checkTopOfFirstShape(firstShape, secondShape))
-                 {
-                     checkTopBoundary(firstShape);
-                     
-                 }
-                if (this.checkBottomOfFirstShape(firstShape, secondShape))
-                {
-                    checkBottomBoundary(firstShape);
-                    
-                }
-                if (this.checkLeftOfFirstShape(firstShape, secondShape))
-                {
-                    checkLeftBoundary(firstShape);
-                }
-                if (this.checkRightOfFirstShape(firstShape, secondShape))
-                {
-                    checkRightBoundary(firstShape);
-                }
-            }
+            currentShape.SpeedX *= -1;
+            currentShape.SpeedY *= -1;
+            currentShape.CollisionCount++;
+
         }
 
-        private bool checkTopOfFirstShape(Shape firstShape, Shape secondShape)
-        {
-            return (firstShape.Y + firstShape.Height + firstShape.SpeedY >= secondShape.Y + secondShape.SpeedY) 
-                    &&
-                   (firstShape.X + firstShape.SpeedX >= secondShape.X) 
-                   &&
-                (firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2));
-        }
-
-        private bool checkBottomOfFirstShape(Shape firstShape, Shape secondShape)
-        {
-            return  
-                (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))
-                     &&
-                    (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
-                     && 
-                     (secondShape.X + secondShape.Width >= firstShape.X);
-        }
-
-        private bool checkLeftOfFirstShape(Shape firstShape, Shape secondShape)
-        {
-            return (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
-                &&
-                   (firstShape.Y + firstShape.Height >= secondShape.Y)
-                &&
-                   (firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2));
-        }
-
-        private bool checkRightOfFirstShape(Shape firstShape, Shape secondShape)
-        {
-            return 
-                (secondShape.X + secondShape.Width + secondShape.SpeedX < (firstShape.X + firstShape.Width/2)) 
-                && 
-                (secondShape.X + secondShape.Width + secondShape.SpeedX >= firstShape.X + firstShape.SpeedX) 
-                &&
-                (secondShape.Y+secondShape.Height>=firstShape.Y);
-        }
-
+       
         private static void checkTopBoundary(Shape shape)
         {
             shape.SpeedY = Math.Abs(shape.SpeedY)*(int) DirectionRandomizer.Directions.RightOrDown;
@@ -277,12 +244,11 @@ namespace ShapeAnimator.Model.Manager
             {
                 foreach (Shape shape in this.shapes)
                 {
+                    this.ShapesBounceOffEachOther(shape);
                     this.CheckForChangeInDirection();
-                  //this.ShapesBounceOffEachOther();
-                    if (isPaused == false)
-                    {
-                    this.ShapesBounceOffEachOther();
-                    shape.Move();
+                    if (this.isPaused == false)
+                    {  
+                        shape.Move();   
                     }
                     shape.Paint(g);
                 }
@@ -328,8 +294,7 @@ namespace ShapeAnimator.Model.Manager
         }
 
         #endregion
+
         #endregion
     }
-
-    
 }

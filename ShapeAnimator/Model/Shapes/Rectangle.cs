@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
 
@@ -19,7 +18,8 @@ namespace ShapeAnimator.Model.Shapes
         /// </summary>
         public Rectangle()
         {
-            this.Sprite = new RectangleSprite(this, ShapeFactory.Randomizer.Next(RectanlgeMinWidthAndHeight, RectangleMaxWidthAndHeight),
+            this.Sprite = new RectangleSprite(this,
+                ShapeFactory.Randomizer.Next(RectanlgeMinWidthAndHeight, RectangleMaxWidthAndHeight),
                 ShapeFactory.Randomizer.Next(RectanlgeMinWidthAndHeight, RectangleMaxWidthAndHeight));
         }
 
@@ -53,7 +53,6 @@ namespace ShapeAnimator.Model.Shapes
         /// <returns></returns>
         public override double CalculatePerimeter()
         {
-            
             double perimeter = (this.Width*2.0) + (this.Height*2.0);
             return perimeter;
         }

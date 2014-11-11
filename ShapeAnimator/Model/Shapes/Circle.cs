@@ -14,6 +14,7 @@ namespace ShapeAnimator.Model.Shapes
 
         private const int CircleMaxDiameter = 100;
         private const int CircleMinDiameter = 20;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Circle" /> class.
         /// </summary>

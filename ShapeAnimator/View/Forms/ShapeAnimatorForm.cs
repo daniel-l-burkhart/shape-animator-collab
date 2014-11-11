@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -68,9 +69,8 @@ namespace ShapeAnimator.View.Forms
 
         private void startButton_Click(object sender, EventArgs e)
         {
-
             this.animationTimer.Stop();
-           
+
             int randomShapes = this.GetNumberOfShapes(this.randomShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
@@ -114,9 +114,9 @@ namespace ShapeAnimator.View.Forms
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-            var mouseEvent = (MouseEventArgs)e;
+            var mouseEvent = (MouseEventArgs) e;
             Point cursorPosition = mouseEvent.Location;
-            foreach (var shape in this.canvasManager.Shapes)
+            foreach (Shape shape in this.canvasManager.Shapes)
             {
                 this.pictureBoxClickHelper(shape, cursorPosition);
             }
@@ -257,8 +257,7 @@ namespace ShapeAnimator.View.Forms
         /// <exception cref="System.NotImplementedException"></exception>
         public void WriteToDataGrid()
         {
-            
-            var thisShape = from currentShape in this.canvasManager.Shapes select currentShape;
+            IEnumerable<Shape> thisShape = from currentShape in this.canvasManager.Shapes select currentShape;
 
             this.dataGridView1.DataSource =
                 thisShape.Select(
@@ -266,7 +265,7 @@ namespace ShapeAnimator.View.Forms
                         new
                         {
                             Type = currentShape.GetType().Name,
-                            Color = colorValue(currentShape.Color),  
+                            Color = colorValue(currentShape.Color),
                             Area = currentShape.Area.ToString("####.000"),
                             Perimeter = currentShape.Perimeter.ToString("####.000"),
                             Collisions = currentShape.CollisionCount
@@ -274,17 +273,16 @@ namespace ShapeAnimator.View.Forms
             this.setPerimeterAndAreaToAllignAtDecimal();
             this.dataGridView1.AutoGenerateColumns = true;
             this.DoubleBuffered = true;
-            
         }
 
         private void setPerimeterAndAreaToAllignAtDecimal()
         {
-            var dataGridViewColumn = this.dataGridView1.Columns["Area"];
+            DataGridViewColumn dataGridViewColumn = this.dataGridView1.Columns["Area"];
             if (dataGridViewColumn != null)
             {
                 dataGridViewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
-            var gridViewColumn = this.dataGridView1.Columns["Perimeter"];
+            DataGridViewColumn gridViewColumn = this.dataGridView1.Columns["Perimeter"];
             if (gridViewColumn != null)
             {
                 gridViewColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -299,8 +297,5 @@ namespace ShapeAnimator.View.Forms
             string colorValue = "(" + redComponent + "," + greenComponent + "," + blueComponent + ")";
             return colorValue;
         }
-
-
-      
     }
 }
