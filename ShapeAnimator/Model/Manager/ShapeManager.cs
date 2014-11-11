@@ -17,21 +17,22 @@ namespace ShapeAnimator.Model.Manager
 
         private readonly PictureBox canvas;
         private readonly List<Shape> shapes;
+        private bool isPaused;
 
         #endregion
-
-        #region Properties
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is positive.
+        /// Gets or sets a value indicating whether this instance is paused.
         /// </summary>
         /// <value>
-        /// <c>true</c> if this instance is positive; otherwise, <c>false</c>.
+        ///   <c>true</c> if this instance is paused; otherwise, <c>false</c>.
         /// </value>
-        public bool IsPaused { get; set; }
-        #endregion
+        public bool IsPaused
+        {
+            get { return this.isPaused; }
+            set { this.isPaused = value; }
+        }
 
-        #region Methods
 
         /// <summary>
         ///     Gets the shape list property.
@@ -43,6 +44,9 @@ namespace ShapeAnimator.Model.Manager
         {
             get { return this.shapes; }
         }
+
+
+        #region Methods
 
         #region Constructors
 
@@ -67,6 +71,7 @@ namespace ShapeAnimator.Model.Manager
             }
             this.shapes = new List<Shape>();
             this.canvas = pictureBox;
+            this.isPaused = false;
         }
 
         #endregion
@@ -143,21 +148,23 @@ namespace ShapeAnimator.Model.Manager
 
         private void compareShapeWithAllOtherShapes(Shape firstShape)
         {
-            foreach (Shape secondShape in this.shapes)
-            {
-                if (this.checkTopOfFirstShape(firstShape, secondShape))
+                foreach (Shape secondShape in this.shapes)
                 {
-                    checkTopBoundary(firstShape);
-                }
-                else if (this.checkBottomOfFirstShape(firstShape, secondShape))
+                if (this.checkTopOfFirstShape(firstShape, secondShape))
+                 {
+                     checkTopBoundary(firstShape);
+                     
+                 }
+                if (this.checkBottomOfFirstShape(firstShape, secondShape))
                 {
                     checkBottomBoundary(firstShape);
+                    
                 }
-                else if (this.checkLeftOfFirstShape(firstShape, secondShape))
+                if (this.checkLeftOfFirstShape(firstShape, secondShape))
                 {
                     checkLeftBoundary(firstShape);
                 }
-                else if (this.checkRightOfFirstShape(firstShape, secondShape))
+                if (this.checkRightOfFirstShape(firstShape, secondShape))
                 {
                     checkRightBoundary(firstShape);
                 }
@@ -167,9 +174,9 @@ namespace ShapeAnimator.Model.Manager
         private bool checkTopOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return (firstShape.Y + firstShape.Height + firstShape.SpeedY >= secondShape.Y + secondShape.SpeedY) 
-                &&
-                (firstShape.X + firstShape.SpeedX >= secondShape.X) 
-                &&
+                    &&
+                   (firstShape.X + firstShape.SpeedX >= secondShape.X) 
+                   &&
                 (firstShape.Y + firstShape.Height + firstShape.SpeedY < (secondShape.Y + secondShape.Height/2));
         }
 
@@ -177,18 +184,18 @@ namespace ShapeAnimator.Model.Manager
         {
             return  
                 (secondShape.Y + secondShape.Height + secondShape.SpeedY < (firstShape.Y + firstShape.Height/2))
-                &&
-                (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
-                && 
-                (secondShape.X + secondShape.Width >= firstShape.X);
+                     &&
+                    (secondShape.Y + secondShape.Height + secondShape.SpeedY >= firstShape.Y + firstShape.SpeedY) 
+                     && 
+                     (secondShape.X + secondShape.Width >= firstShape.X);
         }
 
         private bool checkLeftOfFirstShape(Shape firstShape, Shape secondShape)
         {
             return (firstShape.X + firstShape.Width + firstShape.SpeedX >= secondShape.X + secondShape.SpeedX)
-                   &&
+                &&
                    (firstShape.Y + firstShape.Height >= secondShape.Y)
-                   &&
+                &&
                    (firstShape.X + firstShape.Width + firstShape.SpeedX < (secondShape.X + secondShape.Width/2));
         }
 
@@ -271,8 +278,12 @@ namespace ShapeAnimator.Model.Manager
                 foreach (Shape shape in this.shapes)
                 {
                     this.CheckForChangeInDirection();
+                  //this.ShapesBounceOffEachOther();
+                    if (isPaused == false)
+                    {
                     this.ShapesBounceOffEachOther();
                     shape.Move();
+                    }
                     shape.Paint(g);
                 }
             }
