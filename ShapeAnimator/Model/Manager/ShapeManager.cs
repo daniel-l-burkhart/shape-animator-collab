@@ -22,6 +22,8 @@ namespace ShapeAnimator.Model.Manager
 
         #endregion
 
+        #region Properties
+
         /// <summary>
         ///     Gets or sets a value indicating whether this instance is paused.
         /// </summary>
@@ -45,7 +47,7 @@ namespace ShapeAnimator.Model.Manager
             get { return this.shapes; }
         }
 
-        #region Methods
+        #endregion
 
         #region Constructors
 
@@ -74,6 +76,8 @@ namespace ShapeAnimator.Model.Manager
         }
 
         #endregion
+
+        #region Methods
 
         /// <summary>
         ///     Places the shape on the canvas.
@@ -261,6 +265,8 @@ namespace ShapeAnimator.Model.Manager
             }
         }
 
+        #endregion
+
         #region Comparer Methods
 
         /// <summary>
@@ -298,8 +304,6 @@ namespace ShapeAnimator.Model.Manager
             var colorShapeComparer = new TypeThenColorComparer();
             this.shapes.Sort(colorShapeComparer);
         }
-
-        #endregion
 
         #endregion
     }

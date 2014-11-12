@@ -52,7 +52,6 @@ namespace ShapeAnimator.View.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.SpeedSlider = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.sortByGroupBox = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -60,6 +59,8 @@ namespace ShapeAnimator.View.Forms
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,8 +75,8 @@ namespace ShapeAnimator.View.Forms
             this.canvasPictureBox.Size = new System.Drawing.Size(720, 480);
             this.canvasPictureBox.TabIndex = 0;
             this.canvasPictureBox.TabStop = false;
+            this.canvasPictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             this.canvasPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.shapeCanvasPictureBox_Paint);
-            this.canvasPictureBox.Click += new EventHandler(this.pictureBox_Click);
             // 
             // animationTimer
             // 
@@ -100,7 +101,7 @@ namespace ShapeAnimator.View.Forms
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(12, 32);
+            this.startButton.Location = new System.Drawing.Point(24, 42);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 3;
@@ -110,7 +111,7 @@ namespace ShapeAnimator.View.Forms
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(93, 32);
+            this.PauseButton.Location = new System.Drawing.Point(105, 42);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(75, 23);
             this.PauseButton.TabIndex = 4;
@@ -120,7 +121,7 @@ namespace ShapeAnimator.View.Forms
             // 
             // ResumeButton
             // 
-            this.ResumeButton.Location = new System.Drawing.Point(176, 32);
+            this.ResumeButton.Location = new System.Drawing.Point(186, 42);
             this.ResumeButton.Name = "ResumeButton";
             this.ResumeButton.Size = new System.Drawing.Size(75, 23);
             this.ResumeButton.TabIndex = 5;
@@ -130,7 +131,7 @@ namespace ShapeAnimator.View.Forms
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(256, 32);
+            this.ClearButton.Location = new System.Drawing.Point(268, 43);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 6;
@@ -192,7 +193,7 @@ namespace ShapeAnimator.View.Forms
             // SpeedSlider
             // 
             this.SpeedSlider.LargeChange = 50;
-            this.SpeedSlider.Location = new System.Drawing.Point(404, 32);
+            this.SpeedSlider.Location = new System.Drawing.Point(404, 39);
             this.SpeedSlider.Margin = new System.Windows.Forms.Padding(2);
             this.SpeedSlider.Maximum = 500;
             this.SpeedSlider.Name = "SpeedSlider";
@@ -206,20 +207,11 @@ namespace ShapeAnimator.View.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(357, 32);
+            this.label4.Location = new System.Drawing.Point(520, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 21;
             this.label4.Text = "Speed: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(360, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "0-500";
             // 
             // dataGridView1
             // 
@@ -301,14 +293,33 @@ namespace ShapeAnimator.View.Forms
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.areaRadioButton_CheckedChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(644, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Faster";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(404, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Slower";
+            // 
             // ShapeAnimatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 574);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.sortByGroupBox);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.SpeedSlider);
             this.Controls.Add(this.label3);
@@ -355,7 +366,6 @@ namespace ShapeAnimator.View.Forms
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
         private TrackBar SpeedSlider;
         private DataGridView dataGridView1;
         private RadioButton radioButton4;
@@ -364,6 +374,8 @@ namespace ShapeAnimator.View.Forms
         private RadioButton radioButton1;
         private GroupBox sortByGroupBox;
         private ColorDialog colorDialog1;
+        private Label label5;
+        private Label label6;
     }
 }
 

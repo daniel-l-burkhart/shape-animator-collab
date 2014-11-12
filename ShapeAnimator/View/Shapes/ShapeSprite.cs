@@ -18,7 +18,6 @@ namespace ShapeAnimator.View.Shapes
 
         private readonly int width;
 
-        private Color randomColorVariable;
         private Color spriteColor;
 
         #endregion
@@ -125,7 +124,7 @@ namespace ShapeAnimator.View.Shapes
         {
             Color randomColor = Color.FromArgb(ShapeFactory.Randomizer.Next(255), ShapeFactory.Randomizer.Next(255),
                 ShapeFactory.Randomizer.Next(255));
-            this.randomColorVariable = randomColor;
+            this.spriteColor = randomColor;
             return randomColor;
         }
 
