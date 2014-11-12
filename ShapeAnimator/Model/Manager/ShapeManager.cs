@@ -265,7 +265,7 @@ namespace ShapeAnimator.Model.Manager
             }
         }
 
-        #endregion
+        
 
         #region Comparer Methods
 
@@ -304,7 +304,7 @@ namespace ShapeAnimator.Model.Manager
             var colorShapeComparer = new TypeThenColorComparer();
             this.shapes.Sort(colorShapeComparer);
         }
-
+        #endregion
         #endregion
     }
 }

@@ -246,10 +246,10 @@ namespace ShapeAnimator.View.Forms
             this.radioButton4.Location = new System.Drawing.Point(276, 20);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(157, 17);
+            this.radioButton4.Size = new System.Drawing.Size(132, 17);
             this.radioButton4.TabIndex = 7;
             this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Shape Type And spriteColor";
+            this.radioButton4.Text = "Shape Type And Color";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.shapeThenColorRadioButton_CheckedChanged);
             // 

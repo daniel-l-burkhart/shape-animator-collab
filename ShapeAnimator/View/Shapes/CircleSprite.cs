@@ -25,6 +25,7 @@ namespace ShapeAnimator.View.Shapes
 
         #endregion
 
+        #region Methods
         /// <summary>
         ///     Draws a shape
         ///     Preconditon: graphics != null
@@ -40,5 +41,6 @@ namespace ShapeAnimator.View.Shapes
             var brush = new SolidBrush(this.SpriteColor);
             graphics.FillEllipse(brush, this.X, this.Y, this.Width, this.Height);
         }
+        #endregion
     }
 }

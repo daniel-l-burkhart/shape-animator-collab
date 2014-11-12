@@ -124,7 +124,6 @@ namespace ShapeAnimator.View.Shapes
         {
             Color randomColor = Color.FromArgb(ShapeFactory.Randomizer.Next(255), ShapeFactory.Randomizer.Next(255),
                 ShapeFactory.Randomizer.Next(255));
-            this.spriteColor = randomColor;
             return randomColor;
         }
 
