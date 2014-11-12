@@ -73,7 +73,6 @@
     <Compile Include="Model\Manager\ShapeFactory.cs" />
     <Compile Include="Model\Manager\ShapeManager.cs" />
     <Compile Include="Model\Shapes\Shape.cs" />
-    <Compile Include="Model\Shapes\SpottedRectangle.cs" />
     <Compile Include="View\Forms\ShapeAnimatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,7 +88,6 @@
     <Compile Include="View\Shapes\Decorators\VerticallyCenteredHorizontalBarDecorator.cs" />
     <Compile Include="View\Shapes\RectangleSprite.cs" />
     <Compile Include="View\Shapes\ShapeSprite.cs" />
-    <Compile Include="View\Shapes\SpottedRectangleSprite.cs" />
     <EmbeddedResource Include="View\Forms\ShapeAnimatorForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ShapeAnimatorForm.cs</DependentUpon>

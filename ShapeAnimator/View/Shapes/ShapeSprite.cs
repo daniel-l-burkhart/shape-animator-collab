@@ -20,7 +20,6 @@ namespace ShapeAnimator.View.Shapes
 
         private readonly int width;
 
-        private Color randomColorVariable;
         private Color spriteColor;
 
         #endregion
@@ -128,7 +127,7 @@ namespace ShapeAnimator.View.Shapes
         {
             Color randomColor = Color.FromArgb(ShapeFactory.Randomizer.Next(255), ShapeFactory.Randomizer.Next(255),
                 ShapeFactory.Randomizer.Next(255));
-            this.randomColorVariable = randomColor;
+            this.SpriteColor = randomColor;
             return randomColor;
         }
 
@@ -142,7 +141,7 @@ namespace ShapeAnimator.View.Shapes
 
         public void GetDecorators()
         {
-            Decorator decorator = new Decorator(this, this.theShape, this.width, this.height);
+            Decorator decorator = new Decorator(this.theShape, this.width, this.height);
             int number = ShapeFactory.Randomizer.Next(3);
             List<ShapeSprite> listOfDecorators = new List<ShapeSprite>();
             for (int i = 0; i < number; i++)

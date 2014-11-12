@@ -15,10 +15,11 @@ namespace ShapeAnimator.View.Shapes.Decorators
         /// <param name="shape">The shape.</param>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
-        public Decorator(ShapeSprite sprite, Shape shape, int width, int height) : base(shape, width, height)
+        public Decorator(Shape shape, int width, int height) : base(shape, width, height)
         {
             
         }
+
 
 
         /// <summary>

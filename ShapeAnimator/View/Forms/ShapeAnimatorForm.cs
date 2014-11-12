@@ -74,12 +74,11 @@ namespace ShapeAnimator.View.Forms
             int randomShapes = this.GetNumberOfShapes(this.randomShapesTextBox);
             int circles = this.GetNumberOfShapes(this.CirclesTextBox);
             int rectangles = this.GetNumberOfShapes(this.RectanglesTextBox);
-            int spottedRectangles = this.GetNumberOfShapes(this.SpottedRectanglesTextBox);
 
-            int totalNumberOfShapes = circles + rectangles + spottedRectangles + randomShapes;
+            int totalNumberOfShapes = circles + rectangles + randomShapes;
             this.checkTotalNumberOfShapes(totalNumberOfShapes);
 
-            this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles, spottedRectangles);
+            this.canvasManager.PlaceShapesOnCanvas(randomShapes, circles, rectangles);
             this.canvasManager.SortListByArea();
             this.SpeedSlider.Value = 250;
             this.canvasManager.IsPaused = false;

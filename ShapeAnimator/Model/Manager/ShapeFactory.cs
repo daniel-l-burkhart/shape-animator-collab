@@ -21,11 +21,6 @@ namespace ShapeAnimator.Model.Manager
             Circle,
 
             /// <summary>
-            ///     The spotted rectangle
-            /// </summary>
-            SpottedRectangle,
-
-            /// <summary>
             ///     The rectangle
             /// </summary>
             Rectangle,
@@ -72,9 +67,6 @@ namespace ShapeAnimator.Model.Manager
                     break;
                 case Shapes.Rectangle:
                     theShape = new Rectangle();
-                    break;
-                case Shapes.SpottedRectangle:
-                    theShape = new SpottedRectangle();
                     break;
                 case Shapes.Random:
                     theShape = getRandomShape();

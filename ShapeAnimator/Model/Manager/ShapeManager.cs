@@ -22,6 +22,8 @@ namespace ShapeAnimator.Model.Manager
 
         #endregion
 
+        #region Properties
+
         /// <summary>
         ///     Gets or sets a value indicating whether this instance is paused.
         /// </summary>
@@ -45,7 +47,7 @@ namespace ShapeAnimator.Model.Manager
             get { return this.shapes; }
         }
 
-        #region Methods
+        #endregion
 
         #region Constructors
 
@@ -75,12 +77,13 @@ namespace ShapeAnimator.Model.Manager
 
         #endregion
 
+        #region Methods
+
         /// <summary>
         ///     Places the shape on the canvas.
         ///     Precondition: None
         /// </summary>
-        public void PlaceShapesOnCanvas(int numberOfRandomShapes, int numberOfCircles, int numberOfRectangles,
-            int numberOfSpottedRectangles)
+        public void PlaceShapesOnCanvas(int numberOfRandomShapes, int numberOfCircles, int numberOfRectangles)
         {
             this.shapes.Clear();
 
@@ -90,7 +93,6 @@ namespace ShapeAnimator.Model.Manager
 
             this.placeShapesOnCanvasHelper(numberOfRectangles, ShapeFactory.Shapes.Rectangle);
 
-            this.placeShapesOnCanvasHelper(numberOfSpottedRectangles, ShapeFactory.Shapes.SpottedRectangle);
         }
 
         private void placeShapesOnCanvasHelper(int numberOfShapes, ShapeFactory.Shapes shape)

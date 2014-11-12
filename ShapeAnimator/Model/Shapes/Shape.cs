@@ -214,12 +214,12 @@ namespace ShapeAnimator.Model.Shapes
         /// <summary>
         ///     Determines whether the specified point is hit.
         /// </summary>
-        /// <param name="X">The x.</param>
-        /// <param name="Y">The y.</param>
+        /// <param name="x">The x.</param>
+        /// <param name="y">The y.</param>
         /// <returns></returns>
-        public bool IsHit(int X, int Y)
+        public bool IsHit(int x, int y)
         {
-            var cursorPoint = new Point(X, Y);
+            var cursorPoint = new Point(x, y);
             if (this.checkIfCursorIsWithinXRange(cursorPoint) && this.checkIfCursorIsWithinYRange(cursorPoint))
             {
                 return true;
