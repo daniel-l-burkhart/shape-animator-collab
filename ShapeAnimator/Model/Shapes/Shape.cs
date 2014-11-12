@@ -207,7 +207,7 @@ namespace ShapeAnimator.Model.Shapes
             {
                 throw new ArgumentNullException("g");
             }
-
+            this.sprite.GetDecorators();
             this.sprite.Paint(g);
         }
 

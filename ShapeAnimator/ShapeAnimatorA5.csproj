@@ -83,6 +83,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Shapes\CircleSprite.cs" />
+    <Compile Include="View\Shapes\Decorators\Decorator.cs" />
+    <Compile Include="View\Shapes\Decorators\HorizontallyCenteredVerticalBarDecorator.cs" />
+    <Compile Include="View\Shapes\Decorators\SpotDecorator.cs" />
+    <Compile Include="View\Shapes\Decorators\VerticallyCenteredHorizontalBarDecorator.cs" />
     <Compile Include="View\Shapes\RectangleSprite.cs" />
     <Compile Include="View\Shapes\ShapeSprite.cs" />
     <Compile Include="View\Shapes\SpottedRectangleSprite.cs" />

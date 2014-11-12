@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.Model.Shapes;
+using ShapeAnimator.View.Shapes.Decorators;
 
 namespace ShapeAnimator.View.Shapes
 {
@@ -111,6 +113,7 @@ namespace ShapeAnimator.View.Shapes
             this.width = width;
             this.height = height;
             this.spriteColor = this.randomColor();
+            this.GetDecorators();
         }
 
         #endregion
@@ -136,5 +139,16 @@ namespace ShapeAnimator.View.Shapes
         public abstract void Paint(Graphics graphics);
 
         #endregion
+
+        public void GetDecorators()
+        {
+            Decorator decorator = new Decorator(this, this.theShape, this.width, this.height);
+            int number = ShapeFactory.Randomizer.Next(3);
+            List<ShapeSprite> listOfDecorators = new List<ShapeSprite>();
+            for (int i = 0; i < number; i++)
+            {
+                listOfDecorators.Add(decorator.getRandomDecorator());
+            }
+        }
     }
 }
