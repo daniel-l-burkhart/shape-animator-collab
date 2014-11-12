@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using ShapeAnimator.Model.Manager;
 using ShapeAnimator.View.Shapes;
+using ShapeAnimator.View.Shapes.Decorators;
 
 namespace ShapeAnimator.Model.Shapes
 {

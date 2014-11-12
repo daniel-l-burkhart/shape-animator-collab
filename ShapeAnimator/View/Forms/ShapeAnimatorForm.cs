@@ -103,7 +103,6 @@ namespace ShapeAnimator.View.Forms
             this.CirclesTextBox.Text = Resources.zeroStringValue;
             this.randomShapesTextBox.Text = Resources.zeroStringValue;
             this.RectanglesTextBox.Text = Resources.zeroStringValue;
-            this.SpottedRectanglesTextBox.Text = Resources.zeroStringValue;
         }
 
         private void speedSliderValueChanged(object sender, EventArgs e)
@@ -170,7 +169,6 @@ namespace ShapeAnimator.View.Forms
 
             this.CirclesTextBox.Text = "0";
             this.RectanglesTextBox.Text = "0";
-            this.SpottedRectanglesTextBox.Text = "0";
             this.randomShapesTextBox.Text = "0";
             this.enableOrDisableControls(ControlsEnum.CLear);
         }
@@ -207,7 +205,6 @@ namespace ShapeAnimator.View.Forms
                 case ControlsEnum.Start:
                     this.randomShapesTextBox.Enabled = false;
                     this.CirclesTextBox.Enabled = false;
-                    this.SpottedRectanglesTextBox.Enabled = false;
                     this.RectanglesTextBox.Enabled = false;
                     this.PauseButton.Enabled = true;
                     this.ResumeButton.Enabled = false;
@@ -227,7 +224,6 @@ namespace ShapeAnimator.View.Forms
 
                     this.randomShapesTextBox.Enabled = true;
                     this.CirclesTextBox.Enabled = true;
-                    this.SpottedRectanglesTextBox.Enabled = true;
                     this.RectanglesTextBox.Enabled = true;
                     break;
             }

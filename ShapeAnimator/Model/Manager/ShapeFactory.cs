@@ -1,5 +1,6 @@
 ﻿using System;
 using ShapeAnimator.Model.Shapes;
+using ShapeAnimator.View.Shapes.Decorators;
 
 namespace ShapeAnimator.Model.Manager
 {
@@ -59,7 +60,9 @@ namespace ShapeAnimator.Model.Manager
 
         private static Shape getShapes(Shapes shape)
         {
+            
             Shape theShape = null;
+
             switch (shape)
             {
                 case Shapes.Circle:

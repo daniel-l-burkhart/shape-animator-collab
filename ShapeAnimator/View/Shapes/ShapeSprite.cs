@@ -112,7 +112,7 @@ namespace ShapeAnimator.View.Shapes
             this.width = width;
             this.height = height;
             this.spriteColor = this.randomColor();
-            this.GetDecorators();
+            //this.GetDecorators();
         }
 
         #endregion
@@ -139,14 +139,17 @@ namespace ShapeAnimator.View.Shapes
 
         #endregion
 
+        /// <summary>
+        /// Gets the decorators.
+        /// </summary>
         public void GetDecorators()
         {
             Decorator decorator = new Decorator(this.theShape, this.width, this.height);
             int number = ShapeFactory.Randomizer.Next(3);
-            List<ShapeSprite> listOfDecorators = new List<ShapeSprite>();
+            var listOfDecorators = new List<ShapeSprite>();
             for (int i = 0; i < number; i++)
             {
-                listOfDecorators.Add(decorator.getRandomDecorator());
+                listOfDecorators.Add(decorator.GetRandomDecorator(this.theShape, this.width, this.height));
             }
         }
     }
